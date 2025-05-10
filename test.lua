@@ -74,19 +74,11 @@ local TabFrostscript = Window:CreateTab("Frostware scripts", 448362458) -- Title
 
 local Tabeditplayer = Window:CreateTab("edit your player", 448362458) -- Title, Image
 
+local TabUpdatelog = Window:CreateTab("Update log", 44832458) -- Title, Image
+
+local TabCredits = Window:CreateTab("Credits", 4483362458) -- Title, Image 
+
 local Divider = Tab:CreateDivider()
-
-Rayfield:Notify({
-
-   Title = "Made by @Roblox_exploit-help",
-
-   Content = "Made by @Roblox_exploit-help no one else",
-
-   Duration = 0.1,
-
-   Image = 4483362458,
-
-})
 
 local Button = Tab:CreateButton({
 
@@ -290,7 +282,7 @@ local Slider = Tabeditplayer:CreateSlider({
 
  })
 
-local Paragraph = Tab:CreateParagraph({Title = "R6 to R15 and R15 to R6", Content = "R6 to R15 and R15 to R6"})
+local Paragraph = TabUpdatelog:CreateParagraph({Title = "update log", Content = "added edit your player more features than before"})
 
 local Button = Tabeditplayer:CreateButton({
 
@@ -308,6 +300,18 @@ Name = "R15 animation",
 
 Callback = function() loadstring(game:HttpGet('https://pastebin.com/raw/JhkcJ8eF'))()
 
- end,
+local Button = TabCredits:CreateButton({
 
-}) 
+Name = "click to see Credits",
+
+Callback = function() Rayfield:Notify({
+
+   Title = "Credits",
+
+   Content = "Credits to Rip_game help a bit",
+
+   Duration = 0.1,
+
+   Image = 4483362458,
+
+})
