@@ -280,7 +280,7 @@ local Slider = Tabeditplayer:CreateSlider({
 
  })
 
-local Paragraph = TabUpdatelog:CreateParagraph({Title = "update log", Content = "added edit your player more features than before"})
+local Paragraph = Tab:CreateParagraph({Title = "update log", Content = "added edit your player more features than before"})
 
 local Button = Tabeditplayer:CreateButton({
 
