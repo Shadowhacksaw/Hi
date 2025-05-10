@@ -76,6 +76,18 @@ local Tabeditplayer = Window:CreateTab("edit your player", 448362458) -- Title, 
 
 local Divider = Tab:CreateDivider()
 
+Rayfield:Notify({
+
+   Title = "Made by @Roblox_exploit-help",
+
+   Content = "Made by @Roblox_exploit-help no one else",
+
+   Duration = 0.1,
+
+   Image = 4483362458,
+
+})
+
 local Button = Tab:CreateButton({
 
    Name = "click tp script",
@@ -278,7 +290,7 @@ local Slider = Tabeditplayer:CreateSlider({
 
  })
 
-local Label = Tabeditplayer:CreateLabel("R6 to R15 and R15 to R6", 4483362458, Color3.fromRGB(255, 255, 255), false) -- Title, Icon, Color, IgnoreTheme
+local Paragraph = Tab:CreateParagraph({Title = "R6 to R15 and R15 to R6", Content = "R6 to R15 and R15 to R6"})
 
 local Button = Tabeditplayer:CreateButton({
 
