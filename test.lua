@@ -304,14 +304,16 @@ local Button = TabCredits:CreateButton({
 
 Name = "click to see Credits",
 
-Callback = function() Rayfield:Notify({
+Callback = function() 
+
+   Rayfield:Notify({
 
    Title = "Credits",
 
-   Content = "Credits to Rip_game help a bit",
+   Content = "Credits to Rip_game he help a bit",
 
    Duration = 0.1,
 
    Image = 4483362458,
 
-})
+}) 
