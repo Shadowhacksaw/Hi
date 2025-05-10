@@ -278,7 +278,7 @@ local Slider = Tabeditplayer:CreateSlider({
 
  })
 
-local Section = Tabeditplayer:CreateButton("R15 to R6 and R6 to R15")
+local Label = Tabeditplayer:CreateLabel("R6 to R15 and R15 to R6", 4483362458, Color3.fromRGB(255, 255, 255), false) -- Title, Icon, Color, IgnoreTheme
 
 local Button = Tabeditplayer:CreateButton({
 
