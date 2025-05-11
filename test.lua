@@ -306,7 +306,7 @@ Name = "click to see Credits",
 
 Callback = function() 
 
-   Rayfield:Notify({
+   Rayfield:Notify()
 
    Title = "Credits",
 
@@ -316,6 +316,4 @@ Callback = function()
 
    Image = 4483362458,               
    
-   end,
-   
- })
+}) 
