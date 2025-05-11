@@ -74,9 +74,7 @@ local TabFrostscript = Window:CreateTab("Frostware scripts", 448362458) -- Title
 
 local Tabeditplayer = Window:CreateTab("edit your player", 448362458) -- Title, Image
 
-local TabUpdatelog = Window:CreateTab("Update log", 4483362458) -- Title, Image
-
-local TabCredits = Window:CreateTab("Credits", 4483362458) -- Title, Image 
+local TabUpdatelog = Window:CreateTab("Update log", 448362458) -- Title, Image
 
 local Divider = Tab:CreateDivider()
 
@@ -282,50 +280,15 @@ local Slider = Tabeditplayer:CreateSlider({
 
  })
 
-local Paragraph = TabUpdatelog:CreateParagraph({Title = "update log", Content = "added edit your player more features than before"})
-
 local Button = Tabeditplayer:CreateButton({
 
 Name = "R6 animation",
 
 Callback = function() loadstring(game:HttpGet(('https://raw.githubusercontent.com/Imagnir/r6_anims_for_r15/main/r6_anims.lua'),true))()
 
- end,
-
-}) 
-
-local Button = Tabeditplayer:CreateButton({
-
-Name = "R15 animation",
-
-Callback = function() loadstring(game:HttpGet('https://pastebin.com/raw/JhkcJ8eF'))()
-
  end, 
 
 }) 
 
-local Button = TabCredits:CreateButton({
+local Paragraph = TabUpdatelog:CreateParagraph({Title = "Update log", Content = "added edit player more features than before"})
 
-Name = "click to see Credits",
-
-Callback = function() 
-
-   Rayfield:Notify({
-
-   Title = "Credits",
-
-   Content = "Credits to Rip_game he help a bit",
-
-   Duration = 0.1,
-
-   Image = 4483362458,
-
-})
-
-   
-
-   
-
-   
-
- 
