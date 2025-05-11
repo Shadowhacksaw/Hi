@@ -292,3 +292,12 @@ Callback = function() loadstring(game:HttpGet(('https://raw.githubusercontent.co
 
 local Paragraph = TabUpdatelog:CreateParagraph({Title = "Update log", Content = "added edit player more features than before"})
 
+local Button = Tabeditplayer:CreateButton({
+
+Name = "Freezd your player",
+
+Callback = function() loadstring(game:HttpGet('https://raw.githubusercontent.com/creepstu/fuzzy-octo-giggle/main/Source'))()
+
+ end, 
+
+}) 
