@@ -74,7 +74,7 @@ local TabFrostscript = Window:CreateTab("Frostware scripts", 448362458) -- Title
 
 local Tabeditplayer = Window:CreateTab("edit your player", 448362458) -- Title, Image
 
-local TabRayfield = Windows:CreateTab("change themes", 448362458) -- Title, Image
+local TabRayfield = Window:CreateTab("change themes", 448362458) -- Title, Image
 
 local TabUpdatelog = Window:CreateTab("Update log", 448362458) -- Title, Image
 
