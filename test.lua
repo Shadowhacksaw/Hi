@@ -74,6 +74,8 @@ local TabFrostscript = Window:CreateTab("Frostware scripts", 448362458) -- Title
 
 local Tabeditplayer = Window:CreateTab("edit your player", 448362458) -- Title, Image
 
+local TabRayfield = Windows:CreateTab("change themes", 448362458) -- Title, Image
+
 local TabUpdatelog = Window:CreateTab("Update log", 448362458) -- Title, Image
 
 local Divider = Tab:CreateDivider()
@@ -126,7 +128,7 @@ local Section = TabDestroyUI:CreateSection("Destroy the ui")
 
 local Button = TabDestroyUI:CreateButton({
 
-Name = "Deatroy ui",
+Name = "Destroy ui",
 
 Callback = function()
 
@@ -306,17 +308,6 @@ local Slider = Tabeditplayer:CreateSlider({
 
  })
 
-local Section = Tabeditplayer:CreateSection("R15 to R6")
-
-local Button = Tabeditplayer:CreateButton({
-
-Name = "R6 animation",
-
-Callback = function() loadstring(game:HttpGet(('https://raw.githubusercontent.com/Imagnir/r6_anims_for_r15/main/r6_anims.lua'),true))()
-
- end, 
-
-}) 
 local NoClipEnabled = false
 
 local RunService = game:GetService("RunService")
@@ -371,75 +362,9 @@ local function ToggleNoClip(state)
 
 end
 
-local Toggle = Tabeditplayer:CreateToggle({
+-- Add NoClip toggle to your script's UI
 
-    Name = "NoClip",
-
-    CurrentValue = false,
-
-    Flag = "ToggleNoClip",
-
-    Callback = function(state)
-
-        ToggleNoClip(state)
-
-    end,
-
-})local NoClipEnabled = false
-
-local RunService = game:GetService("RunService")
-
--- Function to toggle NoClip
-
-local function ToggleNoClip(state)
-
-    NoClipEnabled = state
-
-    if state then
-
-        -- Enable NoClip
-
-        RunService.Stepped:Connect(function()
-
-            if NoClipEnabled and game.Players.LocalPlayer.Character then
-
-                for _, part in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
-
-                    if part:IsA("BasePart") and part.CanCollide then
-
-                        part.CanCollide = false
-
-                    end
-
-                end
-
-            end
-
-        end)
-
-    else
-
-        -- Disable NoClip
-
-        if game.Players.LocalPlayer.Character then
-
-            for _, part in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
-
-                if part:IsA("BasePart") then
-
-                    part.CanCollide = true
-
-                end
-
-            end
-
-        end
-
-    end
-
-end
-
-local Toggle = Tabeditplayer:CreateToggle({
+local NoClipToggle = Tabeditplayer:CreateToggle({
 
     Name = "NoClip",
 
@@ -454,6 +379,225 @@ local Toggle = Tabeditplayer:CreateToggle({
     end,
 
 })
+
+local GodmodeEnabled = false
+
+local RunService = game:GetService("RunService")
+
+-- Function to toggle Godmode
+
+local function ToggleGodmode(state)
+
+    GodmodeEnabled = state
+
+    if state then
+
+        -- Enable Godmode
+
+        RunService.Stepped:Connect(function()
+
+            if GodmodeEnabled and game.Players.LocalPlayer.Character then
+
+                local humanoid = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
+
+                if humanoid then
+
+                    humanoid.Health = humanoid.MaxHealth -- Restore health
+
+                end
+
+            end
+
+        end)
+
+    end
+
+end
+
+local Toggle = Tabeditplayer:CreateToggle({
+
+    Name = "Godmode",
+
+    CurrentValue = false,
+
+    Flag = "ToggleGodmode",
+
+    Callback = function(state)
+
+        ToggleGodmode(state)
+
+    end,
+
+})
+
+local FreezeEnabled = false
+
+-- Function to toggle Freeze
+
+local function ToggleFreeze(state)
+
+    FreezeEnabled = state
+
+    if state then
+
+        -- Freeze the character
+
+        local character = game.Players.LocalPlayer.Character
+
+        if character then
+
+            local humanoid = character:FindFirstChildOfClass("Humanoid")
+
+            if humanoid then
+
+                humanoid.WalkSpeed = 0
+
+                humanoid.JumpPower = 0
+
+            end
+
+        end
+
+    else
+
+        -- Unfreeze the character
+
+        local character = game.Players.LocalPlayer.Character
+
+        if character then
+
+            local humanoid = character:FindFirstChildOfClass("Humanoid")
+
+            if humanoid then
+
+                humanoid.WalkSpeed = 16 -- Default WalkSpeed
+
+                humanoid.JumpPower = 50 -- Default JumpPower
+
+            end
+
+        end
+
+    end
+
+end
+
+local Toggle = Tabeditplayer:CreateToggle({
+
+    Name = "Freeze Character",
+
+    CurrentValue = false,
+
+    Flag = "ToggleFreeze",
+
+    Callback = function(state)
+
+        ToggleFreeze(state)
+
+    end,
+
+})
+
+local FlyEnabled = false
+
+local FlySpeed = 50
+
+local function ToggleFly(state)
+
+    FlyEnabled = state
+
+    local player = game.Players.LocalPlayer
+
+    local character = player.Character or player.CharacterAdded:Wait()
+
+    local humanoidRootPart = character:FindFirstChild("HumanoidRootPart")
+
+    if state then
+
+        RunService.RenderStepped:Connect(function()
+
+            if FlyEnabled and humanoidRootPart then
+
+                humanoidRootPart.Velocity = Vector3.new(0, FlySpeed, 0)
+
+            end
+
+        end)
+
+    end
+
+end
+
+local Toggle = Tabeditplayer:CreateToggle({
+
+    Name = "Fly",
+
+    CurrentValue = false,
+
+    Flag = "ToggleFly",
+
+    Callback = function(state)
+
+        ToggleFly(state)
+
+    end,
+
+})
+
+local function TeleportToPosition(position)
+
+    local character = game.Players.LocalPlayer.Character
+
+    if character then
+
+        character:MoveTo(position)
+
+    end
+
+end
+
+local Button = Tabeditplayer:CreateButton({
+
+    Name = "Teleport to Spawn",
+
+    Callback = function()
+
+        TeleportToPosition(Vector3.new(0, 50, 0)) -- Replace with desired coordinates
+
+    end,
+
+})
+
+local Section = Tabeditplayer:CreateSection("R15 to R6")
+
+local Button = Tabeditplayer:CreateButton({
+
+Name = "R6 animation",
+
+Callback = function() loadstring(game:HttpGet(('https://raw.githubusercontent.com/Imagnir/r6_anims_for_r15/main/r6_anims.lua'),true))()
+
+ end, 
+
+}) 
+
 local Section = TabUpdatelog:CreateSection("Update log")
 
-local Paragraph = TabUpdatelog:CreateParagraph({Title = "Update log", Content = "added edit player more features than before"})
+local Paragraph = TabUpdatelog:CreateParagraph({Title = "Update log", Content = "added edit player more features than before and improved inf jump and added Noclip"})
+
+local Dropdown = TabRayfield:CreateDropdown({
+
+    Name = "Select Theme",
+
+    Options = {"DarkBlue", "Light", "Amber Glow", "Bloom", "Ocean", "Green"},
+
+    CurrentOption = "DarkBlue",
+
+    Callback = function(selectedTheme)
+
+        Rayfield:ChangeTheme(selectedTheme)
+
+    end,
+
+})
+
+        
