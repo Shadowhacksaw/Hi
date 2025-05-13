@@ -148,7 +148,7 @@ Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com
 
 })
 
-local Section = Tab:CreateSection("Scripts by IncognitoScripts")
+local Section = TabIncognitoscripts:CreateSection("Scripts by IncognitoScripts")
 
 local Button = TabIncognitoscripts:CreateButton({
 
@@ -248,6 +248,8 @@ local Slider = Tabeditplayer:CreateSlider({
 
  })
 
+local InfiniteJumpConnection
+
 local Toggle = Tabeditplayer:CreateToggle({
 
     Name = "Infinite Jump",
@@ -258,21 +260,29 @@ local Toggle = Tabeditplayer:CreateToggle({
 
     Callback = function(InfiniteJumpEnabled)
 
-        local InfiniteJumpEnabled = true
+        if InfiniteJumpEnabled then
 
-        game:GetService("UserInputService").JumpRequest:connect(function()
+            InfiniteJumpConnection = game:GetService("UserInputService").JumpRequest:Connect(function()
 
-            if InfiniteJumpEnabled then
+                game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Humanoid"):ChangeState("Jumping")
 
-                game:GetService"Players".LocalPlayer.Character:FindFirstChildOfClass'Humanoid':ChangeState("Jumping")
+            end)
+
+        else
+
+            if InfiniteJumpConnection then
+
+                InfiniteJumpConnection:Disconnect()
+
+                InfiniteJumpConnection = nil
 
             end
 
-        end)
+        end
 
     end,
 
- })
+})
 
 local Slider = Tabeditplayer:CreateSlider({
 
@@ -307,5 +317,7 @@ Callback = function() loadstring(game:HttpGet(('https://raw.githubusercontent.co
  end, 
 
 }) 
+
+local Section = TabUpdatelog:CreateSection("Update log")
 
 local Paragraph = TabUpdatelog:CreateParagraph({Title = "Update log", Content = "added edit player more features than before"})
