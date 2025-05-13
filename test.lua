@@ -280,7 +280,7 @@ local Slider = Tabeditplayer:CreateSlider({
 
  })
 
-local Section = Tab:CreateSection("R15 to R6")
+local Section = Tabeditplayer:CreateSection("R15 to R6")
 
 local Button = Tabeditplayer:CreateButton({
 
@@ -293,16 +293,4 @@ Callback = function() loadstring(game:HttpGet(('https://raw.githubusercontent.co
 }) 
 
 local Paragraph = TabUpdatelog:CreateParagraph({Title = "Update log", Content = "added edit player more features than before"})
-
-
-
-
-
-
-
-
-
-
-
-
 
