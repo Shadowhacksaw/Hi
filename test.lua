@@ -6,9 +6,9 @@ local Window = Rayfield:CreateWindow({
 
    Icon = 0, -- Icon in Topbar. Can use Lucide Icons (string) or Roblox Image (number). 0 to use no icon (default).
 
-   LoadingTitle = "c00lhackk script hub",
+   LoadingTitle = "c00lhackk script hub I pls wait",
 
-   LoadingSubtitle = "by @Roblox_exploit-help on youtube",
+   LoadingSubtitle = "by @Roblox_exploit-help",
 
    Theme = "DarkBlue", -- Check https://docs.sirius.menu/rayfield/configuration/themes
 
@@ -78,6 +78,8 @@ local TabUpdatelog = Window:CreateTab("Update log", 448362458) -- Title, Image
 
 local Divider = Tab:CreateDivider()
 
+local Section = Tab:CreateSection("Script by @Rip_game")
+
 local Button = Tab:CreateButton({
 
    Name = "click tp script",
@@ -108,6 +110,8 @@ local Button = Tab:CreateButton({
 
 })
 
+local Section = TabForsaken:CreateSection("Scripts by @Roblox_exploit-help")
+
 local Button = TabForsaken:CreateButton({
 
    Name = "Rc7 executor",
@@ -117,6 +121,8 @@ local Button = TabForsaken:CreateButton({
    end,
 
 })                                                                                                                                                                                                    
+
+local Section = TabDestroyUI:CreateSection("Destroy the ui")
 
 local Button = TabDestroyUI:CreateButton({
 
@@ -130,6 +136,8 @@ Rayfield:Destroy()
 
 }) 
 
+local Section = TabRefresh:CreateSection("Refresh the script hub")
+
 local Button = TabRefresh:CreateButton({
 
 Name = "Refresh script hub",
@@ -140,6 +148,8 @@ Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com
 
 })
 
+local Section = Tab:CreateSection("Scripts by IncognitoScripts")
+
 local Button = TabIncognitoscripts:CreateButton({
 
 Name = "tsb Free Emotes (might not work)",
@@ -149,6 +159,8 @@ Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com
  end, 
 
 }) 
+
+local Section = TabRandomscript:CreateSection("very Random scripts:) ")
 
 local Button = TabRandomscript:CreateButton({
 
@@ -200,6 +212,8 @@ Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com
 
 }) 
 
+local Section = TabFrostscript:CreateSection("Frostware scripts")
+
 local Button = TabFrostscript:CreateButton({
 
 Name = "Frostware blue lock rivals", 
@@ -209,6 +223,8 @@ Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com
  end,
 
 })
+
+local Section = Tabeditplayer:CreateSection("edit Walkspeed and inf jump and a couple more")
 
 local Slider = Tabeditplayer:CreateSlider({
 
@@ -293,4 +309,3 @@ Callback = function() loadstring(game:HttpGet(('https://raw.githubusercontent.co
 }) 
 
 local Paragraph = TabUpdatelog:CreateParagraph({Title = "Update log", Content = "added edit player more features than before"})
-
