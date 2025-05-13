@@ -12,6 +12,32 @@ local Window = Rayfield:CreateWindow({
 
    Theme = "DarkBlue", -- Check https://docs.sirius.menu/rayfield/configuration/themes
 
+Rayfield:Notify({
+
+    Title = "Shadow x system not injected",
+
+    Content = "hi this script hub is by @Roblox_exploit-help pls click inject to make the script hub work.",
+
+    Duration = 5,
+
+    Actions = {
+
+        Confirm = {
+
+            Name = "inject",
+
+            Callback = function()
+
+                print("Shadow x system injected allowing rayfield permissions")
+
+            end
+
+        }
+
+    }
+
+})
+
    DisableRayfieldPrompts = false,
 
    DisableBuildWarnings = false, -- Prevents Rayfield from warning when the script has a version mismatch with the interface
