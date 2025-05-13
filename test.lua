@@ -4,39 +4,13 @@ local Window = Rayfield:CreateWindow({
 
    Name = "c00lhackk script hub l thx for using",
 
-   Icon = 112305654066001, -- Icon in Topbar. Can use Lucide Icons (string) or Roblox Image (number). 0 to use no icon (default).
+   Icon = 0, -- Icon in Topbar. Can use Lucide Icons (string) or Roblox Image (number). 0 to use no icon (default).
 
    LoadingTitle = "c00lhackk script hub I pls wait",
 
    LoadingSubtitle = "by @Roblox_exploit-help",
 
    Theme = "DarkBlue", -- Check https://docs.sirius.menu/rayfield/configuration/themes
-
-Rayfield:Notify({
-
-    Title = "Shadow x system not injected",
-
-    Content = "hi this script hub is by @Roblox_exploit-help pls click inject to make the script hub work.",
-
-    Duration = 5,
-
-    Actions = {
-
-        Confirm = {
-
-            Name = "inject",
-
-            Callback = function()
-
-                print("Shadow x system injected allowing rayfield permissions")
-
-            end
-
-        }
-
-    }
-
-})
 
    DisableRayfieldPrompts = false,
 
@@ -100,7 +74,7 @@ local TabFrostscript = Window:CreateTab("Frostware scripts", 448362458) -- Title
 
 local Tabeditplayer = Window:CreateTab("edit your player", 448362458) -- Title, Image
 
-local TabRayfield = Window:CreateTab("change themes", 448362458) -- Title, Image
+local TabRayfield = Windows:CreateTab("change themes", 448362458) -- Title, Image
 
 local TabUpdatelog = Window:CreateTab("Update log", 448362458) -- Title, Image
 
