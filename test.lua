@@ -317,7 +317,143 @@ Callback = function() loadstring(game:HttpGet(('https://raw.githubusercontent.co
  end, 
 
 }) 
+local NoClipEnabled = false
 
+local RunService = game:GetService("RunService")
+
+-- Function to toggle NoClip
+
+local function ToggleNoClip(state)
+
+    NoClipEnabled = state
+
+    if state then
+
+        -- Enable NoClip
+
+        RunService.Stepped:Connect(function()
+
+            if NoClipEnabled and game.Players.LocalPlayer.Character then
+
+                for _, part in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
+
+                    if part:IsA("BasePart") and part.CanCollide then
+
+                        part.CanCollide = false
+
+                    end
+
+                end
+
+            end
+
+        end)
+
+    else
+
+        -- Disable NoClip
+
+        if game.Players.LocalPlayer.Character then
+
+            for _, part in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
+
+                if part:IsA("BasePart") then
+
+                    part.CanCollide = true
+
+                end
+
+            end
+
+        end
+
+    end
+
+end
+
+local Toggle = Tabeditplayer:CreateToggle({
+
+    Name = "NoClip",
+
+    CurrentValue = false,
+
+    Flag = "ToggleNoClip",
+
+    Callback = function(state)
+
+        ToggleNoClip(state)
+
+    end,
+
+})local NoClipEnabled = false
+
+local RunService = game:GetService("RunService")
+
+-- Function to toggle NoClip
+
+local function ToggleNoClip(state)
+
+    NoClipEnabled = state
+
+    if state then
+
+        -- Enable NoClip
+
+        RunService.Stepped:Connect(function()
+
+            if NoClipEnabled and game.Players.LocalPlayer.Character then
+
+                for _, part in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
+
+                    if part:IsA("BasePart") and part.CanCollide then
+
+                        part.CanCollide = false
+
+                    end
+
+                end
+
+            end
+
+        end)
+
+    else
+
+        -- Disable NoClip
+
+        if game.Players.LocalPlayer.Character then
+
+            for _, part in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
+
+                if part:IsA("BasePart") then
+
+                    part.CanCollide = true
+
+                end
+
+            end
+
+        end
+
+    end
+
+end
+
+local Toggle = Tabeditplayer:CreateToggle({
+
+    Name = "NoClip",
+
+    CurrentValue = false,
+
+    Flag = "ToggleNoClip",
+
+    Callback = function(state)
+
+        ToggleNoClip(state)
+
+    end,
+
+})
 local Section = TabUpdatelog:CreateSection("Update log")
 
 local Paragraph = TabUpdatelog:CreateParagraph({Title = "Update log", Content = "added edit player more features than before"})
