@@ -584,7 +584,7 @@ Callback = function() loadstring(game:HttpGet(('https://raw.githubusercontent.co
 
 local Section = Tabeditplayer:CreateSection("edit vision")
 
-local Button = Tab:CreateButton({
+local Button = Tabeditplayer:CreateButton({
     Name = "Fullbright",
     Callback = function()
         
