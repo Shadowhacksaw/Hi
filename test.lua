@@ -76,6 +76,8 @@ local Tabeditplayer = Window:CreateTab("edit your player", 448362458) -- Title, 
 
 local TabRayfield = Window:CreateTab("change themes", 448362458) -- Title, Image
 
+local TabReport = Window:CreateTab("bug report", 448362458) -- Title, Image
+
 local TabUpdatelog = Window:CreateTab("Update log", 448362458) -- Title, Image
 
 local Divider = Tab:CreateDivider()
@@ -600,4 +602,14 @@ local Dropdown = TabRayfield:CreateDropdown({
 
 })
 
-        
+local Button = TabReport:CreateButton({
+    Name = "Report a Bug",
+    Callback = function()
+        setclipboard("https://forms.gle/uqt4etUWs3qjrbVw6") -- Replace with your form link
+        Rayfield:Notify({
+            Title = "Bug Report",
+            Content = "The Google Form link has been copied to your clipboard. Paste it into your browser to report a bug!",
+            Duration = 5
+        })
+    end
+})  
