@@ -746,4 +746,82 @@ local UnlockFPSButton = TabExperimental:CreateButton({
             })
         end
     end
-}) 
+})
+
+local Slider TabExperimental:CreateSlider({
+    Name = "Brightness Level",
+    Range = {1, 1000}, -- User can control brightness from 1 to 1000
+    Increment = 1,
+    Suffix = " Brightness",
+    Default = 5,
+    Callback = function(value)
+        game:GetService("Lighting").Brightness = value
+    end
+})
+
+ExperimentalTab:CreateButton({
+    Name = "Reset Fullbright",
+    Callback = function()
+        local lighting = game:GetService("Lighting")
+        lighting.Brightness = 1
+        lighting.ClockTime = 14
+        lighting.FogEnd = 1000
+        lighting.GlobalShadows = true
+        lighting.OutdoorAmbient = Color3.new(0.5, 0.5, 0.5)
+    end
+})
+
+local Button TabExperimental:CreateButton({
+    Name = "Enable Super Advanced ESP",
+    Callback = function()
+        for _, v in pairs(game:GetService("Players"):GetPlayers()) do
+            if v ~= game.Players.LocalPlayer and v.Character then
+                local highlight = Instance.new("Highlight")
+                highlight.FillColor = Color3.fromRGB(255, 0, 0) -- Red highlight
+                highlight.OutlineColor = Color3.fromRGB(255, 255, 255) -- White outline
+                highlight.Parent = v.Character
+            end
+        end
+    end
+})
+
+ExperimentalTab:CreateButton({
+    Name = "Disable ESP",
+    Callback = function()
+        for _, v in pairs(game:GetService("Players"):GetPlayers()) do
+            if v.Character then
+                for _, obj in pairs(v.Character:GetChildren()) do
+                    if obj:IsA("Highlight") then
+                        obj:Destroy()
+                    end
+                end
+            end
+        end
+    end
+})
+
+local Input TabExperimental:CreateInput({
+    Name = "Execute Custom Script",
+    PlaceholderText = "Enter Script URL",
+    RemoveTextAfterFocusLost = false,
+    Callback = function(url)
+        local success, err = pcall(function()
+            local scriptContent = game:HttpGet(url, true)
+            loadstring(scriptContent)()
+        end)
+        if success then
+            Rayfield:Notify({
+                Title = "Script Executed",
+                Content = "Your custom script has been executed successfully.",
+                Duration = 5
+            })
+        else
+            Rayfield:Notify({
+                Title = "Error",
+                Content = "Failed to execute script: " .. tostring(err),
+                Duration = 5
+            })
+        end
+    end
+})
+
