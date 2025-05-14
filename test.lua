@@ -658,7 +658,7 @@ local Toggle = Tabeditplayer:CreateToggle({
 
 local Section = TabUpdatelog:CreateSection("Update log")
 
-local Paragraph = TabUpdatelog:CreateParagraph({Title = "Update log", Content = "added edit player more features than before and improved inf jump and added Noclip"})
+local Paragraph = TabUpdatelog:CreateParagraph({Title = "Update log", Content = "added edit player more features than before and added inf jump and added Noclip added godmode and a lot more"})
 
 local Section = TabRayfield:CreateSection("change theme")
 
