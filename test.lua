@@ -587,7 +587,7 @@ local Section = Tabeditplayer:CreateSection("edit vision")
 local Button = Tab:CreateButton({
     Name = "Fullbright",
     Callback = function()
-        -- Fullbright Sc! Pript
+        
         local Lighting = game:GetService("Lighting")
 
         local function enableFullbright()
@@ -609,6 +609,7 @@ local Button = Tab:CreateButton({
         })
     end
 })
+
 local ESPEnabled = false
 
 local function ToggleESP(state)
