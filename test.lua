@@ -800,28 +800,38 @@ ExperimentalTab:CreateButton({
     end
 })
 
-TabExperimental:CreateInput({
-    Name = "Execute Custom Script",
-    PlaceholderText = "Enter Script URL",
-    RemoveTextAfterFocusLost = false,
+-- Input Field for Silent Executor local Input Tab:CreateInput({
+    Name = "Execute Script Silently",
+    PlaceholderText = "Enter Script URL here",
+    RemoveTextAfterFocusLost = false, -- Keeps the text after input
     Callback = function(url)
-        local success, err = pcall(function()
-            local scriptContent = game:HttpGet(url, true)
-            loadstring(scriptContent)()
-        end)
-        if success then
-            Rayfield:Notify({
-                Title = "Script Executed",
-                Content = "Your custom script has been executed successfully.",
-                Duration = 5
-            })
+        if url and url ~= "" then
+            local success, err = pcall(function()
+                -- Fetch and execute the script from the provided URL
+                local scriptContent = game:HttpGet(url, true)
+                loadstring(scriptContent)()
+            end)
+            
+            if success then
+                Rayfield:Notify({
+                    Title = "Script Executed",
+                    Content = "Your script has been successfully executed silently.",
+                    Duration = 5
+                })
+            else
+                Rayfield:Notify({
+                    Title = "Execution Error",
+                    Content = "Failed to execute script: " .. tostring(err),
+                    Duration = 5
+                })
+            end
         else
             Rayfield:Notify({
-                Title = "Error",
-                Content = "Failed to execute script: " .. tostring(err),
+                Title = "Invalid Input",
+                Content = "Please enter a valid script URL.",
                 Duration = 5
             })
         end
     end
-})
-
+}) 
+        
