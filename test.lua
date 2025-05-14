@@ -582,6 +582,34 @@ Callback = function() loadstring(game:HttpGet(('https://raw.githubusercontent.co
 
 }) 
 
+local Section = Tabeditplayer:CreateSection("edit vision")
+
+local Button = Tab:CreateButton({
+    Name = "Fullbright",
+    Callback = function()
+        -- Fullbright Sc! Pript
+        local Lighting = game:GetService("Lighting")
+
+        local function enableFullbright()
+            Lighting.Brightness = 2
+            Lighting.ClockTime = 12
+            Lighting.FogEnd = 1e10
+            Lighting.GlobalShadows = false
+            Lighting.OutdoorAmbient = Color3.new(1, 1, 1)
+        end
+
+        enableFullbright()
+
+        Lighting.Changed:Connect(enableFullbright)
+
+        Rayfield:Notify({
+            Title = "Fullbright Enabled",
+            Content = "Fullbright has been successfully activated.",
+            Duration = 5
+        })
+    end
+})
+
 local Section = TabUpdatelog:CreateSection("Update log")
 
 local Paragraph = TabUpdatelog:CreateParagraph({Title = "Update log", Content = "added edit player more features than before and improved inf jump and added Noclip"})
