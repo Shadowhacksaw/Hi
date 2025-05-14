@@ -753,7 +753,7 @@ TabExperimental:CreateSlider({
     Name = "Brightness Level (Experimental)",
     Range = {1, 10}, -- User can control brightness from 1 to 1000
     Increment = 1,
-    Suffix = " Brightness",
+    Suffix = "Brightness",
     Default = 5,
     Callback = function(value)
         game:GetService("Lighting").Brightness = value
