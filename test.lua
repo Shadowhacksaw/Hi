@@ -80,6 +80,8 @@ local TabReport = Window:CreateTab("bug report", 448362458) -- Title, Image
 
 local TabUpdatelog = Window:CreateTab("Update log", 448362458) -- Title, Image
 
+local TabExperimental = Window:CreateTab("Experimental stuff", 448362458) -- Title, Image
+
 local Divider = Tab:CreateDivider()
 
 local Section = Tab:CreateSection("Script by @Rip_game")
@@ -688,4 +690,60 @@ local Button = TabReport:CreateButton({
             Duration = 5
         })
     end
-})  
+})
+
+local Section = TabExperimental:CreateSection("Experimental") 
+
+local Button = TabExperimental:CreateButton({
+    Name = "Get BTools (Experimental)",
+    Callback = function()
+        -- BTools Script
+        local player = game.Players.LocalPlayer
+
+        -- Function to give BTools
+        local function giveBTools()
+            local deleteTool = Instance.new("HopperBin", player.Backpack)
+            deleteTool.BinType = Enum.BinType.Hammer -- Delete Tool
+            deleteTool.Name = "Delete Tool"
+
+            local moveTool = Instance.new("HopperBin", player.Backpack)
+            moveTool.BinType = Enum.BinType.Grab -- Move Tool
+            moveTool.Name = "Move Tool"
+
+            local cloneTool = Instance.new("HopperBin", player.Backpack)
+            cloneTool.BinType = Enum.BinType.Clone -- Clone Tool
+            cloneTool.Name = "Clone Tool"
+        end
+
+        -- Grant BTools to the player
+        giveBTools()
+
+        Rayfield:Notify({
+            Title = "BTools Enabled",
+            Content = "You now have building tools in your Backpack!",
+            Duration = 5
+        })
+    end
+})
+
+local UnlockFPSButton = TabExperimental:CreateButton({
+    Name = "Unlock FPS (Experimental)",
+    Callback = function()
+        -- Unlock FPS Script
+        setfpscap = setfpscap or function() end -- In case the executor doesn't support it
+        if setfpscap then
+            setfpscap(1000) -- Set FPS cap to 1000
+            Rayfield:Notify({
+                Title = "FPS Unlocked",
+                Content = "FPS cap has been set to 1000. Enjoy smoother gameplay!",
+                Duration = 5
+            })
+        else
+            Rayfield:Notify({
+                Title = "Error",
+                Content = "Your executor does not support FPS unlocking.",
+                Duration = 5
+            })
+        end
+    end
+}) 
