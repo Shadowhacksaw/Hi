@@ -652,6 +652,7 @@ local Toggle = Tabeditplayer:CreateToggle({
         ToggleESP(state)
     end,
 })
+
 local Section = TabUpdatelog:CreateSection("Update log")
 
 local Paragraph = TabUpdatelog:CreateParagraph({Title = "Update log", Content = "added edit player more features than before and improved inf jump and added Noclip"})
