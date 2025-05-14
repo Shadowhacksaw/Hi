@@ -759,7 +759,7 @@ local Slider TabExperimental:CreateSlider({
     end
 })
 
-ExperimentalTab:CreateButton({
+local Button Tab:CreateButton({
     Name = "Reset Fullbright",
     Callback = function()
         local lighting = game:GetService("Lighting")
@@ -800,7 +800,7 @@ ExperimentalTab:CreateButton({
     end
 })
 
-local Input TabExperimental:CreateInput({
+TabExperimental:CreateInput({
     Name = "Execute Custom Script",
     PlaceholderText = "Enter Script URL",
     RemoveTextAfterFocusLost = false,
