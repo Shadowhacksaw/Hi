@@ -586,6 +586,8 @@ local Section = TabUpdatelog:CreateSection("Update log")
 
 local Paragraph = TabUpdatelog:CreateParagraph({Title = "Update log", Content = "added edit player more features than before and improved inf jump and added Noclip"})
 
+local Section = TabRayfield:CreateSection("change theme")
+
 local Dropdown = TabRayfield:CreateDropdown({
 
     Name = "Select Theme",
@@ -601,6 +603,8 @@ local Dropdown = TabRayfield:CreateDropdown({
     end,
 
 })
+
+local Section = TabReport:CreateSection("Bug report")
 
 local Button = TabReport:CreateButton({
     Name = "Report a Bug",
