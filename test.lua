@@ -609,7 +609,49 @@ local Button = Tab:CreateButton({
         })
     end
 })
+local ESPEnabled = false
 
+local function ToggleESP(state)
+    ESPEnabled = state
+    if state then
+        for _, player in pairs(game.Players:GetPlayers()) do
+            if player ~= game.Players.LocalPlayer then
+                local character = player.Character
+                if character then
+                    local billboard = Instance.new("BillboardGui", character)
+                    billboard.Adornee = character:FindFirstChild("Head")
+                    billboard.Size = UDim2.new(2, 0, 2, 0)
+                    billboard.StudsOffset = Vector3.new(0, 3, 0)
+
+                    local textLabel = Instance.new("TextLabel", billboard)
+                    textLabel.Text = player.Name
+                    textLabel.Size = UDim2.new(1, 0, 1, 0)
+                end
+            end
+        end
+    else
+        -- Remove ESP elements
+        for _, player in pairs(game.Players:GetPlayers()) do
+            local character = player.Character
+            if character then
+                for _, child in pairs(character:GetChildren()) do
+                    if child:IsA("BillboardGui") then
+                        child:Destroy()
+                    end
+                end
+            end
+        end
+    end
+end
+
+local Toggle = Tabeditplayer:CreateToggle({
+    Name = "ESP",
+    CurrentValue = false,
+    Flag = "ToggleESP",
+    Callback = function(state)
+        ToggleESP(state)
+    end,
+})
 local Section = TabUpdatelog:CreateSection("Update log")
 
 local Paragraph = TabUpdatelog:CreateParagraph({Title = "Update log", Content = "added edit player more features than before and improved inf jump and added Noclip"})
