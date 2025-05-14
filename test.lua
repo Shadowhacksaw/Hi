@@ -750,7 +750,7 @@ local UnlockFPSButton = TabExperimental:CreateButton({
 
 local Slider =
 TabExperimental:CreateSlider({
-    Name = "Brightness Level",
+    Name = "Brightness Level (Experimental)",
     Range = {1, 10}, -- User can control brightness from 1 to 1000
     Increment = 1,
     Suffix = " Brightness",
@@ -787,7 +787,7 @@ local Button = TabExperimental:CreateButton({
 })
 
 local Button = TabExperimental:CreateButton({
-    Name = "Disable ESP",
+    Name = "Disable ESP (Experimental)",
     Callback = function()
         for _, v in pairs(game:GetService("Players"):GetPlayers()) do
             if v.Character then
@@ -801,8 +801,8 @@ local Button = TabExperimental:CreateButton({
     end
 })
 
--- Input Field for Silent Executor local Input = TabExperimental:CreateInput({
-    Name = "Execute Script Silently",
+local Input = TabExperimental:CreateInput({
+    Name = "Execute Script Silently (Experimental)",
     PlaceholderText = "Enter Script URL here",
     RemoveTextAfterFocusLost = false, -- Keeps the text after input
     Callback = function(url)
