@@ -1,0 +1,17 @@
+local url = "https://raw.githubusercontent.com/Shadowhacksaw/Hi/refs/heads/main/Admin.lua"
+
+local success, response = pcall(function()
+    return game:HttpGet(url)
+end)
+
+if success and response and not response:find("404: Not Found") then
+    local func, err = loadstring(response)
+    if func then
+        pcall(func)
+    else
+        warn("Failed to execute script:", err)
+    end
+else
+    warn("Not Loaded")
+end
+```
