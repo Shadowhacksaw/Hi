@@ -14,4 +14,3 @@ if success and response and not response:find("404: Not Found") then
 else
     warn("Not Loaded")
 end
-```
