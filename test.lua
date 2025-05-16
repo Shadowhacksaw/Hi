@@ -833,4 +833,57 @@ local Input = TabExperimental:CreateInput({
             })
         end
     end,
-})    
+})
+
+local function loadAnimation(animationId)
+    local Players = game:GetService("Players")
+    local LocalPlayer = Players.LocalPlayer
+    local Character = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()
+    
+    local animation = Instance.new("Animation")
+    animation.AnimationId = "rbxassetid://" .. tostring(animationId)
+    local humanoid = Character:FindFirstChild("Humanoid")
+    
+    if humanoid then
+        local animator = humanoid:FindFirstChild("Animator") or Instance.new("Animator", humanoid)
+        local animationTrack = animator:LoadAnimation(animation)
+        animationTrack:Play()
+    end
+end
+
+-- List of Animation IDs
+local animationIds = {
+    507766388, -- Ninja Animation Pack
+    507777826, -- Stylish Animation Pack
+    507770239, -- Robot Animation Pack
+    507776043, -- Levitation Animation Pack
+    -- Add more animation IDs here
+}
+
+-- Add Buttons for Each Animation
+for _, animationId in ipairs(animationIds) do
+local Button = TabExperimental:CreateButton({
+        Name = "Play Animation ID: " .. animationId,
+        Callback = function()
+            loadAnimation(animationId)
+        end
+    })
+end
+
+-- Add a Section for Additional Features
+local Section = AnimationTab:CreateSection("Additional Features")
+
+local Button = TabExperimentel:CreateButton({
+    Name = "Stop Animations",
+    Callback = function()
+        local Character = game.Players.LocalPlayer.Character
+        if Character then
+            local Humanoid = Character:FindFirstChild("Humanoid")
+            if Humanoid and Humanoid:FindFirstChild("Animator") then
+                for _, track in ipairs(Humanoid.Animator:GetPlayingAnimationTracks()) do
+                    track:Stop()
+                end
+            end
+        end
+    end
+})  
