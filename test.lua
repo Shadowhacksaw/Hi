@@ -802,37 +802,37 @@ local Button = TabExperimental:CreateButton({
 })
 
 local Input = TabExperimental:CreateInput({
-    Name = "Execute Script Silently (Experimental)",
-    PlaceholderText = "Enter Script URL here",
-    RemoveTextAfterFocusLost = false, -- Keeps the text after input
+    Name = "Execute Script Silently (Experimental) 
+    PlaceholderText = "Enter Script URL",
+    RemoveTextAfterFocusLost = false,
     Callback = function(url)
         if url and url ~= "" then
             local success, err = pcall(function()
-                -- Fetch and execute the script from the provided URL
-                local scriptContent = game:HttpGet(url, true)
-                loadstring(scriptContent)()
+                local scriptContent = game:HttpGet(url, true) -- Fetch the script
+                loadstring(scriptContent)() -- Execute the script
             end)
-            
+
             if success then
                 Rayfield:Notify({
                     Title = "Script Executed",
-                    Content = "Your script has been successfully executed silently.",
+                    Content = "The script has been executed successfully.",
                     Duration = 5
                 })
             else
                 Rayfield:Notify({
                     Title = "Execution Error",
-                    Content = "Failed to execute script: " .. tostring(err),
+                    Content = "Error executing script: " .. tostring(err),
                     Duration = 5
                 })
             end
         else
             Rayfield:Notify({
                 Title = "Invalid Input",
-                Content = "Please enter a valid script URL.",
+                Content = "Please provide a valid script URL.",
                 Duration = 5
             })
         end
-    end
-}) 
-        
+    end,
+})
+              
+            
