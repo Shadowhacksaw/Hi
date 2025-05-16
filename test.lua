@@ -802,7 +802,7 @@ local Button = TabExperimental:CreateButton({
 })
 
 local Input = TabExperimental:CreateInput({
-    Name = "Execute Script Silently (Experimental) 
+    Name = "Execute Script Silently (Experimental)", 
     PlaceholderText = "Enter Script URL",
     RemoveTextAfterFocusLost = false,
     Callback = function(url)
@@ -833,6 +833,4 @@ local Input = TabExperimental:CreateInput({
             })
         end
     end,
-})
-              
-            
+})    
