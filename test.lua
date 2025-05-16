@@ -46,7 +46,7 @@ local Window = Rayfield:CreateWindow({
 
       Note = "Key is backstorysoon", -- Use this to tell the user how to get a key
 
-      FileNamew = "Key", -- It is recommended to use something unique as other scripts using Rayfield may overwrite your key file
+      FileName = "Key", -- It is recommended to use something unique as other scripts using Rayfield may overwrite your key file
 
       SaveKey = true, -- The user's key will be saved, but if you change the key, they will be unable to use your script
 
@@ -58,7 +58,7 @@ local Window = Rayfield:CreateWindow({
 
 })
 
-local Tab = Window:CreateTab("@Rip_game9819 roblox scripts", 4483362458) -- Title, Image
+local Tab = Windows:CreateTab("@Rip_game9819 roblox scripts", 4483362458) -- Title, Image
 
 local TabForsaken = Window:CreateTab("@Roblox_exploit-help roblox scripts", 4483362458) -- Title, Image
 
