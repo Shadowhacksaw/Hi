@@ -100,9 +100,9 @@ local Button = Tab:CreateButton({
 
    Name = "Rip_game script Hub",
 
-   Callback = function()loadstring(game:HttpGet("https://ghostplayer352.github.io/Authorization/"))()Ioad("3e0702b4b012fd6420a8cf1b7aa8f09a")
-
-   end,
+   Callback = function()loadstring(game:HttpGet("https://pastefy.app/EOWQigCa/raw"))()
+   
+  end,
 
 })
 
