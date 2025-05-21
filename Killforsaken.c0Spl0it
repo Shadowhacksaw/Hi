@@ -1,0 +1,143 @@
+-- Setup
+local lp = game.Players.LocalPlayer
+local char = lp.Character or lp.CharacterAdded:Wait()
+local hrp = char:WaitForChild("HumanoidRootPart")
+local vim = game:GetService("VirtualInputManager")
+
+-- GUI
+local gui = Instance.new("ScreenGui", lp:WaitForChild("PlayerGui"))
+gui.Name = "c00lLoopKill"
+gui.ResetOnSpawn = false
+
+-- Ask character name
+local inputFrame = Instance.new("Frame", gui)
+inputFrame.Size = UDim2.new(0, 300, 0, 150)
+inputFrame.Position = UDim2.new(0.5, -150, 0.5, -75)
+inputFrame.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+inputFrame.Active = true
+inputFrame.Draggable = true
+
+local title = Instance.new("TextLabel", inputFrame)
+title.Size = UDim2.new(1, 0, 0, 40)
+title.Position = UDim2.new(0, 0, 0, 0)
+title.BackgroundTransparency = 1
+title.Text = "wat character r u gonna use to kill"
+title.TextColor3 = Color3.new(1, 1, 1)
+title.Font = Enum.Font.Gotham
+title.TextSize = 16
+
+local textbox = Instance.new("TextBox", inputFrame)
+textbox.Size = UDim2.new(1, -20, 0, 40)
+textbox.Position = UDim2.new(0, 10, 0, 50)
+textbox.Text = ""
+textbox.TextColor3 = Color3.new(1, 1, 1)
+textbox.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+textbox.Font = Enum.Font.Gotham
+textbox.TextSize = 16
+
+local confirm = Instance.new("TextButton", inputFrame)
+confirm.Size = UDim2.new(1, -20, 0, 40)
+confirm.Position = UDim2.new(0, 10, 0, 100)
+confirm.Text = "Confirm"
+confirm.BackgroundColor3 = Color3.fromRGB(0, 170, 255)
+confirm.TextColor3 = Color3.new(1, 1, 1)
+confirm.Font = Enum.Font.GothamBold
+confirm.TextSize = 16
+
+-- Main GUI
+local frame = Instance.new("Frame")
+frame.Size = UDim2.new(0, 240, 0, 120)
+frame.Position = UDim2.new(0.5, -120, 0.5, -60)
+frame.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+frame.Active = true
+frame.Draggable = true
+frame.Visible = false
+frame.Parent = gui
+
+local button = Instance.new("TextButton", frame)
+button.Size = UDim2.new(1, -20, 0, 40)
+button.Position = UDim2.new(0, 10, 0, 10)
+button.Text = "Enable LoopKill"
+button.BackgroundColor3 = Color3.fromRGB(0, 170, 255)
+button.TextColor3 = Color3.new(1, 1, 1)
+button.Font = Enum.Font.GothamBold
+button.TextSize = 16
+
+local destroy = Instance.new("TextButton", frame)
+destroy.Size = UDim2.new(1, -20, 0, 30)
+destroy.Position = UDim2.new(0, 10, 0, 60)
+destroy.Text = "Destroy GUI"
+destroy.BackgroundColor3 = Color3.fromRGB(255, 50, 50)
+destroy.TextColor3 = Color3.new(1, 1, 1)
+destroy.Font = Enum.Font.Gotham
+destroy.TextSize = 14
+
+-- Key spam logic
+local running = false
+local keyA, keyB = Enum.KeyCode.Q, Enum.KeyCode.E
+local loopThread = nil
+
+confirm.MouseButton1Click:Connect(function()
+	local answer = textbox.Text:lower()
+	if answer == "john doe" or answer == "c00lkidd" or answer == "1x1x1" then
+		keyA, keyB = Enum.KeyCode.Q, Enum.KeyCode.E
+	elseif answer == "jason" then
+		keyA, keyB = Enum.KeyCode.Q, Enum.KeyCode.E  -- Updated for Jason
+	end
+	inputFrame:Destroy()
+	frame.Visible = true
+
+	game.StarterGui:SetCore("SendNotification", {
+		Title = "Made by c0Sp0it = Made by @Roblox_exploit-help",
+		Text = "Character set: " .. answer,
+		Duration = 4
+	})
+end)
+
+button.MouseButton1Click:Connect(function()
+	running = not running
+	button.Text = running and "LoopKill: ON" or "Enable LoopKill"
+
+	if running then
+		loopThread = task.spawn(function()
+			while running do
+				local closest, dist = nil, 1000
+				for _, plr in pairs(game.Players:GetPlayers()) do
+					if plr ~= lp and plr.Character and plr.Character:FindFirstChild("HumanoidRootPart") and plr.Character:FindFirstChild("Humanoid") then
+						local hp = plr.Character.Humanoid.Health
+						if hp > 0 then
+							local mag = (hrp.Position - plr.Character.HumanoidRootPart.Position).Magnitude
+							if mag < dist and mag <= 1000 then  -- Only within 1000 studs
+								closest = plr
+								dist = mag
+							end
+						end
+					end
+				end
+
+				if closest then
+					local targetPart = closest.Character:FindFirstChild("HumanoidRootPart") or closest.Character:FindFirstChild("Torso") -- Find either HumanoidRootPart or Torso
+					local targetPos = targetPart and targetPart.Position or closest.Character.HumanoidRootPart.Position
+					local movePosition = CFrame.new(targetPos + Vector3.new(0, 3, 0)) -- Adjust as needed to avoid clipping with the target
+					
+					-- Move behind the target with a 0.1-second delay
+					hrp.CFrame = targetPart.CFrame * CFrame.new(0, 0, -3)  -- Move to the back of the target
+
+					-- Spam keys
+					vim:SendKeyEvent(true, keyA, false, game)
+					vim:SendKeyEvent(false, keyA, false, game)
+					task.wait(0.05)
+					vim:SendKeyEvent(true, keyB, false, game)
+					vim:SendKeyEvent(false, keyB, false, game)
+				end
+
+				task.wait(0.1)  -- Delay before moving again
+			end
+		end)
+	end
+end)
+
+destroy.MouseButton1Click:Connect(function()
+	running = false
+	gui:Destroy()
+end)
