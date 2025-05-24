@@ -52,7 +52,7 @@ Cody.Position = UDim2.new(0,5,0,5)
 Cody.Size = UDim2.new(0,350,0,140)
 Cody.Font = Enum.Font.Legacy
 Cody.FontSize = Enum.FontSize.Size8
-Cody.Text = game:HttpGet('https://raw.githubusercontent.com/IvanTheProtogen/BackdoorLegacy/checkerCode/main.lua')
+Cody.Text = game:HttpGet('https://raw.githubusercontent.com/Shadowhacksaw/Hi/refs/heads/main/c00lhackkbackdoor.checker')
 Cody.TextColor3 = Color3.new(1,0,0)
 Cody.TextWrapped = true
 Cody.TextXAlignment = Enum.TextXAlignment.Left
@@ -73,7 +73,7 @@ Execy.TextColor3 = Color3.new(1,0,0)
 Acqur.Active = true
 Acqur.BackgroundColor3 = Color3.new(0,0,0)
 Acqur.BorderColor3 = Color3.new(1,0,0)
-Acqur.Name = "Acquire"
+Acqur.Name = "Scan"
 Acqur.Parent = InPrt
 Acqur.Position = UDim2.new(0,185,0,150)
 Acqur.Size = UDim2.new(0,170,0,35)
@@ -188,12 +188,12 @@ Acqur.MouseButton1Click:Connect(function()
 		end 	
 		if AcquiredRemote ~= nil then 
 			isFound = true 
-			Cody.Text = '-- Remote acquired! :D' 
-			warn('c00lhackkBackdoor // Remote acquired! :D')
+			Cody.Text = '-- backdoor found! :D' 
+			warn('c00lhackkBackdoor // backdoor found! :D')
 		else 
 			isFound = false 
-			Cody.Text = '-- Not found. :(' 
-			warn('c00lhackkBackdoor // Not found. :(')
+			Cody.Text = '-- backdoor Not found. :(' 
+			warn('c00lhackkBackdoor // backdoor Not found. :(')
 		end 
 		isAcquiring = false 
 	end 
