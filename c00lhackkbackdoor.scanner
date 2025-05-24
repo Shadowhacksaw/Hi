@@ -192,7 +192,7 @@ Acqur.MouseButton1Click:Connect(function()
 			warn('c00lhackkBackdoor // backdoor found! :D')
 		else 
 			isFound = false 
-			Cody.Text = '-- backdoor Not found. :(' 
+			Cody.Text = '-- backdoor Not found! :(. :(' 
 			warn('c00lhackkBackdoor // backdoor Not found. :(')
 		end 
 		isAcquiring = false 
