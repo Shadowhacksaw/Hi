@@ -67,7 +67,7 @@ Execy.Position = UDim2.new(0,5,0,150)
 Execy.Size = UDim2.new(0,170,0,35)
 Execy.Font = Enum.Font.Legacy
 Execy.FontSize = Enum.FontSize.Size14
-Execy.Text = 'Execute!'
+Execy.Text = 'Execute!!'
 Execy.TextColor3 = Color3.new(1,0,0)
 
 Acqur.Active = true
@@ -79,7 +79,7 @@ Acqur.Position = UDim2.new(0,185,0,150)
 Acqur.Size = UDim2.new(0,170,0,35)
 Acqur.Font = Enum.Font.Legacy
 Acqur.FontSize = Enum.FontSize.Size14
-Acqur.Text = 'Acquire!'
+Acqur.Text = 'Scan'
 Acqur.TextColor3 = Color3.new(1,0,0)
 
 Labely.Active = true
@@ -91,7 +91,7 @@ Labely.Position = UDim2.new(0,180,0,25)
 Labely.Size = UDim2.new(0,0,0,0)
 Labely.Font = Enum.Font.Legacy
 Labely.FontSize = Enum.FontSize.Size14
-Labely.Text = 'BackdoorLegacy v1.1'
+Labely.Text = 'c00lhackk Backdoor'
 Labely.TextColor3 = Color3.new(1,0,0)
 
 -- Add functionalities!
