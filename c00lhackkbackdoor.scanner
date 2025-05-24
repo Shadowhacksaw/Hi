@@ -79,7 +79,7 @@ Acqur.Position = UDim2.new(0,185,0,150)
 Acqur.Size = UDim2.new(0,170,0,35)
 Acqur.Font = Enum.Font.Legacy
 Acqur.FontSize = Enum.FontSize.Size14
-Acqur.Text = 'Scan'
+Acqur.Text = 'Scan!!'
 Acqur.TextColor3 = Color3.new(1,0,0)
 
 Labely.Active = true
@@ -91,7 +91,7 @@ Labely.Position = UDim2.new(0,180,0,25)
 Labely.Size = UDim2.new(0,0,0,0)
 Labely.Font = Enum.Font.Legacy
 Labely.FontSize = Enum.FontSize.Size14
-Labely.Text = 'c00lhackk Backdoor'
+Labely.Text = 'c00lhackk Backdoor v0.1'
 Labely.TextColor3 = Color3.new(1,0,0)
 
 -- Add functionalities!
@@ -162,7 +162,7 @@ Acqur.MouseButton1Click:Connect(function()
 		end 
 		for a,b in pairs(RemoteList) do
 			if AcquiredRemote == nil then 
-				print("BackdoorLegacy // Checking "..b.ClassName..' "'..b.Name..'".') 
+				print("c00lhackkBackdoor // Checking "..b.ClassName..' "'..b.Name..'".') 
 				local NeededNameOfModel = string.char(math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A)) 
 				local NeededCode = 'Instance.new("Model",workspace).Name="'..NeededNameOfModel ..'"'
 				CurrentRemote = b 
