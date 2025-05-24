@@ -1,3 +1,7 @@
+game:GetService("StarterGui"):SetCore("SendNotification",{  Title = "c00lhackk script hub says",      
+Text = "by @Roblox_exploit-help",
+})
+
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
 local Window = Rayfield:CreateWindow({
