@@ -88,7 +88,7 @@ local TabExperimental = Window:CreateTab("Experimental stuff", 448362458) -- Tit
 
 local Divider = Tab:CreateDivider()
 
-local Section = Tab:CreateSection("Scripts by @Rip_game")
+local Section = TabRip:CreateSection("Scripts by @Rip_game")
 
 local Button = TabRip:CreateButton({
 
@@ -120,7 +120,7 @@ local Button = TabRip:CreateButton({
 
 })
 
-local Section = TabForsaken:CreateSection("Scripts by @Roblox_exploit-help")
+local Section = TabExploit:CreateSection("Scripts by @Roblox_exploit-help")
 
 local Button = TabExploit:CreateButton({
 
