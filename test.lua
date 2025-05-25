@@ -86,7 +86,7 @@ local TabUpdatelog = Window:CreateTab("Update log", 448362458) -- Title, Image
 
 local TabExperimental = Window:CreateTab("Experimental stuff", 448362458) -- Title, Image
 
-local Divider = Tab:CreateDivider()
+local Divider = TabRip:CreateDivider()
 
 local Section = TabRip:CreateSection("Scripts by @Rip_game")
 
