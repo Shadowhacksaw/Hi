@@ -62,6 +62,8 @@ local Window = Rayfield:CreateWindow({
 
 })
 
+wait(5)
+
 local Tab = Window:CreateTab("@Rip_game9819 roblox scripts", 4483362458) -- Title, Image
 
 local TabForsaken = Window:CreateTab("@Roblox_exploit-help roblox scripts", 4483362458) -- Title, Image
@@ -87,8 +89,6 @@ local TabUpdatelog = Window:CreateTab("Update log", 448362458) -- Title, Image
 local TabExperimental = Window:CreateTab("Experimental stuff", 448362458) -- Title, Image
 
 local Divider = Tab:CreateDivider()
-
-wait(5)
 
 local Section = Tab:CreateSection("Script by @Rip_game")
 
