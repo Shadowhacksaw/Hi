@@ -88,6 +88,8 @@ local TabExperimental = Window:CreateTab("Experimental stuff", 448362458) -- Tit
 
 local Divider = Tab:CreateDivider()
 
+wait(5)
+
 local Section = Tab:CreateSection("Script by @Rip_game")
 
 local Button = Tab:CreateButton({
