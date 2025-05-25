@@ -13,7 +13,7 @@ MnPrt.BorderColor3 = Color3.new(1,0,0)
 MnPrt.Name = "MainPart"
 MnPrt.Parent = ScrnGui
 MnPrt.Position = UDim2.new(.5,-180,.5,-120)
-MnPrt.Size = UDim2.new(0,360,0,240)
+MnPrt.Size = UDim2.new(1, -30, 1, 0)
 MnPrt.Draggable = true
 
 InPrt.Active = true
@@ -22,7 +22,7 @@ InPrt.BorderColor3 = Color3.new(1,0,0)
 InPrt.Name = "Inside"
 InPrt.Parent = MnPrt
 InPrt.Position = UDim2.new(0,0,0,50)
-InPrt.Size = UDim2.new(0,360,0,190)
+InPrt.Size = UDim2.new(1, -30, 1, 0)
 InPrt.Draggable = false
 
 
@@ -34,10 +34,10 @@ Cody.MultiLine = true
 Cody.Name = "Code"
 Cody.Parent = InPrt
 Cody.Position = UDim2.new(0,5,0,5)
-Cody.Size = UDim2.new(0,350,0,140)
+Cody.Size = UDim2.new(1, -30, 1, 0)
 Cody.Font = Enum.Font.Legacy
 Cody.FontSize = Enum.FontSize.Size8
-Cody.Text = game:HttpGet('https://raw.githubusercontent.com/Shadowhacksaw/Hi/refs/heads/main/c00lhackkbackdoor.checker')
+Cody.Text = game:HttpGet('https://raw.githubusercontent.com/Shadowhacksaw/Hi/refs/heads/main/textbox.text')
 Cody.TextColor3 = Color3.new(1,0,0)
 Cody.TextWrapped = true
 Cody.TextXAlignment = Enum.TextXAlignment.Left
