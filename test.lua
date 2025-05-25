@@ -62,11 +62,9 @@ local Window = Rayfield:CreateWindow({
 
 })
 
-wait(5)
+local TabRip = Window:CreateTab("@Rip_game9819 roblox scripts", 4483362458) -- Title, Image
 
-local Tab = Window:CreateTab("@Rip_game9819 roblox scripts", 4483362458) -- Title, Image
-
-local TabForsaken = Window:CreateTab("@Roblox_exploit-help roblox scripts", 4483362458) -- Title, Image
+local TabExploit = Window:CreateTab("@Roblox_exploit-help roblox scripts", 4483362458) -- Title, Image
 
 local TabDestroyUI = Window:CreateTab("Destroy Ui", 448362458) -- Title, Image
 
@@ -90,9 +88,9 @@ local TabExperimental = Window:CreateTab("Experimental stuff", 448362458) -- Tit
 
 local Divider = Tab:CreateDivider()
 
-local Section = Tab:CreateSection("Script by @Rip_game")
+local Section = Tab:CreateSection("Scripts by @Rip_game")
 
-local Button = Tab:CreateButton({
+local Button = TabRip:CreateButton({
 
    Name = "click tp script",
 
@@ -102,7 +100,7 @@ local Button = Tab:CreateButton({
 
 })
 
-local Button = Tab:CreateButton({
+local Button = TabRip:CreateButton({
 
    Name = "Rip_game script Hub",
 
@@ -112,7 +110,7 @@ local Button = Tab:CreateButton({
 
 })
 
-local Button = Tab:CreateButton({
+local Button = TabRip:CreateButton({
 
    Name = "Rip_game mobile fly edit",
 
@@ -124,7 +122,7 @@ local Button = Tab:CreateButton({
 
 local Section = TabForsaken:CreateSection("Scripts by @Roblox_exploit-help")
 
-local Button = TabForsaken:CreateButton({
+local Button = TabExploit:CreateButton({
 
    Name = "Rc7 executor",
 
@@ -134,7 +132,7 @@ local Button = TabForsaken:CreateButton({
 
 })                                                                                                                                                                                                    
 
-local Button = TabForsaken:CreateButton({
+local Button = TabExploit:CreateButton({
 
    Name = "backdoor injector (failed)",
 
@@ -144,7 +142,7 @@ local Button = TabForsaken:CreateButton({
 
 })                                   
 
-local Button = TabForsaken:CreateButton({
+local Button = TabExploit:CreateButton({
 
    Name = "c00lhackk ss executor",
 
