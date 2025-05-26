@@ -19,7 +19,6 @@ type array<I,V> = {[I]: V}
 local __f : array<string, any> = {
     ['__game'] = function() : string
         local g : number = game.GameId
-     
         elseif g == 7018190066 then return "v3/loaders/ff927d4bd86acab8481f351bbb393144.lua" -- Dead Rails
         elseif g == 7314989375 then return "v3/loaders/d52adca9a2085964957acf39a18ee41b.lua" -- Hunters
         elseif g == 115797356 then return "v3/loaders/a7f5a3bbfce64d9ace1a01d2eab6d6e9.lua" -- 
