@@ -60,3 +60,30 @@ local Window = Rayfield:CreateWindow({
 
 local Tab = Window:CreateTab("Main", 4483362458) -- Title, Image
 local Tab = Window:CreateTab("stamina settings", 4483362458) -- Title, Image
+
+Tab:CreateButton({
+    Name = "Toggle Fullbright",
+    Callback = function()
+        local fullbrightEnabled = false
+
+local function toggleFullbright()
+    fullbrightEnabled = not fullbrightEnabled
+
+    if fullbrightEnabled then
+        -- Save the original lighting settings
+        local Lighting = game:GetService("Lighting")
+        Lighting.Brightness = 2
+        Lighting.Ambient = Color3.new(1, 1, 1)
+        Lighting.OutdoorAmbient = Color3.new(1, 1, 1)
+        Lighting.GlobalShadows = false
+    else
+        -- Restore the default lighting settings
+        local Lighting = game:GetService("Lighting")
+        Lighting.Brightness = 1
+        Lighting.Ambient = Color3.new(0.5, 0.5, 0.5)
+        Lighting.OutdoorAmbient = Color3.new(0.5, 0.5, 0.5)
+        Lighting.GlobalShadows = true
+    end
+end
+    end
+})
