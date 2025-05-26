@@ -3,6 +3,7 @@ game:GetService("StarterGui"):SetCore("SendNotification", {
     Text = "Made by your brother",
     Button1 = "Thank you:)",
     Duration = 5
+})
 
 local player = game.Players.LocalPlayer
 local character = player.Character or player.CharacterAdded:Wait()
