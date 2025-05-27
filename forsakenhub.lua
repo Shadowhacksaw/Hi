@@ -60,8 +60,10 @@ local Window = Rayfield:CreateWindow({
 
 local Tab = Window:CreateTab("Main", 4483362458) -- Title, Image
 local Tab = Window:CreateTab("stamina settings", 4483362458) -- Title, Image
+local Tab = Window:CreateTab("", 4483362458) -- Title, Image
+local Tab = Window:CreateTab("admin characters", 4483362458) -- Title, Image
 
-Tab:CreateButton({
+local Button = Tab:CreateButton({
     Name = "Toggle Fullbright",
     Callback = function()
         local fullbrightEnabled = false
@@ -87,3 +89,5 @@ local function toggleFullbright()
 end
     end
 })
+
+
