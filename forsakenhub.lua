@@ -88,7 +88,97 @@ local function toggleFullbright()
     end
 end
     end
+
+local infiniteStaminaEnabled = false -- Keeps track of the toggle state
+
+local function toggleInfiniteStamina(state)
+    infiniteStaminaEnabled = state
+
+    if infiniteStaminaEnabled then
+        -- Enable infinite stamina
+        game:GetService("RunService").RenderStepped:Connect(function()
+            if infiniteStaminaEnabled then
+                local player = game.Players.LocalPlayer
+                local character = player.Character or player.CharacterAdded:Wait()
+                local stamina = character:FindFirstChild("Stamina") -- Replace with actual property name
+                if stamina and stamina:IsA("NumberValue") then
+                    stamina.Value = stamina.MaxValue -- Keep stamina at max
+                end
+            end
+        end)
+    else
+        -- Disable infinite stamina (optional: reset stamina to normal behavior)
+        local player = game.Players.LocalPlayer
+        local character = player.Character or player.CharacterAdded:Wait()
+        local stamina = character:FindFirstChild("Stamina") -- Replace with actual property name
+        if stamina and stamina:IsA("NumberValue") then
+            stamina.Value = stamina.Value -- Stamina will now deplete normally
+        end
+    end
+end
+
+-- Add the toggle to the Rayfield Hub
+local Tab = Window:CreateTab("Stamina Settings", 4483362458) -- Ensure this is the correct tab
+
+local Toggle Tabs:CreateToggle({
+    Name = "Infinite Stamina",
+    CurrentValue = false, 
+    Callback = function(state)
+        toggleInfiniteStamina(state)
+    end
 })
 
+local Input = Tabs:CreateInput({
+    Name = "Set Stamina",
+    Placeholder = "Enter a value (e.g., 1000000)",
+    Callback = function(value)
+        local stamina = character:FindFirstChild("Stamina") -- Replace "Stamina" with the actual property name
+        value = tonumber(value) -- Convert input to a number
+        if stamina and stamina:IsA("NumberValue") and value then
+            stamina.Value = value
+        else
+            Rayfield:Notify({
+                Title = "Error",
+                Content = "Invalid stamina value or property not found!",
+                Duration = 5
+            })
+        end
+    end
+})
 
-local Toggle = Tabs:CreateToggle({
+local Button = Tabs:CreateButton({
+    Name = "Restore Normal Stamina",
+    Callback = function()
+        local stamina = character:FindFirstChild("Stamina") -- Replace "Stamina" with the actual property name
+        if stamina and stamina:IsA("NumberValue") then
+            stamina.Value = 100 -- Default stamina value
+        else
+            Rayfield:Notify({
+                Title = "Error",
+                Content = "Stamina property not found!",
+                Duration = 5
+            })
+        end
+    end
+})
+
+local Button = Tabg:CreateButton({
+    Name = "Safe Auto-Repair Generators",
+    Callback = function()
+        -- Start a loop to find and repair generators with a delay
+        while wait(0.1) do
+            for _, generator in ipairs(workspace:GetDescendants()) do
+                if generator.Name == "Generator" and generator:FindFirstChild("Health") then
+                    -- Move to the generator
+                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = generator.CFrame
+                    
+                    
+                    if generator.Health.Value < generator.Health.MaxValue then
+                        generator.Health.Value = generator.Health.Value + 10 -- Example repair increment
+                        wait(2)
+                    end
+                end
+            end
+        end
+    end
+})
