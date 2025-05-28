@@ -117,9 +117,6 @@ local function toggleInfiniteStamina(state)
     end
 end
 
--- Add the toggle to the Rayfield Hub
-local Tab = Window:CreateTab("Stamina Settings", 4483362458) -- Ensure this is the correct tab
-
 local Toggle Tabs:CreateToggle({
     Name = "Infinite Stamina",
     CurrentValue = false, 
@@ -163,7 +160,7 @@ local Button = Tabs:CreateButton({
 })
 
 local Button = Tabg:CreateButton({
-    Name = "Safe Auto-Repair Generators",
+    Name = "Auto-Repair Generators",
     Callback = function()
         -- Start a loop to find and repair generators with a delay
         while wait(0.1) do
