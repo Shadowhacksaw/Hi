@@ -59,9 +59,13 @@ local Window = Rayfield:CreateWindow({
 })
 
 local Tab = Window:CreateTab("Main", 4483362458) -- Title, Image
+
 local Tabs = Window:CreateTab("stamina settings", 4483362458) -- Title, Image
+
 local Tabg = Window:CreateTab("Generators", 4483362458) -- Title, Image
+
 local Tabf = Window:CreateTab("fun", 4483362458) -- Title, Image
+
 local Divider = Tab:CreateDivider()
 
 local Button = Tab:CreateButton({
