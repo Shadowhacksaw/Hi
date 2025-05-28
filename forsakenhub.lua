@@ -182,7 +182,7 @@ local Input = Tabs:CreateInput({
 
     Name = "Set Stamina",
 
-    Placeholder = "Enter a value (e.g., 1000000)",
+    Placeholder = "(e.g., 1000000)",
 
     Callback = function(value)
 
