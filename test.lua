@@ -719,7 +719,7 @@ local Button = TabReport:CreateButton({
 local Section = TabExperimental:CreateSection("Experimental") 
 
 local Button = TabExperimental:CreateButton({
-    Name = "Get BTools (Experimental)",
+    Name = "F3X (Experimental)",
     Callback = function()
         local print = function() end
 local warn = function() end
@@ -727,38 +727,6 @@ local error = function() end
 
 local t = {}
 
-------------------------------------------------------------------------------------------------------------------------
-------------------------------------------------------------------------------------------------------------------------
-------------------------------------------------------------------------------------------------------------------------
-------------------------------------------------JSON Functions Begin----------------------------------------------------
-------------------------------------------------------------------------------------------------------------------------
-------------------------------------------------------------------------------------------------------------------------
-------------------------------------------------------------------------------------------------------------------------
-
- --JSON Encoder and Parser for Lua 5.1
- --
- --Copyright 2007 Shaun Brown  (http://www.chipmunkav.com)
- --All Rights Reserved.
- 
- --Permission is hereby granted, free of charge, to any person 
- --obtaining a copy of this software to deal in the Software without 
- --restriction, including without limitation the rights to use, 
- --copy, modify, merge, publish, distribute, sublicense, and/or 
- --sell copies of the Software, and to permit persons to whom the 
- --Software is furnished to do so, subject to the following conditions:
- 
- --The above copyright notice and this permission notice shall be 
- --included in all copies or substantial portions of the Software.
- --If you find this software useful please give www.chipmunkav.com a mention.
-
- --THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
- --EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES 
- --OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
- --IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR 
- --ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF 
- --CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN 
- --CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- 
 local string = string
 local math = math
 local table = table
@@ -7224,14 +7192,14 @@ for Q2jN,Y1v09ha in pairs(q)do Y1v09ha[2]()end for XWU,t in pairs(q)do if not To
 plugin:Activate(true) equipBT(plugin:GetMouse())end end)plugin.Deactivation:connect(unequipBT)elseif ToolType== 'tool'then Tool.Equipped:connect(equipBT) Tool.Unequipped:connect(unequipBT)end
 
         Rayfield:Notify({
-            Title = "f3x  Enabled",
-            Content = "You now have f3x in your Backpack!",
+            Title = "F3X Enabled",
+            Content = "You now have F3x in your Backpack!",
             Duration = 5
         })
     end
 })
 
-local UnlockFPSButton = TabExperimental:CreateButton({
+local Button = TabExperimental:CreateButton({
     Name = "Unlock FPS (Experimental)",
     Callback = function()
         -- Unlock FPS Script
