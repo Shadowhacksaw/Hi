@@ -28,7 +28,7 @@ notificationText.BackgroundTransparency = 1
 local function showNotification(message, duration)
     notificationText.Text = message -- Set the notification message
     notificationFrame.Visible = true -- Make the notification visible
-    wait(duration or 3) -- Keep it visible for the specified duration (default is 3 seconds)
+    wait(5) -- Keep it visible for the specified duration (default is 3 seconds)
     notificationFrame.Visible = false -- Hide the notification
 end
 
