@@ -20,7 +20,7 @@ tagLabel.Font = Enum.Font.SourceSansBold
 tagLabel.TextScaled = true
 
 -- Only display for specific players
-local allowedPlayers = { "Min3rZ3roAqua89", "pizzahexl" }
+local allowedPlayers = {"Min3rZ3roAqua89","pizzahexl"}
 
 if table.find(allowedPlayers, game.Players.LocalPlayer.Name) then
     tagGui.Enabled = true
