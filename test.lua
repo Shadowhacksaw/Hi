@@ -7346,7 +7346,7 @@ local Button = TabExperimental:CreateButton({
 end
 
 -- Add a Section for Additional Features
-local Section = AnimationTab:CreateSection("Additional Features")
+local Section = TabExperimentel:CreateSection("Additional Features")
 
 local Button = TabExperimentel:CreateButton({
     Name = "Stop Animations",
@@ -7365,18 +7365,14 @@ local Button = TabExperimentel:CreateButton({
 
 local Section = TabServer:CreateSection("Server-side stuff")
 
-local Paragraph = TabServer:CreateParagraph({
-      Title = "Server Info",
-      Content = "Server ID: " .. game.JobId .. "\n" ..
-                "Region: Unknown (requires region API)\n" ..
-                "Players: " .. #game.Players:GetPlayers()
-  })
-
-local Input = TabServer:CreateInput({
-      Name = "Kick Player",
-      Placeholder = "Enter Player Name",
-      Callback = function(playerName)
-          local player = game.Players:FindFirstChild(playerName)
+local Input = Tab:CreateInput({
+   Name = "Kick Player",
+   CurrentValue = "false",
+   PlaceholderText = "Enter Player Name",
+   RemoveTextAfterFocusLost = false,
+   Flag = "Input1",
+   Callback = function(playerName)
+   local player = game.Players:FindFirstChild(playerName)
           if player then
               player:Kick("You have been kicked from the server!")
           else
