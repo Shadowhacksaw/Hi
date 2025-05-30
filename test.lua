@@ -62,9 +62,9 @@ local Window = Rayfield:CreateWindow({
 
 })
 
-local TabRip = Window:CreateTab("@Rip_game9819 roblox scripts", 4483362458) -- Title, Image
+local TabRip = Window:CreateTab("@Rip_game9819 roblox scripts", 130695581754590) -- Title, Image
 
-local TabExploit = Window:CreateTab("@Roblox_exploit-help roblox scripts", 4483362458) -- Title, Image
+local TabExploit = Window:CreateTab("@Roblox_exploit-help roblox scripts", 89741975353847) -- Title, Image
 
 local TabDestroyUI = Window:CreateTab("Destroy Ui", 448362458) -- Title, Image
 
