@@ -7365,7 +7365,7 @@ local Button = TabExperimentel:CreateButton({
 
 local Section = TabServer:CreateSection("Server-side stuff")
 
-local Input = Tab:CreateInput({
+local Input = TabServer:CreateInput({
    Name = "Kick Player",
    CurrentValue = "false",
    PlaceholderText = "Enter Player Name",
@@ -7406,23 +7406,3 @@ local Button = TabServer:CreateButton({
       end
   })
 
-local Input = TabServer:CreateInput({
-      Name = "Find Player",
-      Placeholder = "Enter Player Name",
-      Callback = function(playerName)
-          local player = game.Players:FindFirstChild(playerName)
-          if player then
-              Rayfield:Notify({
-                  Title = "Player Found",
-                  Content = player.Name .. " is in the server.",
-                  Duration = 5
-              })
-          else
-              Rayfield:Notify({
-                  Title = "Player Not Found",
-                  Content = "The player is not in the server.",
-                  Duration = 5
-              })
-          end
-      end
-  })
