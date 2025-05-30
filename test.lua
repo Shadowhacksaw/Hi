@@ -8,7 +8,7 @@ local Window = Rayfield:CreateWindow({
 
    Name = "c00lhackk script hub l thx for using",
 
-   Icon = 112305654066001, -- Icon in Topbar. Can use Lucide Icons (string) or Roblox Image (number). 0 to use no icon (default).
+   Icon = 100061568352084, -- Icon in Topbar. Can use Lucide Icons (string) or Roblox Image (number). 0 to use no icon (default).
 
    LoadingTitle = "c00lhackk script hub I pls wait",
 
