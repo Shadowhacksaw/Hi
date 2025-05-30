@@ -86,6 +86,8 @@ local TabUpdatelog = Window:CreateTab("Update log", 448362458) -- Title, Image
 
 local TabExperimental = Window:CreateTab("Experimental stuff", 448362458) -- Title, Image
 
+local TabServer = Window:CreateTab("Server stuff", 448362458) -- Title, Image
+
 local Divider = TabRip:CreateDivider()
 
 local Section = TabRip:CreateSection("Scripts by @Rip_game")
@@ -7360,3 +7362,71 @@ local Button = TabExperimentel:CreateButton({
         end
     end
 })  
+
+local Section = TabServer:CreateSection("Server-side stuff")
+
+local Paragraph = TabServer:CreateParagraph({
+      Title = "Server Info",
+      Content = "Server ID: " .. game.JobId .. "\n" ..
+                "Region: Unknown (requires region API)\n" ..
+                "Players: " .. #game.Players:GetPlayers()
+  })
+
+local Input = TabServer:CreateInput({
+      Name = "Kick Player",
+      Placeholder = "Enter Player Name",
+      Callback = function(playerName)
+          local player = game.Players:FindFirstChild(playerName)
+          if player then
+              player:Kick("You have been kicked from the server!")
+          else
+              Rayfield:Notify({
+                  Title = "Error",
+                  Content = "Player not found!",
+                  Duration = 5
+              })
+          end
+      end
+  })
+
+local Button = TabServer:CreateButton({
+      Name = "Server Hop",
+      Callback = function()
+          local HttpService = game:GetService("HttpService")
+          local servers = HttpService:JSONDecode(game:HttpGet("https://games.roblox.com/v1/games/" .. game.PlaceId .. "/servers/Public?sortOrder=Asc&limit=100"))
+          for _, server in pairs(servers.data) do
+              if server.id ~= game.JobId and server.playing < server.maxPlayers then
+                  game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, server.id)
+                  break
+              end
+          end
+      end
+  })
+
+local Button = TabServer:CreateButton({
+      Name = "Rejoin Server",
+      Callback = function()
+          game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, game.JobId)
+      end
+  })
+
+local Input = TabServer:CreateInput({
+      Name = "Find Player",
+      Placeholder = "Enter Player Name",
+      Callback = function(playerName)
+          local player = game.Players:FindFirstChild(playerName)
+          if player then
+              Rayfield:Notify({
+                  Title = "Player Found",
+                  Content = player.Name .. " is in the server.",
+                  Duration = 5
+              })
+          else
+              Rayfield:Notify({
+                  Title = "Player Not Found",
+                  Content = "The player is not in the server.",
+                  Duration = 5
+              })
+          end
+      end
+  })
