@@ -142,7 +142,7 @@ Execy.MouseButton1Click:Connect(function()
 		end
 	end
 	-- Call the function!
-	warn("c00lhackkBackdoor // Running all remotes with code:\n"..CodeStr)
+	warn("c00lhackkBackdoor // Running all remotes with code to find backdoor:\n"..CodeStr)
 	DeepFire(game)
 end)
 
@@ -155,7 +155,7 @@ Acqur.MouseButton1Click:Connect(function()
 	if not isAcquiring then 
 		isAcquiring = true 
 		warn('c00lhackkBackdoor // Scanning Started!') 
-		Cody.Text = '-- Please wait, while we are scanning the remotes.'
+		Cody.Text = '-- Please wait, while c00lhackkbackdoor are scanning for backdoor.'
 		for i,v in pairs(game:GetDescendants()) do 
 			if v.Parent ~= game:GetService('RobloxReplicatedStorage') then 
 				if v:IsA("RemoteEvent") or v:IsA("RemoteFunction") then 
@@ -192,11 +192,11 @@ Acqur.MouseButton1Click:Connect(function()
 		end 	
 		if AcquiredRemote ~= nil then 
 			isFound = true 
-			Cody.Text = '-- backdoor found! :D' 
+			Cody.Text = '-- backdoor found!! :D.' 
 			warn('c00lhackkBackdoor // backdoor found! :D')
 		else 
 			isFound = false 
-			Cody.Text = '-- backdoor Not found! :(. :(' 
+			Cody.Text = '-- backdoor Not found!! :(.' 
 			warn('c00lhackkBackdoor // backdoor Not found. :(')
 		end 
 		isAcquiring = false 
