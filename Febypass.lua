@@ -1,3 +1,7 @@
+game:GetService("StarterGui"):SetCore("SendNotification",{  Title = "c00lhackkbackdoor says",      
+Text = "by @Roblox_exploit-help",
+})
+
 local ScreenGui = Instance.new("ScreenGui")
 ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 ScreenGui.Name = "FEBYPASS"
@@ -25,4 +29,3 @@ coroutine.wrap(function()
         TextLabel.TextTransparency = i * 0.1 -- Gradually hide the text
         wait(0.1)
     end
-   TextColor3 = Color3.new(1, 0, 0)
