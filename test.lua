@@ -62,7 +62,7 @@ local Window = Rayfield:CreateWindow({
 
 })
 
-local TabRip = Window:CreateTab("@Rip_game9819 roblox scripts", 6579106223) -- Title, Image
+local TabRip = Window:CreateTab("@Rip_game9819 roblox scripts", 130695581754590) -- Title, Image
 
 local TabExploit = Window:CreateTab("@Roblox_exploit-help roblox scripts", 89741975353847) -- Title, Image
 
