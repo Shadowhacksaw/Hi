@@ -1,5 +1,4 @@
-
- 🤑game:GetService("StarterGui"):SetCore("SendNotification",{  Title = "c00lhackk script hub says",      
+game:GetService("StarterGui"):SetCore("SendNotification",{  Title = "c00lhackk script hub says",      
 Text = "by @Roblox_exploit-help",
 })
 
