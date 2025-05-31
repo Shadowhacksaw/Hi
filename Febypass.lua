@@ -1,7 +1,7 @@
--- Fake FE Bypass Activated GUI Script
--- Refined and Debugged Version for Better Compatibility
+game:GetService("StarterGui"):SetCore("SendNotification",{  Title = "FE BYPASS",      
+Text = "testing",
+})
 
--- Parent to PlayerGui instead of CoreGui for better compatibility
 local ScreenGui = Instance.new("ScreenGui")
 ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 ScreenGui.Name = "FEBYPASS"
