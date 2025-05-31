@@ -1,7 +1,3 @@
--- Fake FE Bypass Activated GUI Script
--- Refined and Debugged Version for Better Compatibility
-
--- Parent to PlayerGui instead of CoreGui for better compatibility
 local ScreenGui = Instance.new("ScreenGui")
 ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 ScreenGui.Name = "FEBYPASS"
@@ -9,7 +5,7 @@ ScreenGui.Name = "FEBYPASS"
 -- Create the Frame for the Message
 local Frame = Instance.new("Frame")
 Frame.Parent = ScreenGui
-Frame.Size = UDim2.new(1, 0, 1, 0)
+Frame.Size = UDim2.new(0, 400, 0, 100)
 Frame.Position = UDim2.new(0.5, -200, 0.5, -50)
 Frame.BackgroundColor3 = Color3.new(0, 0, 0)
 Frame.BorderSizePixel = 0
@@ -38,4 +34,4 @@ coroutine.wrap(function()
     ScreenGui:Destroy()
 end)()
 
-print("Fe Bypass use before patched!")
+print("FE Bypass us3 before patch!!")
