@@ -1,7 +1,3 @@
-game:GetService("StarterGui"):SetCore("SendNotification",{  Title = "FE BYPASS",      
-Text = "testing",
-})
-
 local ScreenGui = Instance.new("ScreenGui")
 ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 ScreenGui.Name = "FEBYPASS"
