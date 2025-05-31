@@ -1,29 +1,26 @@
--- Create a GUI for the tag
-local tagGui = Instance.new("BillboardGui")
-local tagLabel = Instance.new("TextLabel")
+-- Function to display a message at the top of the screen that stays forever
+local function displayTopMessageForever(messageText)
+    -- Create a ScreenGui
+    local ScreenGui = Instance.new("ScreenGui")
+    ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+    ScreenGui.Name = "TopMessageGui"
 
--- Set up the BillboardGui
-tagGui.Parent = game.Players.LocalPlayer.Character:WaitForChild("Head") -- Attach to the player's head
-tagGui.Adornee = game.Players.LocalPlayer.Character.Head
-tagGui2.new(0, 200, 0, 50) -- Adjust size
-tagGui.StudsOffset = Vector3.new(0, 2, 0) -- Position above the player's head
-tagGui.AlwaysOnTop = true
-tagGui.Name = "DeveloperTag"
+    -- Create a Frame for the message
+    local MessageFrame = Instance.new("Frame")
+    MessageFrame.Parent = ScreenGui
+    MessageFrame.Size = UDim2.new(1, 0, 0.1, 0) -- Full width, 10% height
+    MessageFrame.Position = = 0
 
--- Set up the TextLabel
-tagLabel.Parent = tagGui
-tagLabel.Size = UDim2.new(1, 0, 1, 0) -- Fill the BillboardGui
-tagLabel.BackgroundTransparency = 1
-tagLabel.Text = "[local Scripter]" -- Developer tag text
-tagLabel.TextColor3 = Color3.fromRGB(255, 0, 0) -- Red text color
-tagLabel.Font = Enum.Font.SourceSansBold
-tagLabel.TextScaled = true
+    -- Add a TextLabel for the message
+    local MessageLabel = Instance.new("TextLabel")
+    MessageLabel.Parent = MessageFrame
+    MessageLabel.Size = UDim2.new(1, 0, 1, 0) -- Fill the frame
+    MessageLabel.Text = c00lhackkbackdoor by @Roblox_exploit-help
+    MessageLabel.TextColor3 = Color3.new(1, 1, Enum.Font.SourceSansBold
+    MessageLabel.BackgroundTransparency = 1 -- Transparent background for text
 
--- Only display for specific players
-local allowedPlayers = {"Min3rZ3roAqua89","pizzahexl"}
-
-if table.find(allowedPlayers, game.Players.LocalPlayer.Name) then
-    tagGui.Enabled = true
-else
-    tagGui.Enabled = false
+    print("Top message displayed forever: " .. messageText)
 end
+
+-- Example usage
+displayTopMessageForever("FE Bypass Activated!") -- Message stays on top forever
