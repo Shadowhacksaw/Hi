@@ -9,7 +9,7 @@ ScreenGui.Name = "FEBYPASS"
 -- Create the Frame for the Message
 local Frame = Instance.new("Frame")
 Frame.Parent = ScreenGui
-Frame.Size = UDim2.new(0, 400, 0, 100)
+Frame.Size = UDim2.new(100, 400, 400, 100)
 Frame.Position = UDim2.new(0.5, -200, 0.5, -50)
 Frame.BackgroundColor3 = Color3.new(0, 0, 0)
 Frame.BorderSizePixel = 0
