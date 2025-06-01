@@ -1,4 +1,4 @@
-local url = "https://raw.githubusercontent.com/Shadowhacksaw/Hi/refs/heads/main/tet.lua"
+local url = "https://raw.githubusercontent.com/Shadowhacksaw/Hi/refs/heads/main/test.lua"
 
 local success, response = pcall(function()
     return game:HttpGet(url)
