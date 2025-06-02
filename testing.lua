@@ -32,15 +32,9 @@ MnPrt.Size = UDim2.new(0, 611, 0, 352);
 MnPrt.ClipsDescendants = true;
 MnPrt.Position = UDim2.new(0.20000000298023224, 0, 0.10000000149011612, 0);
 MnPrt.Name = MainPart
+MnPrt.Draggable = true
 
-InPrt.Active = true
-InPrt.BackgroundColor3 = Color3.new(0,0,0)
-InPrt.BorderColor3 = Color3.new(1,0,0)
-InPrt.Name = "Inside"
-InPrt.Parent = MnPrt
-InPrt.Position = UDim2.new(0,0,0,50)
-InPrt.Size = UDim2.new(0,360,0,190)
-InPrt.Draggable = false
+
 
 Cody.Active = true
 Cody.BackgroundColor3 = Color3.new(0,0,0)
