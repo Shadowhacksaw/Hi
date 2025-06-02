@@ -34,7 +34,13 @@ MnPrt.Position = UDim2.new(0.20000000298023224, 0, 0.10000000149011612, 0);
 MnPrt.Name = MainPart
 MnPrt.Draggable = true
 
-
+InPrt.ZIndex = 3;
+InPrt.BackgroundColor3 = Color3.fromRGB(255, 255, 255);
+InPrt.AnchorPoint = Vector2.new(1, 0.5);
+InPrt.BackgroundTransparency = 1;
+InPrt.Size = UDim2.new(1, 0, 0, 31);
+InPrt.Position = UDim2.new(1, -10, 0.5, 0);
+InPrt.Name = RightOutline
 
 Cody.Active = true
 Cody.BackgroundColor3 = Color3.new(0,0,0)
