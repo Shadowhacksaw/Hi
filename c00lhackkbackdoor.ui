@@ -59,7 +59,7 @@ G2L["5"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
 -- StarterGui.backdoor.exe v8.Main.Topbar.RightOutline.ImageLabel
 G2L["6"] = Instance.new("ImageLabel", G2L["4"]);
 G2L["6"]["BackgroundColor3"] = Color3.fromRGB(1, 0, 0);
-G2L["6"]["ImageColor3"] = Color3.fromRGB(34, 34, 34);
+G2L["6"]["ImageColor3"] = Color3.fromRGB(1, 0, 0);
 G2L["6"]["Image"] = [[rbxassetid://4467776646]];
 G2L["6"]["Size"] = UDim2.new(0, 14, 0, 14);
 G2L["6"]["BackgroundTransparency"] = 1;
