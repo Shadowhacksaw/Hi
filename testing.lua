@@ -24,7 +24,7 @@ MainFrame.Parent = ScreenGui
 
 -- Title Bar
 local TitleBar.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
-TitleBar.Text = "Script Executor"
+TitleBar.Text = "c00lhackkbackdoor - v1. 0.0"
 TitleBar.TextColor3 = Color3.fromRGB(255, 255, 255)
 TitleBar.TextScaled = true
 TitleBar.Font = Enum.Font.SourceSansBold
@@ -214,6 +214,4 @@ ScanButton.MouseButton1Click:Connect(function()
 		end 
 		isAcquiring = false 
 	end 
-end)
-
 end)
