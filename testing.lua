@@ -1,5 +1,5 @@
 --[========================================================================[
-    backdoor.exe, the best backdoor scanner in Roblox.
+    c00lhackkbackdoor, the best backdoor scanner in Roblox.
     Copyright (C) 2021	iK4oS
 
     This program is free software: you can redistribute it and/or modify
@@ -493,3 +493,4 @@ ui.title.Text = TITLE;
 
 alertLib.Success(screenGui, TITLE, 'Backdoor scanner successfully loaded.');
 alertLib.Info(screenGui, TITLE, 'Home to toggle ui.', 4);
+alertLib.Owner(screenGui, TITLE, 'made by  @Roblox_exploit-help the best right.', 4);
