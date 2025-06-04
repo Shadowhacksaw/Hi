@@ -1,7 +1,7 @@
 -- // FE Bypass by @Roblox_exploit-help copyright 2025.. do not steal.. \\
 
-game:GetService("StarterGui"):SetCore("SendNotification",{  Title = "test",      
-Text = "fe bypass",
+game:GetService("StarterGui"):SetCore("SendNotification",{  Title = "Fe bypass Attempt",      
+Text = "check dev console type /console in chat for results",
 })
 
 print("-- [c00lhackkbackdoor]: Attempting to find a way to activate fe bypass..")
@@ -118,7 +118,7 @@ end)
 
 -- check if request successful
 if success then
-	print("-- [c00lhackkbackdoor]: FE Bypass successfully.")
+	print("-- [c00lhackkbackdoor]: FE Bypass successful.")
 else
 	warn("-- [c00lhackkbackdoor]: FE Bypass failed to work Please try again.")
 end
