@@ -66,9 +66,17 @@ local Section = Tab1:CreateSection("Killer noil sounds")
 
 local Button = Tab1:CreateButton({
 
-   Name = "click tp script",
+   Name = "noil m1 sound",
 
-   Callback = function() loadstring(game:HttpGet("https://pastebin.com/raw/ECnzT3AG"))()
+   Callback = function() 
+local sound1 = Instance.new("Sound")
+sound1.SoundId = 
+sound1.Parent = workspace
+sound1.Looped = false
+sound1.Name = "DestroyOnUltOff"
+sound1.TimePosition = 2
+sound1.Volume = 1
+sound1:Play()
 
    end,
 
