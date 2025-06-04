@@ -1,5 +1,9 @@
 -- // FE Bypass by @Roblox_exploit-help copyright 2025.. do not steal.. \\
 
+game:GetService("StarterGui"):SetCore("SendNotification",{  Title = "test",      
+Text = "fe bypass",
+})
+
 print("-- [c00lhackkbackdoor]: Attempting to find a way to activate fe bypass..")
 local network = game:GetService("NetworkClient")
 local oldNet = network:FindFirstChild("ReplicationSettings")
