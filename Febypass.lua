@@ -118,7 +118,7 @@ end)
 
 -- check if request successful
 if success then
-	print("-- [c00lhackk]: FE Bypassed.")
+	print("-- [c00lhackkbackdoor]: FE Bypass successfully.")
 else
-	print("-- [c00lhackkbackdoor]: FE Bypass failed. Please try again.")
+	warn("-- [c00lhackkbackdoor]: FE Bypass failed to work Please try again.")
 end
