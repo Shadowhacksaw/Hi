@@ -121,5 +121,5 @@ end)
 if success then
 	print("-- [c00lhackkbackdoor]: FE Bypass successful.")
 else
-	warn("-- [c00lhackkbackdoor]: FE Bypass failed to work Please try again.")
+	warn("-- [c00lhackkbackdoor]: FE Bypass failed Please try again.")
 end
