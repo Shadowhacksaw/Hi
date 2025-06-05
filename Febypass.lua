@@ -4,6 +4,7 @@ game:GetService("StarterGui"):SetCore("SendNotification",{  Title = "Fe bypass A
 Text = "check dev console type /console in chat for results",
 })
 
+print("-- [c00lhackkbackdoor]: Results.")
 print("-- [c00lhackkbackdoor]: Attempting to find a way to bypass fe..")
 local network = game:GetService("NetworkClient")
 local oldNet = network:FindFirstChild("ReplicationSettings")
