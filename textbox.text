@@ -1390,7 +1390,7 @@ G2L["5"].Parent = G2L["4"]
 --po.main.top.maximize
 G2L["6"].Name = [[maximize]]
 G2L["6"].FontFace = Font.new([[rbxasset://fonts/families/Arial.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal)
-G2L["6"].Text = [[ðŸ—–]]
+G2L["6"].Text = [[ [] ]]
 G2L["6"].TextColor3 = Color3.fromRGB(255, 255, 255)
 G2L["6"].TextScaled = false
 G2L["6"].TextSize = 23
