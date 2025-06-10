@@ -1312,7 +1312,7 @@ G2L["2"].Active = true
 G2L["2"].AnchorPoint = Vector2.new(0, 0)
 G2L["2"].BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 G2L["2"].BackgroundTransparency = 0
-G2L["2"].BorderColor3 = Color3.fromRGB(1, 0, 0)
+G2L["2"].BorderColor3 = Color3.fromRGB(129, 26, 255)
 G2L["2"].BorderSizePixel = 2
 G2L["2"].ClipsDescendants = false
 G2L["2"].Draggable = false
@@ -1328,7 +1328,7 @@ G2L["2"].Parent = G2L["1"]
 --po.main.top.title
 G2L["3"].Name = [[title]]
 G2L["3"].FontFace = Font.new([[rbxasset://fonts/families/Nunito.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal)
-G2L["3"].Text = [[c00lhackkbackdoor v1.0.0]]
+G2L["3"].Text = [[POLARIA]]
 G2L["3"].TextColor3 = Color3.fromRGB(255, 255, 255)
 G2L["3"].TextScaled = false
 G2L["3"].TextSize = 19
@@ -1390,7 +1390,7 @@ G2L["5"].Parent = G2L["4"]
 --po.main.top.maximize
 G2L["6"].Name = [[maximize]]
 G2L["6"].FontFace = Font.new([[rbxasset://fonts/families/Arial.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal)
-G2L["6"].Text = [[[]]]
+G2L["6"].Text = [[ðŸ—–]]
 G2L["6"].TextColor3 = Color3.fromRGB(255, 255, 255)
 G2L["6"].TextScaled = false
 G2L["6"].TextSize = 23
@@ -1873,7 +1873,7 @@ G2L["32"].Parent = G2L["31"]
 --po.main.top.Holder.homepage.jobid
 G2L["33"].Name = [[jobid]]
 G2L["33"].FontFace = Font.new([[rbxasset://fonts/families/Arial.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal)
-G2L["33"].Text = [[lol Job ID: 00000000-0000-0000-0000-000000000000]]
+G2L["33"].Text = [[Job ID: 00000000-0000-0000-0000-000000000000]]
 G2L["33"].TextColor3 = Color3.fromRGB(255, 255, 255)
 G2L["33"].TextScaled = false
 G2L["33"].TextSize = 18
@@ -1972,7 +1972,7 @@ G2L["38"].Parent = G2L["37"]
 --po.main.top.Holder.homepage.progress
 G2L["39"].Name = [[progress]]
 G2L["39"].FontFace = Font.new([[rbxasset://fonts/families/Arial.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal)
-G2L["39"].Text = [[Success! You are now able to use.]]
+G2L["39"].Text = [[Success! You are now be able to use.]]
 G2L["39"].TextColor3 = Color3.fromRGB(255, 255, 255)
 G2L["39"].TextScaled = false
 G2L["39"].TextSize = 18
@@ -12858,7 +12858,7 @@ local function C_G2L_246()
 
 	script.Parent.MouseButton1Click:Connect(function()
 		game.ReplicatedStorage.RemoteEvent:FireServer(script.Parent.Parent.input.Text)
-        end)
+      end)
 end
 task.spawn(C_G2L_246)
 
