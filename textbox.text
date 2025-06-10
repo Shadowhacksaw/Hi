@@ -12857,8 +12857,10 @@ local function C_G2L_246()
 	local script = G2L["246"]
 
 	script.Parent.MouseButton1Click:Connect(function()
-	game.ReplicatedStorage.RemoteEvent:FireServer(input.Text)
-end)
+		game.ReplicatedStorage.RemoteEvent:FireServer(script.Parent.Parent.input.Text)
+     end) 
+end
+task.spawn(C_G2L_246)
 
 
 --po.main.top.Holder.executorpage.clear.LocalScript
