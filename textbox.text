@@ -1746,7 +1746,7 @@ G2L["24"].Parent = G2L["17"]
 --po.main.top.Holder.homepage.f
 G2L["25"].Name = [[f]]
 G2L["25"].FontFace = Font.new([[rbxasset://fonts/families/Arial.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal)
-G2L["25"].Text = [[Enabled!]]
+G2L["25"].Text = [[bypass!]]
 G2L["25"].TextColor3 = Color3.fromRGB(255, 255, 255)
 G2L["25"].TextScaled = false
 G2L["25"].TextSize = 18
@@ -1873,7 +1873,7 @@ G2L["32"].Parent = G2L["31"]
 --po.main.top.Holder.homepage.jobid
 G2L["33"].Name = [[jobid]]
 G2L["33"].FontFace = Font.new([[rbxasset://fonts/families/Arial.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal)
-G2L["33"].Text = [[Job ID: 00000000-0000-0000-0000-000000000000]]
+G2L["33"].Text = [[lol Job ID: 00000000-0000-0000-0000-000000000000]]
 G2L["33"].TextColor3 = Color3.fromRGB(255, 255, 255)
 G2L["33"].TextScaled = false
 G2L["33"].TextSize = 18
@@ -1939,7 +1939,7 @@ G2L["36"].Parent = G2L["35"]
 --po.main.top.Holder.homepage.idk
 G2L["37"].Name = [[idk]]
 G2L["37"].FontFace = Font.new([[rbxasset://fonts/families/Arial.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal)
-G2L["37"].Text = [[Country: Unknown]
+G2L["37"].Text = [[Country: idk]
 G2L["37"].TextColor3 = Color3.fromRGB(255, 255, 255)
 G2L["37"].TextScaled = false
 G2L["37"].TextSize = 18
