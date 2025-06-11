@@ -10,7 +10,7 @@
 
 -- Instances: 419 | Scripts: ?? | Modules: ??
 
-print("c00lhackkBackdoor ss // Successfully booted up!!")
+print("-- c00lhackkBackdoor ss // Successfully booted up!!")
 local G2L = {}
 
 -- Require G2L wrapper
@@ -12858,7 +12858,7 @@ local function C_G2L_246()
 	local script = G2L["246"]
 
         script.Parent.MouseButton1Click:Connect(function()
-	        print("c00lhackkBackdoor // Successfully Executed!!")
+	        print("-- c00lhackkBackdoor // Successfully Executed!!")
                game.ReplicatedStorage.RemoteEvent:FireServer(script.Parent.Parent.input.Text)
       end)
 end
@@ -12869,7 +12869,7 @@ task.spawn(C_G2L_246)
 local function C_G2L_249()
 local script = G2L["249"]
 script.Parent.MouseButton1Click:Connect(function()
-       print("c00lhackkBackdoor ss // Successfully cleared textbox!!")
+       print("-- c00lhackkBackdoor ss // Successfully cleared textbox!!")
         script.Parent.Parent.input.Text = ""
 end)
 end
