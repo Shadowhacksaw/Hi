@@ -1328,7 +1328,7 @@ G2L["2"].Parent = G2L["1"]
 --po.main.top.title
 G2L["3"].Name = [[title]]
 G2L["3"].FontFace = Font.new([[rbxasset://fonts/families/Nunito.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal)
-G2L["3"].Text = [[c00lhackkbackdoor v1.0.0]]
+G2L["3"].Text = [[c00lhackkbackdoor ss v1.0.0]]
 G2L["3"].TextColor3 = Color3.fromRGB(255, 255, 255)
 G2L["3"].TextScaled = false
 G2L["3"].TextSize = 19
