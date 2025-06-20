@@ -1,357 +1,696 @@
-local febypass = Instance.new("ScreenGui")
-local executor = Instance.new("Frame")
-local TextLabel_2 = Instance.new("TextLabel")
-local size = Instance.new("ScrollingFrame")
-local UICorner = Instance.new("UICorner")
-local Lines = Instance.new("TextLabel")
-local CMDBox = Instance.new("TextBox")
-local Tokens_ = Instance.new("TextLabel")
-local Strings_ = Instance.new("TextLabel")
-local RemoteHighlight_ = Instance.new("TextLabel")
-local Numbers_ = Instance.new("TextLabel")
-local Keywords_ = Instance.new("TextLabel")
-local Globals_ = Instance.new("TextLabel")
-local Comments_ = Instance.new("TextLabel")
-local Execute = Instance.new("TextButton")
-local Clear = Instance.new("TextButton")
-local Respawn = Instance.new("TextButton")
-local R6 = Instance.new("TextButton")
-local sidebar = Instance.new("ScrollingFrame")
-local close = Instance.new("TextButton")
-local minimize = Instance.new("TextButton")
-local oldexecutor = Instance.new("Frame")
-local TextBox = Instance.new("TextBox")
-local exe = Instance.new("TextButton")
-local clr = Instance.new("TextButton")
-local exit_2 = Instance.new("TextButton")
+game.StarterGui:SetCore("DevConsoleVisible", true)
+wait(1)
+print("Found ROBLOX Process...")
+game.StarterGui:SetCore("DevConsoleVisible", true)
+wait(2)
+print("Injecting 'STIGMA' into CoreGui...")
+game.StarterGui:SetCore("DevConsoleVisible", true)
+wait(4)
+print("StigmaUI Loaded.")
+wait(0.1)
+game.StarterGui:SetCore("DevConsoleVisible", false)
 
-febypass.Name = "fe bypass"
-febypass.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-febypass.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-febypass.ResetOnSpawn = false
+
+local STIGMA = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
+local main = Instance.new("Frame")
+local ScrollingFrame = Instance.new("ScrollingFrame")
+local input = Instance.new("TextBox")
+local execute = Instance.new("TextButton")
+local clear = Instance.new("TextButton")
+local file = Instance.new("TextButton")
+local extras = Instance.new("TextButton")
+local lua = Instance.new("TextButton")
+local help = Instance.new("TextButton")
+local fileframe = Instance.new("Frame")
+local minimize = Instance.new("TextButton")
+local exit = Instance.new("TextButton")
+local TextLabel = Instance.new("TextLabel")
+local minimized = Instance.new("TextButton")
+local windowframe = Instance.new("Frame")
+local windowmain = Instance.new("Frame")
+local createdby = Instance.new("TextLabel")
+local buttonframe = Instance.new("Frame")
+local TextButton = Instance.new("TextButton")
+local abouttext = Instance.new("TextLabel")
+local helpframe = Instance.new("Frame")
+local about = Instance.new("TextButton")
+local ImageLabel = Instance.new("ImageLabel")
+local extraframe = Instance.new("Frame")
+local _1 = Instance.new("TextButton")
+local _2 = Instance.new("TextButton")
+local _4 = Instance.new("TextButton")
+local _3 = Instance.new("TextButton")
+local _5 = Instance.new("TextButton")
+local luaframe = Instance.new("Frame")
+local refresh = Instance.new("TextButton")
+
+
+STIGMA.Name = "c00lhackk 3x3x3x3"
+STIGMA.Parent = game.CoreGui
+STIGMA.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+Frame.Parent = STIGMA
+Frame.Active = true
+Frame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Frame.BorderColor3 = Color3.fromRGB(255, 0, 0)
+Frame.Position = UDim2.new(0.132295743, 0, 0.169778287, 0)
+Frame.Size = UDim2.new(0, 320, 0, 253)
+
 
 main.Name = "main"
+main.Parent = Frame
+main.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+main.BorderColor3 = Color3.fromRGB(152, 152, 152)
+main.Position = UDim2.new(-0.000130081171, 0, 0.107659623, 0)
+main.Size = UDim2.new(0, 320, 0, 225)
 
-executor.Name = "executor"
-executor.Parent = febypass
-executor.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-executor.BorderColor3 = Color3.fromRGB(1, 0, 0)
-executor.BorderSizePixel = 2
-executor.Position = UDim2.new(0.0190408826, 0, 0.314197153, 0)
-executor.Size = UDim2.new(0, 526, 0, 258)
-executor.Visible = false
+ScrollingFrame.Parent = main
+ScrollingFrame.Active = true
+ScrollingFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ScrollingFrame.BorderColor3 = Color3.fromRGB(255, 0, 0)
+ScrollingFrame.Position = UDim2.new(-4.72408317e-08, 0, 0.088888891, 0)
+ScrollingFrame.Selectable = false
+ScrollingFrame.Size = UDim2.new(0, 283, 0, 205)
 
-TextLabel_2.Parent = executor
-TextLabel_2.BackgroundColor3 = Color3.fromRGB(0,0,0)
-TextLabel_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
-TextLabel_2.BorderSizePixel = 0
-TextLabel_2.Position = UDim2.new(0.250950575, 0, 0, 0)
-TextLabel_2.Size = UDim2.new(0, 237, 0, 31)
-TextLabel_2.Font = Enum.Font.SourceSans
-TextLabel_2.Text = "c00lhackk 3x3x3x3 Executor Server side/Client side project"
-TextLabel_2.TextColor3 = Color3.fromRGB(255, 255, 255)
-TextLabel_2.TextScaled = true
-TextLabel_2.TextSize = 13.000
-TextLabel_2.TextWrapped = true
-TextLabel_2.TextYAlignment = Enum.TextYAlignment.Top
+input.Name = "input"
+input.Parent = ScrollingFrame
+input.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+input.BorderColor3 = Color3.fromRGB(255, 0, 0)
+input.BorderSizePixel = 1
+input.Position = UDim2.new(0, 0, 1.48866235e-07, 0)
+input.Size = UDim2.new(0, 283, 0, 449)
+input.Font = Enum.Font.Arcade
+input.MultiLine = true
+input.Text = ""
+input.TextColor3 = Color3.fromRGB(0, 0, 0)
+input.TextSize = 14.000
+input.TextWrapped = true
+input.TextXAlignment = Enum.TextXAlignment.Left
+input.TextYAlignment = Enum.TextYAlignment.Top
 
-size.Name = "size"
-size.Parent = executor
-size.Active = true
-size.BackgroundColor3 = Color3.fromRGB(55, 55, 55)
-size.BorderSizePixel = 0
-size.Position = UDim2.new(0.00708738808, 0, 0.122131824, 0)
-size.Size = UDim2.new(0, 444, 0, 190)
-size.BottomImage = "rbxassetid://148970562"
-size.CanvasSize = UDim2.new(10, 0, 6, 0)
-size.MidImage = "rbxassetid://148970562"
-size.ScrollBarThickness = 3
-size.TopImage = "rbxassetid://148970562"
+execute.Name = "execute"
+execute.Parent = main
+execute.BackgroundColor3 = Color3.fromRGB(231, 231, 231)
+execute.BorderColor3 = Color3.fromRGB(152, 152, 152)
+execute.BorderSizePixel = 1
+execute.Position = UDim2.new(0.887050807, 0, 0.088888891, 0)
+execute.Size = UDim2.new(0, 36, 0, 126)
+execute.Font = Enum.Font.Arcade
+execute.Text = "EXE"
+execute.TextColor3 = Color3.fromRGB(0, 0, 0)
+execute.TextSize = 14.000
+execute.MouseButton1Click:Connect(function()
+	loadstring(input.Text)()
+end)
 
-UICorner.CornerRadius = UDim.new(0, 4)
-UICorner.Parent = size
+clear.Name = "clear"
+clear.Parent = main
+clear.BackgroundColor3 = Color3.fromRGB(231, 231, 231)
+clear.BorderColor3 = Color3.fromRGB(255, 0, 0)
+clear.BorderSizePixel = 1
+clear.Position = UDim2.new(0.887050807, 0, 0.648888886, 0)
+clear.Size = UDim2.new(0, 36, 0, 79)
+clear.Font = Enum.Font.Arcade
+clear.LineHeight = 0.000
+clear.Text = "CLEAR"
+clear.TextColor3 = Color3.fromRGB(0, 0, 0)
+clear.TextSize = 14.000
+clear.TextYAlignment = Enum.TextYAlignment.Top
+clear.MouseButton1Click:Connect(function()
+	input.Text = " "
+end)
 
-Lines.Name = "Lines"
-Lines.Parent = size
-Lines.BackgroundColor3 = Color3.fromRGB(1, 0, 0)
-Lines.BorderSizePixel = 0
-Lines.Size = UDim2.new(0, 24, 0, 1899)
-Lines.Font = Enum.Font.Code
-Lines.Text = "1"
-Lines.TextColor3 = Color3.fromRGB(1,0,0)
-Lines.TextSize = 14.000
-Lines.TextWrapped = true
-Lines.TextXAlignment = Enum.TextXAlignment.Right
-Lines.TextYAlignment = Enum.TextYAlignment.Top
+file.Name = "file"
+file.Parent = main
+file.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+file.BackgroundTransparency = 1.000
+file.BorderColor3 = Color3.fromRGB(255, 0, 0)
+file.BorderSizePixel = 1
+file.Size = UDim2.new(0, 36, 0, 20)
+file.Font = Enum.Font.SourceSans
+file.Text = "File"
+file.TextColor3 = Color3.fromRGB(0, 0, 0)
+file.TextSize = 14.000
+file.MouseButton1Click:Connect(function()
+	fileframe.Visible = true
+	helpframe.Visible = false
+	extraframe.Visible = false
+	luaframe.Visible = false
+end)
 
-CMDBox.Name = "CMDBox"
-CMDBox.Parent = size
-CMDBox.BackgroundColor3 = Color3.fromRGB(33, 33, 33)
-CMDBox.BackgroundTransparency = 1.000
-CMDBox.Position = UDim2.new(0.00885447953, -21, -7.4505806e-09, 0)
-CMDBox.Size = UDim2.new(0, 4760, 0, 1868)
-CMDBox.ClearTextOnFocus = false
-CMDBox.Font = Enum.Font.Code
-CMDBox.MultiLine = true
-CMDBox.PlaceholderColor3 = Color3.fromRGB(118, 118, 118)
-CMDBox.PlaceholderText = "-- best exploit better than Rc7 and Ro-Xploit 7.0"
-CMDBox.Text = ""
-CMDBox.TextColor3 = Color3.fromRGB(255, 255, 255)
-CMDBox.TextSize = 14.000
-CMDBox.TextWrapped = true
-CMDBox.TextXAlignment = Enum.TextXAlignment.Left
-CMDBox.TextYAlignment = Enum.TextYAlignment.Top
+extras.Name = "extras"
+extras.Parent = main
+extras.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+extras.BackgroundTransparency = 1.000
+extras.BorderColor3 = Color3.fromRGB(255, 0, 0)
+extras.BorderSizePixel = 1
+extras.Position = UDim2.new(0.110091746, 0, 0, 0)
+extras.Size = UDim2.new(0, 36, 0, 20)
+extras.Font = Enum.Font.SourceSans
+extras.Text = "Extras"
+extras.TextColor3 = Color3.fromRGB(0, 0, 0)
+extras.TextSize = 14.000
+extras.MouseButton1Down:connect(function()
+	extraframe.Visible = true
+	fileframe.Visible = false
+	helpframe.Visible = false
+	luaframe.Visible = false
+end)
 
-Tokens_.Name = "Tokens_"
-Tokens_.Parent = CMDBox
-Tokens_.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Tokens_.BackgroundTransparency = 1.000
-Tokens_.Size = UDim2.new(1, 0, 1, 0)
-Tokens_.ZIndex = 5
-Tokens_.Font = Enum.Font.Code
-Tokens_.Text = ""
-Tokens_.TextColor3 = Color3.fromRGB(165, 56, 255)
-Tokens_.TextSize = 14.000
-Tokens_.TextWrapped = true
-Tokens_.TextXAlignment = Enum.TextXAlignment.Left
-Tokens_.TextYAlignment = Enum.TextYAlignment.Top
 
-Strings_.Name = "Strings_"
-Strings_.Parent = CMDBox
-Strings_.BackgroundColor3 = Color3.fromRGB(1, 0, 0)
-Strings_.BackgroundTransparency = 1.000
-Strings_.Size = UDim2.new(1, 0, 1, 0)
-Strings_.ZIndex = 5
-Strings_.Font = Enum.Font.Code
-Strings_.Text = ""
-Strings_.TextColor3 = Color3.fromRGB(173, 241, 149)
-Strings_.TextSize = 14.000
-Strings_.TextWrapped = true
-Strings_.TextXAlignment = Enum.TextXAlignment.Left
-Strings_.TextYAlignment = Enum.TextYAlignment.Top
+lua.Name = "lua"
+lua.Parent = main
+lua.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+lua.BackgroundTransparency = 1.000
+lua.BorderColor3 = Color3.fromRGB(255, 0, 0)
+lua.BorderSizePixel = 1
+lua.Position = UDim2.new(0.220183492, 0, 0, 0)
+lua.Size = UDim2.new(0, 36, 0, 20)
+lua.Font = Enum.Font.SourceSans
+lua.Text = "Lua"
+lua.TextColor3 = Color3.fromRGB(0, 0, 0)
+lua.TextSize = 14.000
+lua.MouseButton1Down:connect(function()
+	luaframe.Visible = true
+	extraframe.Visible = false
+	fileframe.Visible = false
+	helpframe.Visible = false
+end)
 
-RemoteHighlight_.Name = "RemoteHighlight_"
-RemoteHighlight_.Parent = CMDBox
-RemoteHighlight_.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-RemoteHighlight_.BackgroundTransparency = 1.000
-RemoteHighlight_.Size = UDim2.new(1, 0, 1, 0)
-RemoteHighlight_.ZIndex = 5
-RemoteHighlight_.Font = Enum.Font.Code
-RemoteHighlight_.Text = ""
-RemoteHighlight_.TextColor3 = Color3.fromRGB(1, 0, 0)
-RemoteHighlight_.TextSize = 14.000
-RemoteHighlight_.TextWrapped = true
-RemoteHighlight_.TextXAlignment = Enum.TextXAlignment.Left
-RemoteHighlight_.TextYAlignment = Enum.TextYAlignment.Top
 
-Numbers_.Name = "Numbers_"
-Numbers_.Parent = CMDBox
-Numbers_.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Numbers_.BackgroundTransparency = 1.000
-Numbers_.Size = UDim2.new(1, 0, 1, 0)
-Numbers_.ZIndex = 4
-Numbers_.Font = Enum.Font.Code
-Numbers_.Text = ""
-Numbers_.TextColor3 = Color3.fromRGB(255, 198, 0)
-Numbers_.TextSize = 14.000
-Numbers_.TextWrapped = true
-Numbers_.TextXAlignment = Enum.TextXAlignment.Left
-Numbers_.TextYAlignment = Enum.TextYAlignment.Top
 
-Keywords_.Name = "Keywords_"
-Keywords_.Parent = CMDBox
-Keywords_.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Keywords_.BackgroundTransparency = 1.000
-Keywords_.Size = UDim2.new(1, 0, 1, 0)
-Keywords_.ZIndex = 5
-Keywords_.Font = Enum.Font.Code
-Keywords_.Text = ""
-Keywords_.TextColor3 = Color3.fromRGB(248, 0, 4)
-Keywords_.TextSize = 14.000
-Keywords_.TextWrapped = true
-Keywords_.TextXAlignment = Enum.TextXAlignment.Left
-Keywords_.TextYAlignment = Enum.TextYAlignment.Top
 
-Globals_.Name = "Globals_"
-Globals_.Parent = CMDBox
-Globals_.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Globals_.BackgroundTransparency = 1.000
-Globals_.Size = UDim2.new(1, 0, 1, 0)
-Globals_.ZIndex = 5
-Globals_.Font = Enum.Font.Code
-Globals_.Text = ""
-Globals_.TextColor3 = Color3.fromRGB(132, 214, 247)
-Globals_.TextSize = 14.000
-Globals_.TextWrapped = true
-Globals_.TextXAlignment = Enum.TextXAlignment.Left
-Globals_.TextYAlignment = Enum.TextYAlignment.Top
+help.Name = "help"
+help.Parent = main
+help.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+help.BackgroundTransparency = 1.000
+help.BorderColor3 = Color3.fromRGB(255, 0, 0)
+help.BorderSizePixel = 1
+help.Position = UDim2.new(0.330275238, 0, 0, 0)
+help.Size = UDim2.new(0, 36, 0, 20)
+help.Font = Enum.Font.SourceSans
+help.Text = "Help"
+help.TextColor3 = Color3.fromRGB(0, 0, 0)
+help.TextSize = 14.000
+help.MouseButton1Down:connect(function()
+	helpframe.Visible = true
+	fileframe.Visible = false
+	extraframe.Visible = false
+	luaframe.Visible = false
+end)
 
-Comments_.Name = "Comments_"
-Comments_.Parent = CMDBox
-Comments_.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Comments_.BackgroundTransparency = 1.000
-Comments_.Size = UDim2.new(1, 0, 1, 0)
-Comments_.ZIndex = 5
-Comments_.Font = Enum.Font.Code
-Comments_.Text = ""
-Comments_.TextColor3 = Color3.fromRGB(59, 200, 59)
-Comments_.TextSize = 14.000
-Comments_.TextWrapped = true
-Comments_.TextXAlignment = Enum.TextXAlignment.Left
-Comments_.TextYAlignment = Enum.TextYAlignment.Top
-
-Execute.Name = "Execute"
-Execute.Parent = executor
-Execute.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
-Execute.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Execute.BorderSizePixel = 0
-Execute.Position = UDim2.new(0.00570342224, 0, 0.875968993, 2)
-Execute.Size = UDim2.new(0, 142, 0, 26)
-Execute.Font = Enum.Font.SourceSans
-Execute.Text = "Execute"
-Execute.TextColor3 = Color3.fromRGB(255, 255, 255)
-Execute.TextScaled = true
-Execute.TextSize = 14.000
-Execute.TextWrapped = true
-
-Clear.Name = "Clear"
-Clear.Parent = executor
-Clear.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
-Clear.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Clear.BorderSizePixel = 0
-Clear.Position = UDim2.new(0.292775661, 0, 0.875968993, 2)
-Clear.Size = UDim2.new(0, 142, 0, 26)
-Clear.Font = Enum.Font.SourceSans
-Clear.Text = "Clear"
-Clear.TextColor3 = Color3.fromRGB(255, 255, 255)
-Clear.TextScaled = true
-Clear.TextSize = 14.000
-Clear.TextWrapped = true
-
-Respawn.Name = "Respawn"
-Respawn.Parent = executor
-Respawn.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
-Respawn.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Respawn.BorderSizePixel = 0
-Respawn.Position = UDim2.new(0.579847872, 0, 0.875968993, 2)
-Respawn.Size = UDim2.new(0, 142, 0, 26)
-Respawn.Font = Enum.Font.SourceSans
-Respawn.Text = "Respawn"
-Respawn.TextColor3 = Color3.fromRGB(255, 255, 255)
-Respawn.TextScaled = true
-Respawn.TextSize = 14.000
-Respawn.TextWrapped = true
-
-R6.Name = "R6"
-R6.Parent = executor
-R6.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
-R6.BorderColor3 = Color3.fromRGB(0, 0, 0)
-R6.BorderSizePixel = 0
-R6.Position = UDim2.new(0.865018964, 0, 0.875968993, 2)
-R6.Size = UDim2.new(0, 68, 0, 26)
-R6.Font = Enum.Font.SourceSans
-R6.Text = "R6"
-R6.TextColor3 = Color3.fromRGB(255, 255, 255)
-R6.TextScaled = true
-R6.TextSize = 14.000
-R6.TextWrapped = true
-
-sidebar.Name = "sidebar"
-sidebar.Parent = executor
-sidebar.Active = true
-sidebar.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
-sidebar.BorderColor3 = Color3.fromRGB(0, 0, 0)
-sidebar.BorderSizePixel = 0
-sidebar.Position = UDim2.new(0.865018964, 0, 0.120155036, 0)
-sidebar.Size = UDim2.new(0, 68, 0, 192)
-sidebar.BottomImage = "rbxassetid://148970562"
-sidebar.CanvasSize = UDim2.new(0, 0, 6, 0)
-sidebar.MidImage = "rbxassetid://148970562"
-sidebar.ScrollBarThickness = 3
-
-close.Name = "close"
-close.Parent = executor
-close.BackgroundColor3 = Color3.fromRGB(115, 115, 115)
-close.BorderColor3 = Color3.fromRGB(0, 0, 0)
-close.BorderSizePixel = 0
-close.Position = UDim2.new(0.961977184, 0, -0.00775193796, 2)
-close.Size = UDim2.new(0, 20, 0, 20)
-close.Font = Enum.Font.SourceSans
-close.Text = "X"
-close.TextColor3 = Color3.fromRGB(255, 255, 255)
-close.TextScaled = true
-close.TextSize = 14.000
-close.TextWrapped = true
+fileframe.Name = "fileframe"
+fileframe.Parent = main
+fileframe.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+fileframe.BorderColor3 = Color3.fromRGB(255, 0, 0)
+fileframe.Position = UDim2.new(0, 0, 0.0933333337, 0)
+fileframe.Size = UDim2.new(0, 132, 0, 37)
+fileframe.Visible = false
 
 minimize.Name = "minimize"
-minimize.Parent = executor
-minimize.BackgroundColor3 = Color3.fromRGB(115, 115, 115)
-minimize.BorderColor3 = Color3.fromRGB(0, 0, 0)
-minimize.BorderSizePixel = 0
-minimize.Position = UDim2.new(0.923954368, 0, -0.00775193796, 2)
-minimize.Size = UDim2.new(0, 20, 0, 20)
+minimize.Parent = fileframe
+minimize.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+minimize.BackgroundTransparency = 1.000
+minimize.BorderColor3 = Color3.fromRGB(255, 0, 0)
+minimize.BorderSizePixel = 1
+minimize.Position = UDim2.new(0.174242422, 0, 0, 0)
+minimize.Size = UDim2.new(0, 109, 0, 18)
 minimize.Font = Enum.Font.SourceSans
-minimize.Text = "-"
-minimize.TextColor3 = Color3.fromRGB(255, 255, 255)
-minimize.TextScaled = true
+minimize.Text = "Minimize"
+minimize.TextColor3 = Color3.fromRGB(0, 0, 0)
 minimize.TextSize = 14.000
-minimize.TextWrapped = true
+minimize.TextXAlignment = Enum.TextXAlignment.Left
+minimize.MouseButton1Click:Connect(function()
+	Frame.Visible = false
+	minimized.Visible = true
+end)
 
-oldexecutor.Name = "old executor"
-oldexecutor.Parent = febypass
-oldexecutor.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-oldexecutor.BorderColor3 = Color3.fromRGB(0, 0, 0)
-oldexecutor.BorderSizePixel = 0
-oldexecutor.Position = UDim2.new(0.625851631, 0, 0.316864103, 0)
-oldexecutor.Size = UDim2.new(0, 382, 0, 285)
-oldexecutor.Visible = false
+exit.Name = "exit"
+exit.Parent = fileframe
+exit.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+exit.BackgroundTransparency = 1.000
+exit.BorderColor3 = Color3.fromRGB(255, 0, 0)
+exit.BorderSizePixel = 1
+exit.Position = UDim2.new(0.174242422, 0, 0.486486495, 0)
+exit.Size = UDim2.new(0, 109, 0, 18)
+exit.Font = Enum.Font.SourceSans
+exit.Text = "Exit"
+exit.TextColor3 = Color3.fromRGB(0, 0, 0)
+exit.TextSize = 14.000
+exit.TextXAlignment = Enum.TextXAlignment.Left
+exit.MouseButton1Click:Connect(function()
+	Frame.Visible = false
+end)
 
-TextBox.Parent = oldexecutor
-TextBox.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-TextBox.BorderColor3 = Color3.fromRGB(0, 0, 0)
-TextBox.BorderSizePixel = 0
-TextBox.Position = UDim2.new(0.0235603694, 0, 0.0479001589, 0)
-TextBox.Size = UDim2.new(0, 363, 0, 217)
-TextBox.Font = Enum.Font.SourceSans
-TextBox.Text = ""
-TextBox.TextColor3 = Color3.fromRGB(0, 0, 0)
-TextBox.TextSize = 14.000
-TextBox.TextXAlignment = Enum.TextXAlignment.Left
-TextBox.TextYAlignment = Enum.TextYAlignment.Top
+TextLabel.Parent = Frame
+TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.BackgroundTransparency = 1.000
+TextLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+TextLabel.BorderSizePixel = 0
+TextLabel.Position = UDim2.new(0.0843373463, 0, 0, 0)
+TextLabel.Size = UDim2.new(0, 200, 0, 26)
+TextLabel.Font = Enum.Font.SourceSans
+TextLabel.Text = "c00lhackk 3x3x3x3"
+TextLabel.TextColor3 = Color3.fromRGB(74, 74, 74)
+TextLabel.TextSize = 16.000
+TextLabel.TextXAlignment = Enum.TextXAlignment.Left
 
-exe.Name = "exe"
-exe.Parent = oldexecutor
-exe.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-exe.BorderColor3 = Color3.fromRGB(0, 0, 0)
-exe.BorderSizePixel = 0
-exe.Position = UDim2.new(0, 0, 0.84984535, 0)
-exe.Size = UDim2.new(0, 183, 0, 46)
-exe.Font = Enum.Font.Gotham
-exe.Text = "execute"
-exe.TextColor3 = Color3.fromRGB(0, 0, 0)
-exe.TextSize = 40.000
+ImageLabel.Parent = Frame
+ImageLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ImageLabel.BackgroundTransparency = 1.000
+ImageLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+ImageLabel.BorderSizePixel = 0
+ImageLabel.Position = UDim2.new(0.00602409616, 0, 0.0119047621, 0)
+ImageLabel.Size = UDim2.new(0, 19, 0, 20)
+ImageLabel.Image = "http://www.roblox.com/asset/?id=95668700128315"
 
-clr.Name = "clr"
-clr.Parent = oldexecutor
-clr.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-clr.BorderColor3 = Color3.fromRGB(0, 0, 0)
-clr.BorderSizePixel = 0
-clr.Position = UDim2.new(0.520942569, 0, 0.84984535, 0)
-clr.Size = UDim2.new(0, 183, 0, 46)
-clr.Font = Enum.Font.Gotham
-clr.Text = "clear"
-clr.TextColor3 = Color3.fromRGB(0, 0, 0)
-clr.TextSize = 40.000
+minimized.Name = "minimized"
+minimized.Parent = STIGMA
+minimized.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+minimized.BorderColor3 = Color3.fromRGB(255 0, 0)
+minimized.BorderSizePixel = 1
+minimized.Position = UDim2.new(-0.000545215677, 0, 0.945157588, 0)
+minimized.Size = UDim2.new(0, 93, 0, 31)
+minimized.Visible = false
+minimized.Font = Enum.Font.SourceSans
+minimized.Text = "c00lhackk 3x3x3x3"
+minimized.TextColor3 = Color3.fromRGB(0, 0, 0)
+minimized.TextSize = 17.000
+minimized.MouseButton1Click:Connect(function()
+	Frame.Visible = true
+	fileframe.Visible = false
+	minimized.Visible = false
+end)
 
-exit_2.Name = "exit"
-exit_2.Parent = oldexecutor
-exit_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-exit_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
-exit_2.BorderSizePixel = 0
-exit_2.Position = UDim2.new(0.973822176, 0, -0.00278620142, 0)
-exit_2.Size = UDim2.new(0, 10, 0, 14)
-exit_2.Font = Enum.Font.Gotham
-exit_2.Text = "X"
-exit_2.TextColor3 = Color3.fromRGB(0, 0, 0)
-exit_2.TextSize = 10.000
+helpframe.Name = "helpframe"
+helpframe.Parent = main
+helpframe.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+helpframe.BorderColor3 = Color3.fromRGB(255, 0, 0)
+helpframe.Position = UDim2.new(0.330275238, 0, 0.088888891, 0)
+helpframe.Size = UDim2.new(0, 109, 0, 18)
+helpframe.Visible = false
+
+windowframe.Name = "windowframe"
+windowframe.Parent = STIGMA
+windowframe.Active = true
+windowframe.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+windowframe.BorderColor3 = Color3.fromRGB(255, 0, 0)
+windowframe.BorderSizePixel = 1
+windowframe.Position = UDim2.new(0.597292781, 0, 0.360560119, 0)
+windowframe.Size = UDim2.new(0, 168, 0, 143)
+windowframe.Visible = false
+
+windowmain.Name = "windowmain"
+windowmain.Parent = windowframe
+windowmain.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+windowmain.BorderColor3 = Color3.fromRGB(255, 0, 0)
+windowmain.Position = UDim2.new(0.0060828072, 0, 0.181817755, 0)
+windowmain.Size = UDim2.new(0, 165, 0, 115)
+
+createdby.Name = "createdby"
+createdby.Parent = windowmain
+createdby.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+createdby.BackgroundTransparency = 1.000
+createdby.BorderColor3 = Color3.fromRGB(255, 0, 0)
+createdby.BorderSizePixel = 1
+createdby.Position = UDim2.new(-0.212121218, 0, 0.0956521705, 0)
+createdby.Size = UDim2.new(0, 200, 0, 50)
+createdby.Font = Enum.Font.SourceSans
+createdby.Text = "Created by @Roblox_exploit-help"
+createdby.TextColor3 = Color3.fromRGB(0, 0, 0)
+createdby.TextSize = 14.000
+
+buttonframe.Name = "buttonframe"
+buttonframe.Parent = windowmain
+buttonframe.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+buttonframe.BorderColor3 = Color3.fromRGB(255, 0, 0)
+buttonframe.BorderSizePixel = 1
+buttonframe.Position = UDim2.new(0, 0, 0.530434787, 0)
+buttonframe.Size = UDim2.new(0, 165, 0, 54)
+
+TextButton.Parent = buttonframe
+TextButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.BorderColor3 = Color3.fromRGB(255, 0, 0)
+TextButton.Position = UDim2.new(0.393939406, 0, 0.240740746, 0)
+TextButton.Size = UDim2.new(0, 84, 0, 27)
+TextButton.Font = Enum.Font.SourceSans
+TextButton.Text = "OK"
+TextButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.TextSize = 14.000
+TextButton.MouseButton1Down:connect(function()
+	windowframe.Visible = false
+end)
+
+abouttext.Name = "abouttext"
+abouttext.Parent = windowframe
+abouttext.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+abouttext.BackgroundTransparency = 1.000
+abouttext.BorderColor3 = Color3.fromRGB(0, 0, 0)
+abouttext.BorderSizePixel = 0
+abouttext.Position = UDim2.new(0.0060828072, 0, 0, 0)
+abouttext.Size = UDim2.new(0, 84, 0, 26)
+abouttext.Font = Enum.Font.SourceSans
+abouttext.Text = "About"
+abouttext.TextColor3 = Color3.fromRGB(74, 74, 74)
+abouttext.TextSize = 16.000
+abouttext.TextXAlignment = Enum.TextXAlignment.Left
+
+about.Name = "about"
+about.Parent = helpframe
+about.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+about.BackgroundTransparency = 1.000
+about.BorderColor3 = Color3.fromRGB(255, 0, 0)
+about.BorderSizePixel = 0
+about.Position = UDim2.new(0.174242422, 0, 0, 0)
+about.Size = UDim2.new(0, 109, 0, 18)
+about.Font = Enum.Font.SourceSans
+about.Text = "About"
+about.TextColor3 = Color3.fromRGB(0, 0, 0)
+about.TextSize = 14.000
+about.TextXAlignment = Enum.TextXAlignment.Left
+about.MouseButton1Down:connect(function()
+	helpframe.Visible = false
+	windowframe.Visible = true
+end)
+
+
+extraframe.Name = "extraframe"
+extraframe.Parent = main
+extraframe.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+extraframe.BorderColor3 = Color3.fromRGB(255, 0, 0)
+extraframe.Position = UDim2.new(0.110091694, 0, 0.088888891, 0)
+extraframe.Size = UDim2.new(0, 189, 0, 96)
+extraframe.Visible = false
+
+_1.Name = "1"
+_1.Parent = extraframe
+_1.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+_1.BackgroundTransparency = 1.000
+_1.BorderColor3 = Color3.fromRGB(255, 0, 0)
+_1.BorderSizePixel = 1
+_1.Position = UDim2.new(0.174242452, 0, 0, 0)
+_1.Size = UDim2.new(0, 109, 0, 18)
+_1.Font = Enum.Font.SourceSans
+_1.Text = "Check RespectFilteringEnabled"
+_1.TextColor3 = Color3.fromRGB(0, 0, 0)
+_1.TextSize = 14.000
+_1.TextXAlignment = Enum.TextXAlignment.Left
+_1.MouseButton1Down:connect(function()
+	wait(0.5)
+	local setting = game:GetService("SoundService").RespectFilteringEnabled
+	if setting == true then
+		game:GetService("StarterGui"):SetCore("SendNotification", {
+			Title = "Stigma";
+			Text = "RespectFilteringEnabled is on.";
+			Icon = "http://www.roblox.com/asset/?id=8389041427";
+			Duration = 6; 
+			Button1 = "Ok";
+		})
+		
+		extraframe.Visible = false
+	elseif setting == false then
+		game:GetService("StarterGui"):SetCore("SendNotification", {
+			Title = "c00lhackk 3x3x3x3";
+			Text = "RespectFilteringEnabled is off.";
+			Icon = "http://www.roblox.com/asset/?id=7203914610";
+			Duration = 6; 
+			Button1 = "Ok";
+		})
+		
+		extraframe.Visible = false
+	end
+end)
+
+_2.Name = "2"
+_2.Parent = extraframe
+_2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+_2.BackgroundTransparency = 1.000
+_2.BorderColor3 = Color3.fromRGB(255, 0, 0)
+_2.BorderSizePixel = 1
+_2.Position = UDim2.new(0.174242496, 0, 0.1875, 0)
+_2.Size = UDim2.new(0, 109, 0, 18)
+_2.Font = Enum.Font.SourceSans
+_2.Text = "Open Console"
+_2.TextColor3 = Color3.fromRGB(0, 0, 0)
+_2.TextSize = 14.000
+_2.TextXAlignment = Enum.TextXAlignment.Left
+_2.MouseButton1Down:connect(function()
+	game.StarterGui:SetCore("DevConsoleVisible", true)
+extraframe.Visible = false
+end)
+
+_4.Name = "4"
+_4.Parent = extraframe
+_4.BackgroundColor3 = Color3.new(0, 0, 0)
+_4.BackgroundTransparency = 1.000
+_4.BorderColor3 = Color3.fromRGB(255, 0, 0)
+_4.BorderSizePixel = 1
+_4.Position = UDim2.new(0.174242496, 0, 0.5625, 0)
+_4.Size = UDim2.new(0, 109, 0, 18)
+_4.Font = Enum.Font.SourceSans
+_4.Text = "Change to Creator's ID"
+_4.TextColor3 = Color3.fromRGB(0, 0, 0)
+_4.TextSize = 14.000
+_4.TextXAlignment = Enum.TextXAlignment.Left
+_4.MouseButton1Down:connect(function()
+	if game.CreatorType == Enum.CreatorType.User then
+		game.Players.LocalPlayer.UserId = game.CreatorId
+	end
+	if game.CreatorType == Enum.CreatorType.Group then
+		game.Players.LocalPlayer.UserId = game:GetService("GroupService"):GetGroupInfoAsync(game.CreatorId).Owner.Id
+	end
+
+	game:GetService("StarterGui"):SetCore("SendNotification", {
+			Title = "c00lhackk 3x3x3x3";
+			Text = "You are now the creator of the game.";
+			Icon = "http://www.roblox.com/asset/?id=7203914610";
+			Duration = 6; 
+			Button1 = "Ok";
+		})
+
+	extraframe.Visible = false
+end)
+
+_3.Name = "3"
+_3.Parent = extraframe
+_3.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+_3.BackgroundTransparency = 1.000
+_3.BorderColor3 = Color3.fromRGB(255, 0, 0)
+_3.BorderSizePixel = 1
+_3.Position = UDim2.new(0.174242496, 0, 0.375, 0)
+_3.Size = UDim2.new(0, 109, 0, 18)
+_3.Font = Enum.Font.SourceSans
+_3.Text = "R15 -> R6"
+_3.TextColor3 = Color3.fromRGB(0, 0, 0)
+_3.TextSize = 14.000
+_3.TextXAlignment = Enum.TextXAlignment.Left
+_3.MouseButton1Down:connect(function()
+	local avs = game:GetService("AvatarEditorService")
+	avs:PromptSaveAvatar(game.Players.LocalPlayer.Character.Humanoid.HumanoidDescription,Enum.HumanoidRigType.R6)
+
+	local result = avs.PromptSaveAvatarCompleted:Wait()
+	if result == Enum.AvatarPromptResult.Success
+	then
+		game:GetService("StarterGui"):SetCore("SendNotification", {
+			Title = "c00lhackk 3x3x3x3";
+			Text = "You are now R6 + it is fe.";
+			Icon = "http://www.roblox.com/asset/?id=7203914610";
+			Duration = 6; 
+			Button1 = "Ok";
+		})
+extraframe.Visible = false
+		respawn()
+	else
+		game:GetService("StarterGui"):SetCore("SendNotification", {
+			Title = "c00lhackk 3x3x3x3";
+			Text = "An error has occured try again.";
+			Icon = "http://www.roblox.com/asset/?id=7203914610";
+			Duration = 6; 
+			Button1 = "Ok";
+		})
+extraframe.Visible = false
+	end
+	
+end)
+
+_5.Name = "5"
+_5.Parent = extraframe
+_5.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+_5.BackgroundTransparency = 1.000
+_5.BorderColor3 = Color3.fromRGB(255, 0, 0)
+_5.BorderSizePixel = 1
+_5.Position = UDim2.new(0.174242496, 0, 0.749999702, 0)
+_5.Size = UDim2.new(0, 109, 0, 18)
+_5.Font = Enum.Font.SourceSans
+_5.Text = "Fire All Remotes"
+_5.TextColor3 = Color3.fromRGB(0, 0, 0)
+_5.TextSize = 14.000
+_5.TextXAlignment = Enum.TextXAlignment.Left
+_5.MouseButton1Down:connect(function()
+
+game:GetService("StarterGui"):SetCore("SendNotification", {
+		Title = "c00lhackk 3x3x3x3";
+		Text = "All Server Remotes have been fired.";
+		Icon = "http://www.roblox.com/asset/?id=7203914610";
+		Duration = 6; 
+		Button1 = "Ok";
+	})
+	
+	extraframe.Visible = false
+
+	local remoteamount = 0
+
+	for i,v in pairs(game:GetDescendants()) do
+		if v:IsA("RemoteEvent") then
+			remoteamount = remoteamount + 1
+			v:FireServer()
+			if v:IsA("BindableEvent") then
+				remoteamount = remoteamount + 1
+				v:Fire()
+				if v:IsA("RemoteFunction") then
+					remoteamount = remoteamount + 1
+					v:InvokeServer()
+				end
+			end
+		end
+	end
+	wait();
+
+	
+end)
+
+luaframe.Name = "luaframe"
+luaframe.Parent = main
+luaframe.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+luaframe.BorderColor3 = Color3.fromRGB(255, 0, 0)
+luaframe.Position = UDim2.new(0.220183492, 0, 0.088888891, 0)
+luaframe.Size = UDim2.new(0, 109, 0, 18)
+luaframe.Visible = false
+
+refresh.Name = "refresh"
+refresh.Parent = luaframe
+refresh.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+refresh.BackgroundTransparency = 1.000
+refresh.BorderColor3 = Color3.fromRGB(255, 0, 0)
+refresh.BorderSizePixel = 1
+refresh.Position = UDim2.new(0.174242422, 0, 0, 0)
+refresh.Size = UDim2.new(0, 109, 0, 18)
+refresh.Font = Enum.Font.SourceSans
+refresh.Text = "Script Hub"
+refresh.TextColor3 = Color3.fromRGB(0, 0, 0)
+refresh.TextSize = 14.000
+refresh.TextXAlignment = Enum.TextXAlignment.Left
+refresh.MouseButton1Down:connect(function()
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/main/ScriptHub"))()
+	luaframe.Visible = false
+end)
+
+
+local xbox = Instance.new("Sound")
+xbox.Parent = game:GetService("SoundService")
+xbox.SoundId = "rbxassetid://3023237993"
+xbox.Volume = 5
+xbox.Name = "Sound"
+xbox:Play()
+
+game:GetService("StarterGui"):SetCore("SendNotification", {
+	Title = "c00lhackk 3x3x3x3";
+	Text = "c00lhackk 3x3x3x3 has been Injected.";
+	Icon = "http://www.roblox.com/asset/?id=7203914610";
+	Duration = 6; 
+	Button1 = "Ok";
+})
+
+
+local function XPCO_fake_script() -- Frame.Dragify 
+	local script = Instance.new('LocalScript', Frame)
+
+	local UserInputService = game:GetService("UserInputService")
+
+	local gui = script.Parent
+
+	local dragging
+	local dragInput
+	local dragStart
+	local startPos
+
+	local function update(input)
+		local delta = input.Position - dragStart
+		gui.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+	end
+
+	gui.InputBegan:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+			dragging = true
+			dragStart = input.Position
+			startPos = gui.Position
+
+			input.Changed:Connect(function()
+				if input.UserInputState == Enum.UserInputState.End then
+					dragging = false
+				end
+			end)
+		end
+	end)
+
+	gui.InputChanged:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+			dragInput = input
+		end
+	end)
+
+	UserInputService.InputChanged:Connect(function(input)
+		if input == dragInput and dragging then
+			update(input)
+		end
+	end)
+end
+coroutine.wrap(XPCO_fake_script)()
+
+local function LZVR_fake_script() -- windowframe.windowdrag 
+	local script = Instance.new('LocalScript', windowframe)
+
+	local UserInputService = game:GetService("UserInputService")
+
+	local gui = script.Parent
+
+	local dragging
+	local dragInput
+	local dragStart
+	local startPos
+
+	local function update(input)
+		local delta = input.Position - dragStart
+		gui.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+	end
+
+	gui.InputBegan:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+			dragging = true
+			dragStart = input.Position
+			startPos = gui.Position
+
+			input.Changed:Connect(function()
+				if input.UserInputState == Enum.UserInputState.End then
+					dragging = false
+				end
+			end)
+		end
+	end)
+
+	gui.InputChanged:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+			dragInput = input
+		end
+	end)
+
+	UserInputService.InputChanged:Connect(function(input)
+		if input == dragInput and dragging then
+			update(input)
+		end
+	end)
+end
+coroutine.wrap(LZVR_fake_script)()
+
 
