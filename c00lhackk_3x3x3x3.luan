@@ -3,10 +3,10 @@ wait(1)
 print("Found ROBLOX Process...")
 game.StarterGui:SetCore("DevConsoleVisible", true)
 wait(2)
-print("Injecting 'STIGMA' into CoreGui...")
+print("Injecting 'c00lhackk 3x3x3x3' into CoreGui...")
 game.StarterGui:SetCore("DevConsoleVisible", true)
 wait(4)
-print("StigmaUI Loaded.")
+print("c00lhackk 3x3x3x3 Loaded.")
 wait(0.1)
 game.StarterGui:SetCore("DevConsoleVisible", false)
 
@@ -46,7 +46,7 @@ local luaframe = Instance.new("Frame")
 local refresh = Instance.new("TextButton")
 
 
-STIGMA.Name = "c00lhackk 3x3x3x3"
+STIGMA.Name = "STIGMA"
 STIGMA.Parent = game.CoreGui
 STIGMA.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
