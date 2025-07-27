@@ -218,7 +218,7 @@ local Button = TabRandomscript:CreateButton({
 
 Name = "dandys's world script",
 
-Callback = function() loadstring(game:HttpGet("https://pastebin.com/raw/Y7uh3UZf"))();
+Callback = function() loadstring(game:HttpGet("https://pastebin.com/raw/Y7uh3Uf"))();Z
 
  end,
 
