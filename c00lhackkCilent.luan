@@ -95,3 +95,8 @@ Name = "Dual Rainbow swords (R6)",
 Callback = function() loadstring(game:HttpGet("https://pastefy.app/WRXLBc7k/raw"))()
    end
 }) 
+local Button = Tab1:CreateButton({
+Name = "Lost hope Scythe (R6)",
+Callback = function() loadstring(game:HttpGet("https://pastefy.app/GdiDbbWt/raw"))()
+   end
+})
