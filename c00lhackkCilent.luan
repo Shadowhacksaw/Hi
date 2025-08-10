@@ -113,6 +113,14 @@ Name = "Server admin (R6)",
 Callback = function() loadstring(game:HttpGet("https://pastefy.app/Ce9GShlv/raw"))()
    end
 })
+local Section = Tab2:CreateSection("old c00lhackk hub aka the normal hub")
+local Button = Tab2:CreateButton({
+Name = "old c00lhackk hub",
+Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/Shadowhacksaw/Hi/refs/heads/main/test.loader"))()
+   end
+})
+
+
 local Section = Tab6:CreateSection("The ultimate studi hub the most chill hub ever")
 local Button = Tab6:CreateButton({
 Name = "studi hub (try it now or else)",
