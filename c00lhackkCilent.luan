@@ -61,7 +61,7 @@ local Window = Rayfield:CreateWindow({
 local Tab1 = Window:CreateTab("The Script Collections:)", 4483362458) -- Title, Image
 local Tab2 = Window:CreateTab("old c00lhackk hub", 4483362458) -- Title, Image
 local Tab3 = Window:CreateTab("Normal scripts:)", 4483362458) -- Title, Image
-local Tab4 = Window:CreateTab("Server", 4483362458) -- Title, Image
+local Tab4 = Window:CreateTab("Server info", 4483362458) -- Title, Image
 local Tab5 = Window:CreateTab("Client Settings", 4483362458) -- Title, Image
 local Tab6 = Window:CreateTab("The Sigma studi hub try now", 4483362458) -- Title, Image
 
@@ -109,6 +109,33 @@ local Button = Tab1:CreateButton({
 Name = "Server admin (R6)",
 Callback = function() loadstring(game:HttpGet("https://pastefy.app/Ce9GShlv/raw"))()
    end
+})
+
+local stats = game:GetService("Stats")
+local network = stats:FindFirstChild("Network")
+local ping = network and network:FindFirstChild("Ping") and math.floor(network.Ping:GetValue()) or "Unavailable"
+
+local pingText = "Your current ping: " .. tostring(ping) .. " ms"
+
+local playerCount = #game.Players:GetPlayers()
+local fps = math.floor(1 / (now - last))
+    last = now
+end)
+
+local fpsText = "Your current FPS: " .. fps
+
+
+local Paragraph = Tab4:CreateParagraph({
+    Title = "Player Ping",
+    Content = pingText
+})
+local Paragraph = Tab4:CreateParagraph({
+    Title = "Player Fps",
+    Content = fpsText
+})
+local Paragraph = Tab4:CreateParagraph({
+    Title = "Server Region",
+    Content = 
 })
 
 
