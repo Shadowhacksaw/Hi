@@ -77,6 +77,16 @@ Callback = function() loadstring(game:HttpGet("https://pastefy.app/eC1eFqfv/raw"
 )}
 local Button = Tab1:CreateButton({
 Name = "Caducus (Might not work)",
-Callback = function()
+Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/IlikeyocutgHAH12/GEGEGG/main/FE_caducus_or_somen%5B1%5D.txt"))()
+   end
+)}
+local Button = Tab1:CreateButton({
+Name = "Xester",
+Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/IlikeyocutgHAH12/GEGEGG/main/FE_xester%5B1%5D.txt"))()
+   end
+)}
+local Button = Tab1:CreateButton({
+Name = "Sonic",
+Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/IlikeyocutgHAH12/GEGEGG/main/FE_sonic%5B1%5D.txt"))()
    end
 )}
