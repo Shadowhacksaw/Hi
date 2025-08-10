@@ -65,6 +65,9 @@ local Tab4 = Window:CreateTab("Server info", 4483362458) -- Title, Image
 local Tab5 = Window:CreateTab("Client Settings", 4483362458) -- Title, Image
 local Tab6 = Window:CreateTab("The Sigma studi hub try now", 4483362458) -- Title, Image
 
+local Section = Tab1:CreateSection("Script 
+Collection:)")
+
 local Button = Tab1:CreateButton({
 Name = "Star Glitcher (R6)",
 Callback = function() loadstring(game:HttpGet("https://pastefy.app/QXyngZEA/raw"))()
@@ -110,5 +113,13 @@ Name = "Server admin (R6)",
 Callback = function() loadstring(game:HttpGet("https://pastefy.app/Ce9GShlv/raw"))()
    end
 })
+local Section = Tab:CreateSection("The ultimate studi hub the most chill hub ever")
+local Button = Tab6:CreateButton({
+Name = "studi hub (try it now or else)",
+Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/studihawktuah/sigma-hubslay/refs/heads/main/studibudi.lua"))()
+   end
+})
+
+
 
 
