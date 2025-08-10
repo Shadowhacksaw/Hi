@@ -100,3 +100,9 @@ Name = "Lost hope Scythe (R6)",
 Callback = function() loadstring(game:HttpGet("https://pastefy.app/GdiDbbWt/raw"))()
    end
 })
+local Button = Tab1:CreateButton({
+Name = "killbot v2 (R6)",
+Callback = function() loadstring(game:HttpGet("https://pastefy.app/QKRBDIKO/raw"))() 
+   end
+})
+
