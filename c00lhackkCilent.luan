@@ -69,29 +69,29 @@ local Button = Tab1:CreateButton({
 Name = "Star Glitcher (R6)",
 Callback = function() loadstring(game:HttpGet("https://pastefy.app/QXyngZEA/raw"))()
    end
-)}
+})
 local Button = Tab1:CreateButton({
 Name = "Searing Emperor (R6)",
 Callback = function() loadstring(game:HttpGet("https://pastefy.app/eC1eFqfv/raw"))()
    end
-)}
+})
 local Button = Tab1:CreateButton({
 Name = "Caducus (Might not work R6)",
 Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/IlikeyocutgHAH12/GEGEGG/main/FE_caducus_or_somen%5B1%5D.txt"))()
    end
-)}
+})
 local Button = Tab1:CreateButton({
 Name = "Xester (R6)",
 Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/IlikeyocutgHAH12/GEGEGG/main/FE_xester%5B1%5D.txt"))()
    end
-)}
+})
 local Button = Tab1:CreateButton({
 Name = "Sonic (R6)",
 Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/IlikeyocutgHAH12/GEGEGG/main/FE_sonic%5B1%5D.txt"))()
    end
-)}
+})
 local Button = Tab1:CreateButton({
 Name = "Dual Rainbow swords (R6)",
 Callback = function() loadstring(game:HttpGet("https://pastefy.app/WRXLBc7k/raw"))()
    end
-)}
+}) 
