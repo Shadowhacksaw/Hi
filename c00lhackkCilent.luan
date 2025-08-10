@@ -70,3 +70,13 @@ Name = "Star Glitcher",
 Callback = function() loadstring(game:HttpGet("https://pastefy.app/QXyngZEA/raw"))()
    end
 )}
+local Button = Tab1:CreateButton({
+Name = "Searing Emperor",
+Callback = function() loadstring(game:HttpGet("https://pastefy.app/eC1eFqfv/raw"))()
+   end
+)}
+local Button = Tab1:CreateButton({
+Name = "Caducus (Might not work)",
+Callback = function()
+   end
+)}
