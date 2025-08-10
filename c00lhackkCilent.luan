@@ -124,6 +124,19 @@ end)
 
 local fpsText = "Your current FPS: " .. fps
 
+local playerCount = #game.Players:GetPlayers()
+local playerCountText = "There are currently " .. playerCount .. " players in this server."
+
+local Paragraph = Tab4:CreateParagraph({
+    Title = "Server Region",
+    Content = Region: Roblox does not provide direct server region information, but servers are typically hosted closest to the majority of players for best connection.
+})
+
+local Paragraph = Tab4:CreateParagraph({
+    Title = "Current Player Count",
+    Content = playerCountText
+})
+
 
 local Paragraph = Tab4:CreateParagraph({
     Title = "Player Ping",
@@ -133,9 +146,6 @@ local Paragraph = Tab4:CreateParagraph({
     Title = "Player Fps",
     Content = fpsText
 })
-local Paragraph = Tab4:CreateParagraph({
-    Title = "Server Region",
-    Content = 
-})
+
 
 
