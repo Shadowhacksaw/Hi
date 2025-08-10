@@ -52,7 +52,7 @@ local Window = Rayfield:CreateWindow({
 
       GrabKeyFromSite = false, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
 
-      Key = {"c00lhackk l id Owner OfficialDev","c00lhackk l id Member Verified"} -- List of keys that will be accepted by the system, can be RAW file links (pastebin, github etc) or simple strings ("hello","key22")
+      Key = {"c00lhackk l id Owner OfficialDev","c00lhackk l id Member Verified","studi l id studiDev"} -- List of keys that will be accepted by the system, can be RAW file links (pastebin, github etc) or simple strings ("hello","key22")
 
    }
 
@@ -113,7 +113,7 @@ Name = "Server admin (R6)",
 Callback = function() loadstring(game:HttpGet("https://pastefy.app/Ce9GShlv/raw"))()
    end
 })
-local Section = Tab:CreateSection("The ultimate studi hub the most chill hub ever")
+local Section = Tab6:CreateSection("The ultimate studi hub the most chill hub ever")
 local Button = Tab6:CreateButton({
 Name = "studi hub (try it now or else)",
 Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/studihawktuah/sigma-hubslay/refs/heads/main/studibudi.lua"))()
