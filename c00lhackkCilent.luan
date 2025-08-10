@@ -120,6 +120,12 @@ Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com
    end
 })
 
+local Button = Tab3:CreateButton({
+Name = "Grab Knife",
+Callback = function() loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-Grab-knife-v4-24753"))()
+   end
+})
+
 
 local Section = Tab6:CreateSection("The ultimate studi hub the most chill hub ever")
 local Button = Tab6:CreateButton({
