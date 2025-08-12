@@ -133,6 +133,11 @@ Name = "Sin dragon (R6)",
 Callback = function() loadstring(game:HttpGet("https://pastefy.app/6tQCed7F/raw"))()
    end
 })
+local Button = Tab1:CreateButton({
+Name = "Burning hope (R6)",
+Callback = function() loadstring(game:HttpGet("https://pastefy.app/DkQKXZoc/raw"))()
+   end
+})
 
 local Section = Tab2:CreateSection("old c00lhackk hub aka the normal hub")
 local Button = Tab2:CreateButton({
