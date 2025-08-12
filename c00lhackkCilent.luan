@@ -113,13 +113,22 @@ Name = "Server admin (R6)",
 Callback = function() loadstring(game:HttpGet("https://pastefy.app/Ce9GShlv/raw"))()
    end
 })
+local Button = Tab1:CreateButton({
+Name = "Lua hammer (R6)",
+Callback = function() loadstring(game:HttpGet("https://pastebin.com/raw/0xesVsVm"))()
+   end
+})
+local Button = Tab1:CreateButton({
+Name = "ban hammer (R6)",
+Callback = function() loadstring(game:HttpGet("https://pastefy.app/QKXdsssC/raw"))()
+   end
+})
 local Section = Tab2:CreateSection("old c00lhackk hub aka the normal hub")
 local Button = Tab2:CreateButton({
 Name = "old c00lhackk hub",
 Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/Shadowhacksaw/Hi/refs/heads/main/test.loader"))()
    end
 })
-
 local Button = Tab3:CreateButton({
 Name = "Grab Knife",
 Callback = function() loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-Grab-knife-v4-24753"))()
