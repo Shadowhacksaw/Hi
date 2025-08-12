@@ -123,6 +123,17 @@ Name = "ban hammer (R6)",
 Callback = function() loadstring(game:HttpGet("https://pastefy.app/QKXdsssC/raw"))()
    end
 })
+local Button = Tab1:CreateButton({
+Name = "Goner (R6)",
+Callback = function() loadstring(game:HttpGet("https://pastefy.app/LcR9kfwM/raw"))()
+   end
+})
+local Button = Tab1:CreateButton({
+Name = "Sin dragon (R6)",
+Callback = function() loadstring(game:HttpGet("https://pastefy.app/6tQCed7F/raw"))()
+   end
+})
+
 local Section = Tab2:CreateSection("old c00lhackk hub aka the normal hub")
 local Button = Tab2:CreateButton({
 Name = "old c00lhackk hub",
