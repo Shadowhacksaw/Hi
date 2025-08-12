@@ -49,7 +49,7 @@ local res, success = pcall(function()
 
 	network:RefreshReplicationSettings(true, authTicket, perdika) -- load new replication settings
 	local replicator = network:GetReplicator(authTicket) -- fetch client replicator instance
-	replicator:SetReplicationRule(  -- write new rule that allows client -> server replication
+	replicator:SetReplicationRule( game.workspace.FilteringEnabled = false
 		{
 			replicationFiltering = false,
 			firewallWhitelist = { plr },
