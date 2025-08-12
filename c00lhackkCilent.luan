@@ -65,8 +65,7 @@ local Tab4 = Window:CreateTab("Server info", 4483362458) -- Title, Image
 local Tab5 = Window:CreateTab("Client Settings", 4483362458) -- Title, Image
 local Tab6 = Window:CreateTab("The Sigma studi hub try now", 4483362458) -- Title, Image
 
-local Section = Tab1:CreateSection("Script 
-Collection:)")
+local Section = Tab1:CreateSection("Script Collections:)")
 
 local Button = Tab1:CreateButton({
 Name = "Star Glitcher (R6)",
