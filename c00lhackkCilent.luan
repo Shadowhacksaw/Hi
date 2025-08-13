@@ -154,51 +154,34 @@ Callback = function() loadstring(game:HttpGet("https://rawscripts.net/raw/Univer
    end
 })
 
-local device = "Unknown"
 
--- Roblox device detection
-if UserInputService then
-    if UserInputService.TouchEnabled and not UserInputService.KeyboardEnabled and not UserInputService.MouseEnabled then
-        if UserInputService.AccelerometerEnabled then
-            -- Likely a mobile device; check OS
-            if string.match(string.lower(identifyexecutor and identifyexecutor() or ""), "ios") then
-                device = "iOS"
-            else
-                device = "Android"
-            end
-        else
-            device = "Android"
+
+local RunService = game:GetService("RunService")
+local fps = 0
+
+
+spawn(function()
+    while true do
+        local last = tick()
+        local frames = 0
+        while tick() - last < 1 do
+            RunService.RenderStepped:Wait()
+            frames = frames + 1
         end
-    elseif UserInputService.KeyboardEnabled and UserInputService.MouseEnabled then
-        if UserInputService:IsMouseButtonPressed(Enum.UserInputType.MouseButton1) or UserInputService:IsKeyDown(Enum.KeyCode.LeftControl) then
-            -- Extra check for Mac (optional, since Roblox doesn't directly provide OS info)
-            if string.match(string.lower(os.getenv("HOME") or ""), "/users/") then
-                device = "Mac"
-            else
-                device = "PC"
-            end
-        else
-            device = "PC"
-        end
+        fps = frames
     end
-end
-
-local fpsValue = 0
-local last = tick()
-local Paragraph = Tab4:CreateParagraph({
-    Title = "FPS",
-    Content = "Calculating..."
-})
-game:GetService("RunService").RenderStepped:Connect(function()
-    local now = tick()
-    fpsValue = math.floor(1 / (now - last))
-    last = now
-    Paragraph:Set({Content = "Your current FPS: " .. fpsValue})
 end)
+
+
+spawn(function()
+    while true do
 local Paragraph = Tab4:CreateParagraph({
-    Title = "Device",
-    Content = "You are playing on: " .. device
-})
+            Title = "FPS",
+            Content = "FPS: " .. tostring(fps)
+        })
+        wait(1)
+    end
+end)
 
 local executor = "Unknown"
 pcall(function()
