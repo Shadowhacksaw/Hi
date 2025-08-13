@@ -154,7 +154,118 @@ Callback = function() loadstring(game:HttpGet("https://rawscripts.net/raw/Univer
    end
 })
 
+local device = "Unknown"
 
+-- Roblox device detection
+if UserInputService then
+    if UserInputService.TouchEnabled and not UserInputService.KeyboardEnabled and not UserInputService.MouseEnabled then
+        if UserInputService.AccelerometerEnabled then
+            -- Likely a mobile device; check OS
+            if string.match(string.lower(identifyexecutor and identifyexecutor() or ""), "ios") then
+                device = "iOS"
+            else
+                device = "Android"
+            end
+        else
+            device = "Android"
+        end
+    elseif UserInputService.KeyboardEnabled and UserInputService.MouseEnabled then
+        if UserInputService:IsMouseButtonPressed(Enum.UserInputType.MouseButton1) or UserInputService:IsKeyDown(Enum.KeyCode.LeftControl) then
+            -- Extra check for Mac (optional, since Roblox doesn't directly provide OS info)
+            if string.match(string.lower(os.getenv("HOME") or ""), "/users/") then
+                device = "Mac"
+            else
+                device = "PC"
+            end
+        else
+            device = "PC"
+        end
+    end
+end
+
+local fpsValue = 0
+local last = tick()
+local Paragraph = Tab4:CreateParagraph({
+    Title = "FPS",
+    Content = "Calculating..."
+})
+game:GetService("RunService").RenderStepped:Connect(function()
+    local now = tick()
+    fpsValue = math.floor(1 / (now - last))
+    last = now
+    Paragraph:Set({Content = "Your current FPS: " .. fpsValue})
+end)
+local Paragraph = Tab4:CreateParagraph({
+    Title = "Device",
+    Content = "You are playing on: " .. device
+})
+
+local executor = "Unknown"
+pcall(function()
+    -- PC Executors
+    if identifyexecutor then
+        executor = identifyexecutor() .. " (PC)"
+    elseif syn then
+        executor = "Synapse X (PC)"
+    elseif KRNL_LOADED then
+        executor = "KRNL (PC)"
+    elseif is_sirhurt_closure then
+        executor = "SirHurt (PC)"
+    elseif secure_load then
+        executor = "Sentinel (PC)"
+    elseif pebc_execute then
+        executor = "ProtoSmasher (PC)"
+    elseif getexecutorname then
+        executor = getexecutorname() .. ""
+    elseif Evon then
+        executor = "Evon (PC)"
+    elseif DeltaPC then
+        executor = "Delta (PC)"
+    elseif TrigonEvoPC then
+        executor = "TrigonEvo (PC)"
+    elseif Solara or SolaraPC then
+        executor = "Solara (PC)"
+    elseif JJSploit then
+        executor = "JJSploit (PC)"
+    elseif RonixPC then
+        executor = "Ronix (PC)"
+    -- iPhone/iOS Executors
+    elseif KRNLIPhone then
+        executor = "KRNL iPhone (iPhone)"
+    elseif RonixiOS then
+        executor = "Ronix (iOS)"
+    elseif DeltaiOS then
+        executor = "Delta (iOS)"
+    -- Mobile Executors
+    elseif isexecutorclosure then
+        executor = "Arceus X (Mobile)"
+    elseif fluxus then
+        executor = "Fluxus (Mobile)"
+    elseif shadow then
+        executor = "Shadow (Mobile)"
+    elseif Frostware or is_frostware_closure then
+        executor = "Frostware (Mobile)"
+    elseif EvonMobile then
+        executor = "Evon (Mobile)"
+    elseif Codex then
+        executor = "Codex (Mobile)"
+    elseif Delta then
+        executor = "Delta (Mobile)"
+    elseif Ronix then
+        executor = "Ronix (Mobile)"
+    elseif Nebula or isnebula_closure then
+        executor = "Nebula (Mobile)"
+    elseif KRNL_MOBILE or KRNLMobile then
+        executor = "KRNL (Mobile)"
+    elseif TrigonEvo or TrigonEvoMobile then
+        executor = "TrigonEvo (Mobile)"
+    end
+end)
+
+local Paragraph = Tab4:CreateParagraph({
+    Title = "Executor",
+    Content = "Executor detected: " .. executor
+})
 local Section = Tab6:CreateSection("The ultimate studi hub the most chill hub ever")
 local Button = Tab6:CreateButton({
 Name = "studi hub (try it now or else)",
