@@ -154,7 +154,34 @@ Callback = function() loadstring(game:HttpGet("https://rawscripts.net/raw/Univer
    end
 })
 
+local UserInputService = game:GetService("UserInputService")
+local device = "Unknown"
 
+if UserInputService.TouchEnabled and not UserInputService.KeyboardEnabled and not UserInputService.MouseEnabled then
+    -- Likely Mobile
+    if UserInputService.AccelerometerEnabled then
+        -- iOS/Android, but Roblox doesn't separate well.
+        if UserInputService.GyroscopeEnabled then
+            device = "iOS"
+        else
+            device = "Android"
+        end
+    else
+        device = "Mobile"
+    end
+elseif UserInputService.KeyboardEnabled and UserInputService.MouseEnabled then
+    -- Likely PC or Mac
+    if string.find(string.lower(game:GetService("Players").LocalPlayer.OsPlatform or ""), "mac") then
+        device = "Mac"
+    else
+        device = "PC"
+    end
+end
+
+local Paragraph = Tab4:CreateParagraph({
+    Title = "Device",
+    Content = "You are playing on: " .. device
+})
 
 local RunService = game:GetService("RunService")
 local fps = 0
