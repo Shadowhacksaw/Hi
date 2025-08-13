@@ -184,8 +184,9 @@ local Paragraph = Tab4:CreateParagraph({
 })
 
 local RunService = game:GetService("RunService")
-local fps = 0
 
+local fps = 0
+local fpsParagraph
 
 spawn(function()
     while true do
@@ -199,13 +200,21 @@ spawn(function()
     end
 end)
 
-
 spawn(function()
     while true do
+        if fpsParagraph then
+            pcall(function()
+                fpsParagraph:Destroy()
+            end)
+        end
+
+        
+        fpsParagraph = 
 local Paragraph = Tab4:CreateParagraph({
             Title = "FPS",
             Content = "FPS: " .. tostring(fps)
         })
+
         wait(1)
     end
 end)
