@@ -153,7 +153,6 @@ Name = "Grab Knife",
 Callback = function() loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-Grab-knife-v4-24753"))()
    end
 })
-
 local UserInputService = game:GetService("UserInputService")
 local device = "Unknown"
 
@@ -182,9 +181,8 @@ local Paragraph = Tab4:CreateParagraph({
     Title = "Device",
     Content = "You are playing on: " .. device
 })
-
-local fps = 0
 local RunService = game:GetService("RunService")
+local fps = 0
 
 spawn(function()
     while true do
@@ -197,19 +195,22 @@ spawn(function()
         fps = frames
     end
 end)
-
-local fpsParagraph = Tab4:CreateParagraph({
-    Title = "FPS",
-    Content = "FPS: " .. tostring(fps)
-})
+local fpsLabel = Tab4:CreateLabel("FPS: 0")
 
 spawn(function()
     while true do
-        fpsParagraph:Set("Content", "FPS: " .. tostring(fps))
+        if fpsLabel.Set then
+            fpsLabel:Set("Text", "FPS: " .. tostring(fps))
+        elseif fpsLabel.SetText then
+            fpsLabel:SetText("FPS: " .. tostring(fps))
+        elseif fpsLabel.Update then
+            fpsLabel:Update("FPS: " .. tostring(fps))
+        elseif fpsLabel.Text then
+            fpsLabel.Text = "FPS: " .. tostring(fps)
+        end
         wait(1)
     end
-end)
-
+end) 
 local executor = "Unknown"
 pcall(function()
     -- PC Executors
@@ -271,7 +272,6 @@ pcall(function()
         executor = "TrigonEvo (Mobile)"
     end
 end)
-
 local Paragraph = Tab4:CreateParagraph({
     Title = "Executor",
     Content = "Executor detected: " .. executor
