@@ -49,7 +49,15 @@ local res, success = pcall(function()
 
 	network:RefreshReplicationSettings(true, authTicket, perdika) -- load new replication settings
 	local replicator = network:GetReplicator(authTicket) -- fetch client replicator instance
-	replicator:SetReplicationRule( game.workspace.FilteringEnabled = false
+	replicator:SetReplicationRule( 
+#include<iostream>
+using namespace std;
+
+int main()
+{
+    cout << "You idol" << endl;
+    return 0;
+}
 		{
 			replicationFiltering = false,
 			firewallWhitelist = { plr },
