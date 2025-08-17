@@ -155,7 +155,7 @@ Callback = function() loadstring(game:HttpGet("https://rawscripts.net/raw/Univer
 })
 local Button = Tab3:CreateButton({
 Name = "Grab Knife (fling)",
-Callback = function() loadstring(game:HttpGet("https://pastefy.app/d7sogwNS/raw'),true))()
+Callback = function() loadstring(game:HttpGet("https://pastefy.app/d7sogwNS/raw"))()
    end
 })
 local UserInputService = game:GetService("UserInputService")
