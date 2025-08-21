@@ -134,7 +134,7 @@ Callback = function() loadstring(game:HttpGet("https://pastefy.app/6tQCed7F/raw"
 })
 local Button = Tab1:CreateButton({
 Name = "Burning hope (R6)",
-Callback = function() loadstring(game:HttpGet("https://pastefy.app/DkQKXZoc/raw"))()
+Callback = function() loadstring(game:HttpGet("https://pastefy.app/SHPMIAnt/raw"))()
    end
 })
 local Button = Tab1:CreateButton({
@@ -151,6 +151,11 @@ local Section = Tab2:CreateSection("old c00lhackk hub aka the normal hub")
 local Button = Tab2:CreateButton({
 Name = "old c00lhackk hub",
 Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/Shadowhacksaw/Hi/refs/heads/main/test.loader"))()
+   end
+})
+local Button = Tab2:CreateButton({
+Name = "Active Normal mode",
+Callback = function() print("Wip")
    end
 })
 local Button = Tab3:CreateButton({
