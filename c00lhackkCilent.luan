@@ -2,7 +2,7 @@ local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
 local Window = Rayfield:CreateWindow({
 
-   Name = "c00lhackk Reworked l SS.Client",
+   Name = "c00lhackk Reborned l SS.Client W.I.P",
 
    Icon = 0, -- Icon in Topbar. Can use Lucide Icons (string) or Roblox Image (number). 0 to use no icon (default).
 
@@ -44,7 +44,7 @@ local Window = Rayfield:CreateWindow({
 
       Subtitle = "",
 
-      Note = "Key is backstorysoon", -- Use this to tell the user how to get a key
+      Note = "The key is in the discord server l W.I.P", -- Use this to tell the user how to get a key
 
       FileName = "TrueC00lhub", -- It is recommended to use something unique as other scripts using Rayfield may overwrite your key file
 
