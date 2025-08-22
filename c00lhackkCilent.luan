@@ -147,6 +147,11 @@ Name = "Grab Knife (Prison life fe kill R6)",
 Callback = function() loadstring(game:HttpGet("https://pastefy.app/lMuG6YAm/raw"))()
    end
 })
+local Button = Tab1:CreateButton({
+Name = "Goku (R6)",
+Callback = function() loadstring(game:HttpGet("https://pastefy.app/NenQvRxH/raw"))()
+   end
+})
 local Section = Tab2:CreateSection("old c00lhackk hub aka the normal hub")
 local Button = Tab2:CreateButton({
 Name = "old c00lhackk hub",
