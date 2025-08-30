@@ -235,61 +235,61 @@ local executor = "Unknown"
 pcall(function()
     -- PC Executors
     if identifyexecutor then
-        executor = identifyexecutor() .. " (PC)"
+        executor = identifyexecutor() .. " "
     elseif syn then
-        executor = "Synapse X (PC)"
+        executor = "Synapse X"
     elseif KRNL_LOADED then
-        executor = "KRNL (PC)"
+        executor = "KRNL"
     elseif is_sirhurt_closure then
-        executor = "SirHurt (PC)"
+        executor = "SirHurt"
     elseif secure_load then
-        executor = "Sentinel (PC)"
+        executor = "Sentinel"
     elseif pebc_execute then
-        executor = "ProtoSmasher (PC)"
+        executor = "ProtoSmasher"
     elseif getexecutorname then
         executor = getexecutorname() .. ""
     elseif Evon then
-        executor = "Evon (PC)"
+        executor = "Evon"
     elseif DeltaPC then
-        executor = "Delta (PC)"
+        executor = "Delta"
     elseif TrigonEvoPC then
-        executor = "TrigonEvo (PC)"
+        executor = "TrigonEvo"
     elseif Solara or SolaraPC then
-        executor = "Solara (PC)"
+        executor = "Solara"
     elseif JJSploit then
-        executor = "JJSploit (PC)"
+        executor = "JJSploit"
     elseif RonixPC then
-        executor = "Ronix (PC)"
+        executor = "Ronix"
     -- iPhone/iOS Executors
     elseif KRNLIPhone then
-        executor = "KRNL iPhone (iPhone)"
+        executor = "KRNL"
     elseif RonixiOS then
-        executor = "Ronix (iOS)"
+        executor = "Ronix"
     elseif DeltaiOS then
-        executor = "Delta (iOS)"
+        executor = "Delta"
     -- Mobile Executors
     elseif isexecutorclosure then
-        executor = "Arceus X (Mobile)"
+        executor = "Arceus X"
     elseif fluxus then
-        executor = "Fluxus (Mobile)"
+        executor = "Fluxus"
     elseif shadow then
-        executor = "Shadow (Mobile)"
+        executor = "Shadow"
     elseif Frostware or is_frostware_closure then
-        executor = "Frostware (Mobile)"
+        executor = "Frostware"
     elseif EvonMobile then
-        executor = "Evon (Mobile)"
+        executor = "Evon"
     elseif Codex then
-        executor = "Codex (Mobile)"
+        executor = "Codex"
     elseif Delta then
-        executor = "Delta (Mobile)"
+        executor = "Delta"
     elseif Ronix then
-        executor = "Ronix (Mobile)"
+        executor = "Ronix"
     elseif Nebula or isnebula_closure then
-        executor = "Nebula (Mobile)"
+        executor = "Nebula"
     elseif KRNL_MOBILE or KRNLMobile then
-        executor = "KRNL (Mobile)"
+        executor = "KRNL"
     elseif TrigonEvo or TrigonEvoMobile then
-        executor = "TrigonEvo (Mobile)"
+        executor = "TrigonEvo"
     end
 end)
 local Paragraph = Tab4:CreateParagraph({
