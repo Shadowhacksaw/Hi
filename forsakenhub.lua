@@ -76,7 +76,7 @@ local AnimationTrack = Humanoid.Animator:LoadAnimation(Animation)
 AnimationTrack:Play()
 
 local sound = Instance.new("Sound", head) 
-    sound.SoundId = rbxassetid://87166578676888
+    sound.SoundId = "rbxassetid://87166578676888" 
     sound.Volume = 2
     sound.Looped = false
     sound.RollOffMode = Enum.RollOffMode.Linear
