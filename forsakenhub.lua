@@ -2,13 +2,13 @@ local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
 local Window = Rayfield:CreateWindow({
 
-   Name = "c00lhackk script hub l thx for using",
+   Name = "Forsaken Emotes hub l best place for not being broke",
 
-   Icon = 100061568352084, -- Icon in Topbar. Can use Lucide Icons (string) or Roblox Image (number). 0 to use no icon (default).
+   Icon = 0, -- Icon in Topbar. Can use Lucide Icons (string) or Roblox Image (number). 0 to use no icon (default).
 
    LoadingTitle = "c00lhackk script hub I pls wait",
 
-   LoadingSubtitle = "by @Roblox_exploit-help",
+   LoadingSubtitle = "by Unknown dude",
 
    Theme = "DarkBlue", -- Check https://docs.sirius.menu/rayfield/configuration/themes
 
@@ -22,7 +22,7 @@ local Window = Rayfield:CreateWindow({
 
       FolderName = nil, -- Create a custom folder for your hub/game
 
-      FileName = "c00hackk Hub"
+      FileName = "Emotes"
 
    },
 
@@ -36,7 +36,7 @@ local Window = Rayfield:CreateWindow({
 
    },
 
-   KeySystem = true, -- Set this to true to use our key system
+   KeySystem = false, -- Set this to true to use our key system
 
    KeySettings = {
 
