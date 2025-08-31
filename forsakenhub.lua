@@ -58,7 +58,8 @@ local Window = Rayfield:CreateWindow({
 
 })
 
-local Tab1 = Window:CreateTab("Killer noil", 130695581754590) -- Title, Image
+local Tab1 = Window:CreateTab("Emotes", 130695581754590) -- Title, Image
+local Tab2 = Window:CreateTab("banned Emotes", 130695581754590) -- Title, Image 
 
 local Divider = Tab1:CreateDivider()
 
@@ -90,5 +91,42 @@ wait(13)
       sound.MaxDistance = 50
       sound.Parent = head
       sound:Play()
+   end,
+})
+
+local Button = Tab1:CreateButton({
+   Name = "shucks",
+   Callback = function()
+      local player = game.Players.LocalPlayer
+      local character = player.Character or player.CharacterAdded:Wait()
+      local humanoid = character:WaitForChild("Humanoid")
+
+      local animator = humanoid:FindFirstChildOfClass("Animator") or Instance.new("Animator", humanoid)
+
+      local Animation = Instance.new("Animation")
+      Animation.AnimationId = "rbxassetid://74238051754912"
+      local animationTrack = animator:LoadAnimation(Animation)
+      animationTrack:Play()
+
+      local head = character:WaitForChild("Head")
+      local sound = Instance.new("Sound")
+      sound.SoundId = "rbxassetid://123236721947419"
+      sound.Volume = 2
+      sound.Looped = false
+      sound.RollOffMode = Enum.RollOffMode.Linear
+      sound.MaxDistance = 50
+      sound.Parent = head
+      sound:Play()
+
+      -- Stop animation & sound after 13 seconds
+      task.delay(18, function()
+         if animationTrack.IsPlaying then
+            animationTrack:Stop()
+         end
+         if sound.IsPlaying then
+            sound:Stop()
+            sound:Destroy() -- optional cleanup
+         end
+      end)
    end,
 })
