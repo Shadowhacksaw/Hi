@@ -88,6 +88,7 @@ local function StopAllEmotes()
 
 animationTrack.Looped = false
 sound.Looped = false
+sound:Destroy()
 
 -- Stop sounds in head
    local head = character:FindFirstChild("Head")
