@@ -65,23 +65,30 @@ local Divider = Tab1:CreateDivider()
 local Section = Tab1:CreateSection("Emotes")
 
 local Button = Tab1:CreateButton({
-Name = "hakari dance",
-Callback = function() 
-local Animation = Instance.new("Animation")
+   Name = "hakari dance",
+   Callback = function()
+      local player = game.Players.LocalPlayer
+      local character = player.Character or player.CharacterAdded:Wait()
+      local humanoid = character:WaitForChild("Humanoid")
 
-Animation.AnimationId = "rbxassetid://138019937280193"
-local Humanoid = script.Parent.Humanoid
-local AnimationTrack = Humanoid.Animator:LoadAnimation(Animation)
+      local animator = humanoid:FindFirstChildOfClass("Animator") or Instance.new("Animator", humanoid)
 
-AnimationTrack:Play()
-
-local sound = Instance.new("Sound", head) 
-    sound.SoundId = "rbxassetid://87166578676888" 
-    sound.Volume = 2
-    sound.Looped = false
-    sound.RollOffMode = Enum.RollOffMode.Linear
-    sound.MaxDistance = 50
-
+      local Animation = Instance.new("Animation")
+      Animation.AnimationId = "rbxassetid://138019937280193"
+      local animationTrack = animator:LoadAnimation(Animation)
+      animationTrack:Play()
+wait(13)
+      animationTrack:Stop()
+      
+      
+      local head = character:WaitForChild("Head")
+      local sound = Instance.new("Sound")
+      sound.SoundId = "rbxassetid://87166578676888"
+      sound.Volume = 2
+      sound.Looped = false
+      sound.RollOffMode = Enum.RollOffMode.Linear
+      sound.MaxDistance = 50
+      sound.Parent = head
+      sound:Play()
    end,
-
 })
