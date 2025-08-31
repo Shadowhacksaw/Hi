@@ -130,3 +130,40 @@ local Button = Tab1:CreateButton({
       end)
    end,
 })
+
+local Button = Tab1:CreateButton({
+   Name = "miss the quiet",
+   Callback = function()
+      local player = game.Players.LocalPlayer
+      local character = player.Character or player.CharacterAdded:Wait()
+      local humanoid = character:WaitForChild("Humanoid")
+
+      local animator = humanoid:FindFirstChildOfClass("Animator") or Instance.new("Animator", humanoid)
+
+      local Animation = Instance.new("Animation")
+      Animation.AnimationId = "rbxassetid://100986631322204"
+      local animationTrack = animator:LoadAnimation(Animation)
+      animationTrack:Play()
+
+      local head = character:WaitForChild("Head")
+      local sound = Instance.new("Sound")
+      sound.SoundId = "rbxassetid://131936418953291"
+      sound.Volume = 2
+      sound.Looped = false
+      sound.RollOffMode = Enum.RollOffMode.Linear
+      sound.MaxDistance = 50
+      sound.Parent = head
+      sound:Play()
+
+      -- Stop animation & sound after 13 seconds
+      task.delay(13, function()
+         if animationTrack.IsPlaying then
+            animationTrack:Stop()
+         end
+         if sound.IsPlaying then
+            sound:Stop()
+            sound:Destroy() -- optional cleanup
+         end
+      end)
+   end,
+})
