@@ -62,21 +62,25 @@ local Tab1 = Window:CreateTab("Killer noil", 130695581754590) -- Title, Image
 
 local Divider = Tab1:CreateDivider()
 
-local Section = Tab1:CreateSection("Killer noil sounds")
+local Section = Tab1:CreateSection("Emotes")
 
 local Button = Tab1:CreateButton({
+Name = "hakari dance",
+Callback = function() 
+local Animation = Instance.new("Animation")
 
-   Name = "noil m1 sound",
+Animation.AnimationId = "rbxassetid://138019937280193"
+local Humanoid = script.Parent.Humanoid
+local AnimationTrack = Humanoid.Animator:LoadAnimation(Animation)
 
-   Callback = function() 
-local sound1 = Instance.new("Sound")
-sound1.SoundId = 
-sound1.Parent = workspace
-sound1.Looped = false
-sound1.Name = "DestroyOnUltOff"
-sound1.TimePosition = 2
-sound1.Volume = 1
-sound1:Play()
+AnimationTrack:Play()
+
+local sound = Instance.new("Sound", head) 
+    sound.SoundId = rbxassetid://87166578676888
+    sound.Volume = 2
+    sound.Looped = false
+    sound.RollOffMode = Enum.RollOffMode.Linear
+    sound.MaxDistance = 50
 
    end,
 
