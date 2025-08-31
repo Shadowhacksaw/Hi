@@ -57,7 +57,7 @@ local function PlayEmote(animId, soundId)
    local Animation = Instance.new("Animation")
    Animation.AnimationId = "rbxassetid://" .. animId
    local animationTrack = animator:LoadAnimation(Animation)
-   animationTrack.Looped = false
+   animationTrack.Looped = true
    animationTrack:Play()
 
    -- Sound
@@ -66,7 +66,7 @@ local function PlayEmote(animId, soundId)
       local sound = Instance.new("Sound")
       sound.SoundId = "rbxassetid://" .. soundId
       sound.Volume = 2
-      sound.Looped = false
+      sound.Looped = true
       sound.RollOffMode = Enum.RollOffMode.Linear
       sound.MaxDistance = 50
       sound.Parent = head
@@ -86,7 +86,10 @@ local function StopAllEmotes()
       track:Stop()
    end
 
-   -- Stop sounds in head
+animationTrack.Looped = false
+sound.Looped = false
+
+-- Stop sounds in head
    local head = character:FindFirstChild("Head")
    if head then
       for _, obj in pairs(head:GetChildren()) do
