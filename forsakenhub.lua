@@ -156,7 +156,7 @@ local Button = Tab1:CreateButton({
       sound:Play()
 
       -- Stop animation & sound after 13 seconds
-      task.delay(13, function()
+      task.delay(403, function()
          if animationTrack.IsPlaying then
             animationTrack:Stop()
          end
