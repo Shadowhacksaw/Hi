@@ -167,9 +167,9 @@ local Button = Tab1:CreateButton({
    end,
 })
 local Button = Tab1:CreateButton({
-   Name = "",
+   Name = "Static",
    Callback = function()
-       PlayEmote(0,0)
+       PlayEmote(94425494947119,107391158617439)
    end,
 })
 
