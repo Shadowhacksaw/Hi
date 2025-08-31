@@ -185,17 +185,17 @@ local Button = Tab1:CreateButton({
    end,
 })
 local Button = Tab1:CreateButton({
-   Name = "Schadenfreude (W.i.P)",
+   Name = "Schadenfreude",
    Callback = function()
-       PlayEmote(94051835643882,0)
-       PlayEmote(80405818789569,0)
-       PlayEmote(136908417273718,0)
-       PlayEmote(71098007263688,0) 
-       PlayEmote(110011903301021,0)
-       PlayEmote(108688398587848,0)
-       PlayEmote(117706986889252,0)
-       PlayEmote(75798689481181,0)
-       PlayEmote(102516749241112,0)
+       PlayEmote(94051835643882, 99907172493781)
+       PlayEmote(80405818789569,81881589472757)
+       PlayEmote(136908417273718,114584473003045)
+       PlayEmote(71098007263688,129252779856972) 
+       PlayEmote(110011903301021,112263797681728)
+       PlayEmote(108688398587848,132961737774004)
+       PlayEmote(117706986889252,84212549244283) 
+       PlayEmote(75798689481181,127466333676577)
+       PlayEmote(102516749241112,89571344981581)
    end,
 })
 
