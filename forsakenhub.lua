@@ -4,203 +4,138 @@ local Window = Rayfield:CreateWindow({
 
    Name = "Forsaken Emotes hub l best place for not being broke",
 
-   Icon = 0, -- Icon in Topbar. Can use Lucide Icons (string) or Roblox Image (number). 0 to use no icon (default).
+   Icon = 0,
 
    LoadingTitle = "No more buying",
-
    LoadingSubtitle = "by Unknown dude",
 
-   Theme = "DarkBlue", -- Check https://docs.sirius.menu/rayfield/configuration/themes
+   Theme = "DarkBlue",
 
    DisableRayfieldPrompts = false,
-
-   DisableBuildWarnings = false, -- Prevents Rayfield from warning when the script has a version mismatch with the interface
+   DisableBuildWarnings = false,
 
    ConfigurationSaving = {
-
       Enabled = true,
-
-      FolderName = nil, -- Create a custom folder for your hub/game
-
+      FolderName = nil,
       FileName = "Emotes"
-
    },
 
    Discord = {
-
-      Enabled = false, -- Prompt the user to join your Discord server if their executor supports it
-
-      Invite = "noinvitelink", -- The Discord invite code, do not include discord.gg/. E.g. discord.gg/ ABCD would be ABCD
-
-      RememberJoins = true -- Set this to false to make them join the discord every time they load it up
-
+      Enabled = false,
+      Invite = "noinvitelink",
+      RememberJoins = true
    },
 
-   KeySystem = false, -- Set this to true to use our key system
+   KeySystem = false,
 
    KeySettings = {
-
       Title = "c00hackk hub l key system",
-
       Subtitle = "key is backstorysoon",
-
-      Note = "Key is backstorysoon", -- Use this to tell the user how to get a key
-
-      FileName = "Key", -- It is recommended to use something unique as other scripts using Rayfield may overwrite your key file
-
-      SaveKey = true, -- The user's key will be saved, but if you change the key, they will be unable to use your script
-
-      GrabKeyFromSite = false, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
-
-      Key = {"backstorysoon"} -- List of keys that will be accepted by the system, can be RAW file links (pastebin, github etc) or simple strings ("hello","key22")
-
+      Note = "Key is backstorysoon",
+      FileName = "Key",
+      SaveKey = true,
+      GrabKeyFromSite = false,
+      Key = {"backstorysoon"}
    }
 
 })
 
-local Tab1 = Window:CreateTab("Emotes", 130695581754590) -- Title, Image
-local Tab2 = Window:CreateTab("banned Emotes", 130695581754590) -- Title, Image 
+local Tab1 = Window:CreateTab("Emotes", 130695581754590)
+local Tab2 = Window:CreateTab("banned Emotes", 130695581754590)
+local Tab3 = Window:CreateTab("Stop Emote", 130695581754590)
+
 
 local Divider = Tab1:CreateDivider()
-
 local Section = Tab1:CreateSection("Emotes")
+
+local function PlayEmote(animId, soundId)
+   local player = game.Players.LocalPlayer
+   local character = player.Character or player.CharacterAdded:Wait()
+   local humanoid = character:WaitForChild("Humanoid")
+   local animator = humanoid:FindFirstChildOfClass("Animator") or Instance.new("Animator", humanoid)
+
+   local Animation = Instance.new("Animation")
+   Animation.AnimationId = "rbxassetid://" .. animId
+   local animationTrack = animator:LoadAnimation(Animation)
+   animationTrack.Looped = false
+   animationTrack:Play()
+
+   -- Sound
+   if soundId then
+      local head = character:WaitForChild("Head")
+      local sound = Instance.new("Sound")
+      sound.SoundId = "rbxassetid://" .. soundId
+      sound.Volume = 2
+      sound.Looped = false
+      sound.RollOffMode = Enum.RollOffMode.Linear
+      sound.MaxDistance = 50
+      sound.Parent = head
+      sound:Play()
+   end
+end
+
+local function StopAllEmotes()
+   local player = game.Players.LocalPlayer
+   local character = player.Character
+   if not character then return end
+   local humanoid = character:FindFirstChild("Humanoid")
+   if not humanoid then return end
+
+   -- Stop animations
+   for _, track in pairs(humanoid:GetPlayingAnimationTracks()) do
+      track:Stop()
+   end
+
+   -- Stop sounds in head
+   local head = character:FindFirstChild("Head")
+   if head then
+      for _, obj in pairs(head:GetChildren()) do
+         if obj:IsA("Sound") and obj.IsPlaying then
+            obj:Stop()
+            obj:Destroy()
+         end
+      end
+   end
+end
+
 
 local Button = Tab1:CreateButton({
    Name = "hakari dance",
    Callback = function()
-      local player = game.Players.LocalPlayer
-      local character = player.Character or player.CharacterAdded:Wait()
-      local humanoid = character:WaitForChild("Humanoid")
-
-      local animator = humanoid:FindFirstChildOfClass("Animator") or Instance.new("Animator", humanoid)
-
-      local Animation = Instance.new("Animation")
-      Animation.AnimationId = "rbxassetid://138019937280193"
-      local animationTrack = animator:LoadAnimation(Animation)
-      animationTrack:Play()
-wait(13)
-      animationTrack:Stop()
-      
-      
-      local head = character:WaitForChild("Head")
-      local sound = Instance.new("Sound")
-      sound.SoundId = "rbxassetid://87166578676888"
-      sound.Volume = 2
-      sound.Looped = false
-      sound.RollOffMode = Enum.RollOffMode.Linear
-      sound.MaxDistance = 50
-      sound.Parent = head
-      sound:Play()
+      PlayEmote(138019937280193, 87166578676888)
    end,
 })
 
 local Button = Tab1:CreateButton({
+   Name = "Tv time",
+   Callback = function()
+      PlayEmote(139299160503081, 112013996314654)
+   end,
+})
+
+local Button = Tab2:CreateButton({
    Name = "shucks",
    Callback = function()
-      local player = game.Players.LocalPlayer
-      local character = player.Character or player.CharacterAdded:Wait()
-      local humanoid = character:WaitForChild("Humanoid")
-
-      local animator = humanoid:FindFirstChildOfClass("Animator") or Instance.new("Animator", humanoid)
-
-      local Animation = Instance.new("Animation")
-      Animation.AnimationId = "rbxassetid://74238051754912"
-      local animationTrack = animator:LoadAnimation(Animation)
-      animationTrack:Play()
-
-      local head = character:WaitForChild("Head")
-      local sound = Instance.new("Sound")
-      sound.SoundId = "rbxassetid://123236721947419"
-      sound.Volume = 2
-      sound.Looped = false
-      sound.RollOffMode = Enum.RollOffMode.Linear
-      sound.MaxDistance = 50
-      sound.Parent = head
-      sound:Play()
-
-      -- Stop animation & sound after 13 seconds
-      task.delay(18, function()
-         if animationTrack.IsPlaying then
-            animationTrack:Stop()
-         end
-         if sound.IsPlaying then
-            sound:Stop()
-            sound:Destroy() -- optional cleanup
-         end
-      end)
+      PlayEmote(74238051754912, 123236721947419)
    end,
 })
 
 local Button = Tab2:CreateButton({
    Name = "miss the quiet",
    Callback = function()
-      local player = game.Players.LocalPlayer
-      local character = player.Character or player.CharacterAdded:Wait()
-      local humanoid = character:WaitForChild("Humanoid")
-
-      local animator = humanoid:FindFirstChildOfClass("Animator") or Instance.new("Animator", humanoid)
-
-      local Animation = Instance.new("Animation")
-      Animation.AnimationId = "rbxassetid://100986631322204"
-      local animationTrack = animator:LoadAnimation(Animation)
-      animationTrack:Play()
-
-      local head = character:WaitForChild("Head")
-      local sound = Instance.new("Sound")
-      sound.SoundId = "rbxassetid://131936418953291"
-      sound.Volume = 2
-      sound.Looped = false
-      sound.RollOffMode = Enum.RollOffMode.Linear
-      sound.MaxDistance = 50
-      sound.Parent = head
-      sound:Play()
-
-      -- Stop animation & sound after 13 seconds
-      task.delay(403, function()
-         if animationTrack.IsPlaying then
-            animationTrack:Stop()
-         end
-         if sound.IsPlaying then
-            sound:Stop()
-            sound:Destroy() -- optional cleanup
-         end
-      end)
+      PlayEmote(100986631322204, 131936418953291)
    end,
 })
+
 local Button = Tab2:CreateButton({
    Name = "Subterfuge",
    Callback = function()
-      local player = game.Players.LocalPlayer
-      local character = player.Character or player.CharacterAdded:Wait()
-      local humanoid = character:WaitForChild("Humanoid")
-
-      local animator = humanoid:FindFirstChildOfClass("Animator") or Instance.new("Animator", humanoid)
-
-      local Animation = Instance.new("Animation")
-      Animation.AnimationId = "rbxassetid://87482480949358"
-      local animationTrack = animator:LoadAnimation(Animation)
-      animationTrack:Play()
-
-      local head = character:WaitForChild("Head")
-      local sound = Instance.new("Sound")
-      sound.SoundId = "rbxassetid://132297506693854"
-      sound.Volume = 2
-      sound.Looped = false
-      sound.RollOffMode = Enum.RollOffMode.Linear
-      sound.MaxDistance = 50
-      sound.Parent = head
-      sound:Play()
-
-      -- Stop animation & sound after 13 seconds
-      task.delay(126, function()
-         if animationTrack.IsPlaying then
-            animationTrack:Stop()
-         end
-         if sound.IsPlaying then
-            sound:Stop()
-            sound:Destroy() -- optional cleanup
-         end
-      end)
+      PlayEmote(87482480949358, 132297506693854)
    end,
 })
-
+local Button = Tab3:CreateButton({
+   Name = "Stop All Emotes",
+   Callback = function()
+      StopAllEmotes()
+   end,
+})
