@@ -430,6 +430,12 @@ local Button = Tab1:CreateButton({
        PlayEmote(110731222089592,127550001365624)
    end,
 })
+local Button = Tab1:CreateButton({
+   Name = "Best Survivor",
+   Callback = function()
+       PlayEmote(139133319221924,121216788631381)
+   end,
+})
 
 
 
