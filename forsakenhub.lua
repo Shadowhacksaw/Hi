@@ -578,7 +578,19 @@ local Button = Tab4:CreateButton({
    end,
 })
 local Button = Tab4:CreateButton({
-   Name = "",
+   Name = "Old MLG Chance (Equip Chance) ",
+   Callback = function() 
+
+   end,
+})
+local Button = Tab4:CreateButton({
+   Name = "Golden Shedletsky (Equip Shedletsky)",
+   Callback = function() 
+
+   end,
+})
+local Button = Tab4:CreateButton({
+   Name = "Milestone 4 Slaher (Equip Slaher)",
    Callback = function() 
 
    end,
