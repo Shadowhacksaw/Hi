@@ -43,6 +43,7 @@ local Window = Rayfield:CreateWindow({
 local Tab1 = Window:CreateTab("Emotes", 130695581754590)
 local Tab2 = Window:CreateTab("banned Emotes", 130695581754590)
 local Tab3 = Window:CreateTab("Stop Emote", 130695581754590)
+local Tab4 = Window:CreateTab("Skins", 130695581754590)
 
 
 local Divider = Tab1:CreateDivider()
