@@ -531,13 +531,13 @@ local Button = Tab3:CreateButton({
 })
 local Button = Tab4:CreateButton({
    Name = "Guest 666 (Use Slaher)",
-   Callback = function() 
+   Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/ElderRealNofake/Forsaken-Skin-Vroom/refs/heads/main/G666"))()
 
    end,
 })
 local Button = Tab4:CreateButton({
    Name = "Gabriel 1x1x1x1 (Equip 1x1x1x1)",
-   Callback = function() 
+   Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/ElderRealNofake/Forsaken-Skin-Vroom/refs/heads/main/Gabriel"))()
 
    end,
 })
@@ -595,7 +595,6 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/skibiditoiletfan2007/
 })
 local Button = Tab4:CreateButton({
    Name = "hairytwinkles (Equip Shedletsky)",
-   Callback = function() 
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Shadowhacksaw/Hi/hairytwinkles.lua"))()
+   Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/Shadowhacksaw/Hi/refs/heads/main/hairytwinkles.lua"))()
    end,
 })
