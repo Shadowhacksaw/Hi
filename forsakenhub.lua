@@ -398,6 +398,20 @@ local Button = Tab1:CreateButton({
        PlayEmote(98261071866527,0)
    end,
 })
+local Button = Tab1:CreateButton({
+   Name = "Lost In Paradise",
+   Callback = function()
+       PlayEmote(137980666622050,123165091822538)
+       PlayEmote(0,88817076561296)
+       PlayEmote(0,81085621689607) 
+   end,
+})
+local Button = Tab1:CreateButton({
+   Name = "",
+   Callback = function()
+       PlayEmote(0,0)
+   end,
+})
 
 
 
