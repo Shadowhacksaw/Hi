@@ -542,7 +542,7 @@ local Button = Tab4:CreateButton({
    end,
 })
 local Button = Tab4:CreateButton({
-   Name = "Sans (W.i.P)",
+   Name = "Sancho (Equip Slaher)",
    Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/ElderRealNofake/Forsaken-Skin-Vroom/refs/heads/main/San"))()
 
    end,
