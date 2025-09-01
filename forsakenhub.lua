@@ -496,6 +496,12 @@ local Button = Tab2:CreateButton({
       PlayEmote(74238051754912, 123236721947419)
    end,
 })
+local Button = Tab2:CreateButton({
+   Name = "Silybilly",
+   Callback = function()
+      PlayEmote(107464355830477,77601084987544)
+   end,
+})
 
 local Button = Tab2:CreateButton({
    Name = "miss the quiet",
