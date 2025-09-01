@@ -554,7 +554,7 @@ local Button = Tab4:CreateButton({
    end,
 })
 local Button = Tab4:CreateButton({
-   Name = "MafiosoRework (Equip c00lkidd and Use Mafioso skin",
+   Name = "MafiosoRework (Equip c00lkidd and Use Mafioso skin Run before game starts)",
    Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/ElderRealNofake/Forsaken-Skin-Vroom/refs/heads/main/mafioso"))()
 
    end,
@@ -596,5 +596,35 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/skibiditoiletfan2007/
 local Button = Tab4:CreateButton({
    Name = "hairytwinkles (Equip Shedletsky)",
    Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/Shadowhacksaw/Hi/refs/heads/main/hairytwinkles.lua"))()
+   end,
+})
+local Button = Tab4:CreateButton({
+   Name = "Baby (Equip Two times)",
+   Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/ElderRealNofake/Forsaken-Skin-Vroom/refs/heads/main/BTT"))()
+
+   end,
+})
+local Button = Tab4:CreateButton({
+   Name = "WildHunt Shedletsky (Equip 1x1x1x1 and Use Clasic1x1x Run before game starts)",
+   Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/ElderRealNofake/Forsaken-Skin-Vroom/refs/heads/main/WHShed"))()
+
+   end,
+})
+local Button = Tab4:CreateButton({
+   Name = "HeartBroken (Equip Shedletsky) ",
+   Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/ElderRealNofake/Forsaken-Skin-Vroom/refs/heads/main/HeartBroken%20Boohoo"))()
+
+   end,
+})
+local Button = Tab4:CreateButton({
+   Name = "Noli (Equip Slaher)",
+   Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/ElderRealNofake/Forsaken-Skin-Vroom/refs/heads/main/Noli"))()
+
+   end,
+})
+local Button = Tab4:CreateButton({
+   Name = "Mystic (Equip Slaher)",
+   Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/ElderRealNofake/Forsaken-Skin-Vroom/refs/heads/main/Myst"))()
+
    end,
 })
