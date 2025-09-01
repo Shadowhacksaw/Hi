@@ -567,31 +567,35 @@ local Button = Tab4:CreateButton({
 })
 local Button = Tab4:CreateButton({
    Name = "Noob 666",
-   Callback = function() 
-
-   end,
-})
-local Button = Tab4:CreateButton({
-   Name = "Noob 666",
-   Callback = function() 
+   Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/skibiditoiletfan2007/Mal-Ware/refs/heads/main/Sub%20Scripts/Noob%20666.lua"))()
 
    end,
 })
 local Button = Tab4:CreateButton({
    Name = "Old MLG Chance (Equip Chance) ",
-   Callback = function() 
+   Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/skibiditoiletfan2007/Mal-Ware/refs/heads/main/Sub%20Scripts/Old%20MLG%20Chance.lua"))()
 
    end,
 })
 local Button = Tab4:CreateButton({
    Name = "Golden Shedletsky (Equip Shedletsky)",
-   Callback = function() 
+   Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/skibiditoiletfan2007/Mal-Ware/refs/heads/main/Sub%20Scripts/Fake%20Golden%20Shedletsky.lua"))()
 
    end,
 })
 local Button = Tab4:CreateButton({
-   Name = "Milestone 4 Slaher (Equip Slaher)",
-   Callback = function() 
+   Name = "Old Milestone 4 Jason (Equip Slaher)",
+   Callback = function() getgenv().FM4Settings = {
+    CustomKillAnimation = true,
+}
 
+loadstring(game:HttpGet("https://raw.githubusercontent.com/skibiditoiletfan2007/Mal-Ware/refs/heads/main/Sub%20Scripts/Fake%20Milestone%204%20Jason.lua"))()
+
+   end,
+})
+local Button = Tab4:CreateButton({
+   Name = "hairytwinkles (Equip Shedletsky)",
+   Callback = function() 
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Shadowhacksaw/Hi/hairytwinkles.lua"))()
    end,
 })
