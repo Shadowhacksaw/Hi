@@ -228,6 +228,12 @@ local Button = Tab1:CreateButton({
        PlayEmote(128012749953319,85402005566016)
    end,
 })
+local Button = Tab1:CreateButton({
+   Name = "Pop Dance",
+   Callback = function()
+       PlayEmote(119907842673039,108553856293180)
+   end,
+})
 
 
 
