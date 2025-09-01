@@ -252,6 +252,19 @@ local Button = Tab1:CreateButton({
        PlayEmote(102332849201255,71934965392436)
    end,
 })
+local Button = Tab1:CreateButton({
+   Name = "Company Groove",
+   Callback = function()
+       PlayEmote(89926565466406,87037127480984)
+PlayEmote(0,75050781534618)  
+   end,
+})
+local Button = Tab1:CreateButton({
+   Name = "Konton",
+   Callback = function()
+       PlayEmote(104894697830131,101625034966758)
+   end,
+})
 
 
 
