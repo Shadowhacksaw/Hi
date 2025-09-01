@@ -50,7 +50,7 @@ local Tab4 = Window:CreateTab("Skins", 130695581754590)
 local Divider = Tab1:CreateDivider()
 local Section = Tab1:CreateSection("Emotes")
 
-local function PlayEmote(animId, soundId)
+local function PlayEmote(animId,soundId)
    local player = game.Players.LocalPlayer
    local character = player.Character or player.CharacterAdded:Wait()
    local humanoid = character:WaitForChild("Humanoid")
