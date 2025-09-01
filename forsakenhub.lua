@@ -466,29 +466,30 @@ local Button = Tab1:CreateButton({
        PlayEmote(117853129871362,133954185831066)
    end,
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+local Button = Tab1:CreateButton({
+   Name = "Cat Dance",
+   Callback = function()
+       PlayEmote(133145243088885,75850411329107)
+   end,
+})
+local Button = Tab1:CreateButton({
+   Name = "Aol Guy",
+   Callback = function()
+       PlayEmote(80918082366233,92483550196470)
+   end,
+})
+local Button = Tab1:CreateButton({
+   Name = "Ain't No Lovin My Man",
+   Callback = function()
+       PlayEmote(113329473982836,92797787946449)
+   end,
+})
+local Button = Tab1:CreateButton({
+   Name = "Ashley",
+   Callback = function()
+       PlayEmote(138857297031173,105173273800950)
+   end,
+})
 local Button = Tab2:CreateButton({
    Name = "shucks",
    Callback = function()
