@@ -407,6 +407,12 @@ local Button = Tab1:CreateButton({
    end,
 })
 local Button = Tab1:CreateButton({
+   Name = "Chronoshift",
+   Callback = function()
+       PlayEmote(95008278201478,137501116290172)
+   end,
+})
+local Button = Tab1:CreateButton({
    Name = "",
    Callback = function()
        PlayEmote(0,0)
