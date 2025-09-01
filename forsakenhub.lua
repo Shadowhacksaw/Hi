@@ -362,6 +362,24 @@ local Button = Tab1:CreateButton({
        PlayEmote(93910549909381,131274843582926)
    end,
 })
+local Button = Tab1:CreateButton({
+   Name = "Conga (Support)",
+   Callback = function()
+       PlayEmote(96841761360586,104396878120843)
+   end,
+})
+local Button = Tab1:CreateButton({
+   Name = "Conga (Sentinel)",
+   Callback = function()
+       PlayEmote(132532224026941,104396878120843)
+   end,
+})
+local Button = Tab1:CreateButton({
+   Name = "Conga (Survivalist)",
+   Callback = function()
+       PlayEmote(91143438316049,104396878120843)
+   end,
+})
 
 
 
