@@ -759,6 +759,105 @@ local function setupCharacter(character)
 		{1, 1, 1})
    end, 
 }) 
+local Button = Tab5:CreateButton({
+Name = "Remove Weakness effect"
+Callback = function() 
+local ohio = game:GetService("ReplicatedStorage"):WaitForChild("Modules"):WaitForChild("StatusEffects")
+local Weak = ohio:FindFirstChild("Weakness")
+if Weak then
+	Weak:Destroy()
+   end
+}) 
+local Button = Tab5:CreateButton({
+Name = "Remove Stuned"
+Callback = function() 
+local ohioo = game:GetService("ReplicatedStorage"):WaitForChild("Modules"):WaitForChild("StatusEffects")
+local S = ohio:FindFirstChild("Stunned")
+if S then
+	S:Destroy()
+   end
+}) 
+local Button = Tab5:CreateButton({
+Name = "Remove Slowness effect"
+Callback = function() 
+local popo = game:GetService("ReplicatedStorage"):WaitForChild("Modules"):WaitForChild("StatusEffects")
+local hi = ohio:FindFirstChild("Slowness")
+if hi then
+	hi:Destroy()
+   end
+}) 
+local Button = Tab5:CreateButton({
+Name = "Remove Nausea effect"
+Callback = function() 
+local hi = game:GetService("ReplicatedStorage"):WaitForChild("Modules"):WaitForChild("StatusEffects")
+local Weake = hi:FindFirstChild("Nausea")
+if Weake then
+	Weake:Destroy()
+   end
+}) 
+local Button = Tab5:CreateButton({
+Name = "Remove Poisoned effect"
+Callback = function() 
+local ohiooo = game:GetService("ReplicatedStorage"):WaitForChild("Modules"):WaitForChild("StatusEffects")
+local Weakr = ohiooo:FindFirstChild("Poisoned")
+if Weakr then
+	Weakr:Destroy()
+   end
+}) 
+local Button = Tab5:CreateButton({
+Name = "Remove Helpless effect"
+Callback = function() 
+local oh = game:GetService("ReplicatedStorage"):WaitForChild("Modules"):WaitForChild("StatusEffects")
+local Weakk = ohio:FindFirstChild("Helpless")
+if Weakk then
+	Weakk:Destroy()
+   end
+}) 
+local Button = Tab5:CreateButton({
+Name = "Remove Confusion effect"
+Callback = function() 
+local ohioooo = game:GetService("ReplicatedStorage"):WaitForChild("Modules"):WaitForChild("StatusEffects")
+local Weakm = ohio:FindFirstChild("Confusion")
+if Weakm then
+	Weakm:Destroy()
+   end
+}) 
+local Button = Tab5:CreateButton({
+Name = "Remove Burning effect"
+Callback = function() 
+local ohioooooo = game:GetService("ReplicatedStorage"):WaitForChild("Modules"):WaitForChild("StatusEffects")
+local Weaka = ohioooooo:FindFirstChild("Burning")
+if Weaka then
+	Weaka:Destroy()
+   end
+}) 
+local Button = Tab5:CreateButton({
+Name = "Remove Blindness effect"
+Callback = function() 
+local ohios = game:GetService("ReplicatedStorage"):WaitForChild("Modules"):WaitForChild("StatusEffects")
+local Weakd = ohios:FindFirstChild("Blindness")
+if Weakd then
+	Weakd:Destroy()
+   end
+})
+local Button = Tab5:CreateButton({
+Name = "Remove Weakness effect"
+Callback = function() 
+local ohioh = game:GetService("ReplicatedStorage"):WaitForChild("Modules"):WaitForChild("StatusEffects")
+local Weakj = ohioh:FindFirstChild("Bleeding")
+if Weakj then
+	Weakj:Destroy()
+   end
+}) 
+local Button = Tab5:CreateButton({
+Name = "Remove Subspaced effect"
+Callback = function() 
+local ohi = game:GetService("ReplicatedStorage"):WaitForChild("Modules"):WaitForChild("StatusEffects")
+local Weakg = ohi:FindFirstChild("Subspaced")
+if Weakg then
+	Weakg:Destroy()
+   end
+}) 
 local Button = Tab6:CreateButton({
 Name = "Noclip bypasser (Shedletsky)"
 Callback = function() 
