@@ -766,7 +766,7 @@ local ohio = game:GetService("ReplicatedStorage"):WaitForChild("Modules"):WaitFo
 local Weak = ohio:FindFirstChild("Weakness")
 if Weak then
 	Weak:Destroy()
-   end
+   end, 
 }) 
 local Button = Tab5:CreateButton({
 Name = "Remove Stuned"
@@ -775,7 +775,7 @@ local ohioo = game:GetService("ReplicatedStorage"):WaitForChild("Modules"):WaitF
 local S = ohio:FindFirstChild("Stunned")
 if S then
 	S:Destroy()
-   end
+   end, 
 }) 
 local Button = Tab5:CreateButton({
 Name = "Remove Slowness effect"
@@ -784,7 +784,7 @@ local popo = game:GetService("ReplicatedStorage"):WaitForChild("Modules"):WaitFo
 local hi = ohio:FindFirstChild("Slowness")
 if hi then
 	hi:Destroy()
-   end
+   end, 
 }) 
 local Button = Tab5:CreateButton({
 Name = "Remove Nausea effect"
@@ -793,7 +793,7 @@ local hi = game:GetService("ReplicatedStorage"):WaitForChild("Modules"):WaitForC
 local Weake = hi:FindFirstChild("Nausea")
 if Weake then
 	Weake:Destroy()
-   end
+   end, 
 }) 
 local Button = Tab5:CreateButton({
 Name = "Remove Poisoned effect"
@@ -802,7 +802,7 @@ local ohiooo = game:GetService("ReplicatedStorage"):WaitForChild("Modules"):Wait
 local Weakr = ohiooo:FindFirstChild("Poisoned")
 if Weakr then
 	Weakr:Destroy()
-   end
+   end, 
 }) 
 local Button = Tab5:CreateButton({
 Name = "Remove Helpless effect"
@@ -811,7 +811,7 @@ local oh = game:GetService("ReplicatedStorage"):WaitForChild("Modules"):WaitForC
 local Weakk = ohio:FindFirstChild("Helpless")
 if Weakk then
 	Weakk:Destroy()
-   end
+   end, 
 }) 
 local Button = Tab5:CreateButton({
 Name = "Remove Confusion effect"
@@ -820,7 +820,7 @@ local ohioooo = game:GetService("ReplicatedStorage"):WaitForChild("Modules"):Wai
 local Weakm = ohio:FindFirstChild("Confusion")
 if Weakm then
 	Weakm:Destroy()
-   end
+   end, 
 }) 
 local Button = Tab5:CreateButton({
 Name = "Remove Burning effect"
@@ -829,7 +829,7 @@ local ohioooooo = game:GetService("ReplicatedStorage"):WaitForChild("Modules"):W
 local Weaka = ohioooooo:FindFirstChild("Burning")
 if Weaka then
 	Weaka:Destroy()
-   end
+   end, 
 }) 
 local Button = Tab5:CreateButton({
 Name = "Remove Blindness effect"
@@ -838,7 +838,7 @@ local ohios = game:GetService("ReplicatedStorage"):WaitForChild("Modules"):WaitF
 local Weakd = ohios:FindFirstChild("Blindness")
 if Weakd then
 	Weakd:Destroy()
-   end
+   end, 
 })
 local Button = Tab5:CreateButton({
 Name = "Remove Weakness effect"
@@ -847,7 +847,7 @@ local ohioh = game:GetService("ReplicatedStorage"):WaitForChild("Modules"):WaitF
 local Weakj = ohioh:FindFirstChild("Bleeding")
 if Weakj then
 	Weakj:Destroy()
-   end
+   end, 
 }) 
 local Button = Tab5:CreateButton({
 Name = "Remove Subspaced effect"
@@ -856,7 +856,7 @@ local ohi = game:GetService("ReplicatedStorage"):WaitForChild("Modules"):WaitFor
 local Weakg = ohi:FindFirstChild("Subspaced")
 if Weakg then
 	Weakg:Destroy()
-   end
+   end, 
 }) 
 local Button = Tab6:CreateButton({
 Name = "Noclip bypasser (Shedletsky)"
