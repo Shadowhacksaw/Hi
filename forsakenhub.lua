@@ -141,7 +141,7 @@ local Button = Tab1:CreateButton({
 local Button = Tab1:CreateButton({
    Name = "Virtual Insanity",
    Callback = function()
-       PlayEmote(103333882912121, 95268211149914)
+       PlayEmote(103333882912121,95268211149914)
    end,
 })
 local Button = Tab1:CreateButton({
@@ -755,5 +755,5 @@ local function setupCharacter(character)
 		{0, 0.5, 0},
 		{0, 0, 0},
 		{1, 1, 1})
-   end
+   end, 
 }) 
