@@ -45,7 +45,6 @@ local Tab1 = Window:CreateTab("Skins", 130695581754590)
 local Button = Tab1:CreateButton({
 Name = "Beast"
 Callback = function()
--- LocalScript: Beast Overlay (no abilities)
 local player = game.Players.LocalPlayer
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
@@ -249,7 +248,6 @@ player.CharacterRemoving:Connect(clearAll)
 if player.Character then
 	task.wait(1)
 	applyBeast(player.Character)
-end
 
    end,
 })
@@ -355,7 +353,6 @@ player.CharacterRemoving:Connect(clearAll)
 if player.Character then
 	task.wait(1)
 	applyBeast(player.Character)
-end
 
    end,
 })
@@ -567,7 +564,6 @@ player.CharacterRemoving:Connect(clearAll)
 if player.Character then
 	task.wait(1)
 	applyBeast(player.Character)
-end
 
    end,
 })
@@ -673,7 +669,6 @@ player.CharacterRemoving:Connect(clearAll)
 if player.Character then
 	task.wait(1)
 	applyBeast(player.Character)
-end
 
    end,
 })
@@ -779,7 +774,6 @@ player.CharacterRemoving:Connect(clearAll)
 if player.Character then
 	task.wait(1)
 	applyBeast(player.Character)
-end
 
    end,
 })
@@ -991,7 +985,6 @@ player.CharacterRemoving:Connect(clearAll)
 if player.Character then
 	task.wait(1)
 	applyBeast(player.Character)
-end
 
    end,
 })
@@ -1097,7 +1090,6 @@ player.CharacterRemoving:Connect(clearAll)
 if player.Character then
 	task.wait(1)
 	applyBeast(player.Character)
-end
 
    end,
 })
@@ -1203,7 +1195,6 @@ player.CharacterRemoving:Connect(clearAll)
 if player.Character then
 	task.wait(1)
 	applyBeast(player.Character)
-end
 
    end,
 })
@@ -1309,7 +1300,6 @@ player.CharacterRemoving:Connect(clearAll)
 if player.Character then
 	task.wait(1)
 	applyBeast(player.Character)
-end
 
    end,
 })
@@ -1415,7 +1405,6 @@ player.CharacterRemoving:Connect(clearAll)
 if player.Character then
 	task.wait(1)
 	applyBeast(player.Character)
-end
 
    end,
 })
@@ -1520,8 +1509,7 @@ player.CharacterRemoving:Connect(clearAll)
 -- Initial
 if player.Character then
 	task.wait(1)
-	applyBeast(player.Character)
-end
+	applyBeast(player.Character) 
 
    end,
 })
@@ -1627,7 +1615,6 @@ player.CharacterRemoving:Connect(clearAll)
 if player.Character then
 	task.wait(1)
 	applyBeast(player.Character)
-end
 
 
    end,
@@ -1734,7 +1721,6 @@ player.CharacterRemoving:Connect(clearAll)
 if player.Character then
 	task.wait(1)
 	applyBeast(player.Character)
-end
 
    end,
 })
@@ -1840,7 +1826,6 @@ player.CharacterRemoving:Connect(clearAll)
 if player.Character then
 	task.wait(1)
 	applyBeast(player.Character)
-end
 
    end,
 })
@@ -1946,7 +1931,6 @@ player.CharacterRemoving:Connect(clearAll)
 if player.Character then
 	task.wait(1)
 	applyBeast(player.Character)
-end
 
    end,
 })
@@ -2052,7 +2036,6 @@ player.CharacterRemoving:Connect(clearAll)
 if player.Character then
 	task.wait(1)
 	applyBeast(player.Character)
-end
 
    end,
 })
@@ -2158,7 +2141,6 @@ player.CharacterRemoving:Connect(clearAll)
 if player.Character then
 	task.wait(1)
 	applyBeast(player.Character)
-end
 
    end,
 })
@@ -2264,7 +2246,6 @@ player.CharacterRemoving:Connect(clearAll)
 if player.Character then
 	task.wait(1)
 	applyBeast(player.Character)
-end
 
    end,
 })
@@ -2370,7 +2351,6 @@ player.CharacterRemoving:Connect(clearAll)
 if player.Character then
 	task.wait(1)
 	applyBeast(player.Character)
-end
 
 
    end,
@@ -2477,7 +2457,6 @@ player.CharacterRemoving:Connect(clearAll)
 if player.Character then
 	task.wait(1)
 	applyBeast(player.Character)
-end
 
    end,
 })
@@ -2583,7 +2562,6 @@ player.CharacterRemoving:Connect(clearAll)
 if player.Character then
 	task.wait(1)
 	applyBeast(player.Character)
-end
 
    end,
 })
@@ -2689,7 +2667,6 @@ player.CharacterRemoving:Connect(clearAll)
 if player.Character then
 	task.wait(1)
 	applyBeast(player.Character)
-end
 
    end,
 })
@@ -2795,7 +2772,6 @@ player.CharacterRemoving:Connect(clearAll)
 if player.Character then
 	task.wait(1)
 	applyBeast(player.Character)
-end
 
    end,
 })
