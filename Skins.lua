@@ -145,6 +145,8 @@ player.CharacterRemoving:Connect(clearAll)
 if player.Character then
 	task.wait(1)
 	applyBeast(player.Character)
+end  
+  
    end, 
 })
 local Button = Tab1:CreateButton({
