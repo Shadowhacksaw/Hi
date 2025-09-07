@@ -1104,7 +1104,7 @@ end
    end,
 })
 local Button = Tab1:CreateButton({
-Name = "Krampus"
+Name = "Krampus", 
 Callback = function() -- LocalScript: Beast Overlay (no abilities)
 local player = game.Players.LocalPlayer
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
