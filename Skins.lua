@@ -148,8 +148,649 @@ if player.Character then
    end, 
 })
 local Button = Tab1:CreateButton({
+Name = "Bloody Zombie"
+Callback = function() -- LocalScript: Beast Overlay (no abilities)
+local player = game.Players.LocalPlayer
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+
+----------------------------------------------------
+-- CONFIG
+----------------------------------------------------
+local beastPath = ReplicatedStorage.Outfits:FindFirstChild("Bloody Zombie")
+
+----------------------------------------------------
+-- APPLY BEAST OVERLAY
+----------------------------------------------------
+local function applyBeast(character)
+	if not beastPath then return end
+
+	local humanoid = character:WaitForChild("Humanoid")
+	local hrp = character:WaitForChild("HumanoidRootPart")
+
+	-- Remove player's accessories & clothing (overlay handles visuals)
+	for _, acc in ipairs(character:GetChildren()) do
+		if acc:IsA("Accessory") or acc:IsA("Shirt") or acc:IsA("Pants") then
+			acc:Destroy()
+		end
+	end
+
+	-- Hide original body parts (but keep HumanoidRootPart visible for welds)
+	for _, part in ipairs(character:GetChildren()) do
+		if part:IsA("BasePart") and part.Name ~= "HumanoidRootPart" then
+			part.Transparency = 1
+		end
+	end
+
+	-- Clone Beast
+	local beastClone = beastPath:Clone()
+	beastClone.Name = player.Name -- ✅ keep your username instead of "Beast"
+	beastClone.Parent = character
+
+	-- Keep Beast's Humanoid but disable its movement
+	local beastHum = beastClone:FindFirstChildOfClass("Humanoid")
+	if beastHum then
+		beastHum.WalkSpeed = 0
+		beastHum.JumpPower = 0
+		beastHum.AutoRotate = false
+		beastHum:ChangeState(Enum.HumanoidStateType.Physics)
+	end
+
+	-- Set PrimaryPart if missing
+	if not beastClone.PrimaryPart then
+		local root = beastClone:FindFirstChild("HumanoidRootPart") or beastClone:FindFirstChild("Torso")
+		if root then beastClone.PrimaryPart = root end
+	end
+
+	-- Weld Beast parts to player
+	for _, part in ipairs(beastClone:GetChildren()) do
+		if part:IsA("BasePart") and part.Name ~= "HumanoidRootPart" then
+			local corresponding = character:FindFirstChild(part.Name)
+			if corresponding then
+				part.CFrame = corresponding.CFrame
+				part.Anchored = false
+				part.CanCollide = false
+				part.Massless = true
+
+				local weld = Instance.new("WeldConstraint")
+				weld.Part0 = corresponding
+				weld.Part1 = part
+				weld.Parent = part
+			end
+		end
+	end
+
+	-- Align Beast root
+	if beastClone.PrimaryPart then
+		beastClone:SetPrimaryPartCFrame(hrp.CFrame)
+	end
+end
+
+----------------------------------------------------
+-- CLEAR
+----------------------------------------------------
+local function clearAll()
+	if player.Character then
+		local overlay = player.Character:FindFirstChild(player.Name)
+		if overlay then overlay:Destroy() end
+	end
+end
+
+----------------------------------------------------
+-- HOOKS
+----------------------------------------------------
+player.CharacterAdded:Connect(function(char)
+	task.wait(1)
+	applyBeast(char)
+end)
+
+player.CharacterRemoving:Connect(clearAll)
+
+-- Initial
+if player.Character then
+	task.wait(1)
+	applyBeast(player.Character)
+end
+
+   end,
+})
+local Button = Tab1:CreateButton({
+Name = "Cake Master"
+Callback = function() -- LocalScript: Beast Overlay (no abilities)
+local player = game.Players.LocalPlayer
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+
+----------------------------------------------------
+-- CONFIG
+----------------------------------------------------
+local beastPath = ReplicatedStorage.Outfits:FindFirstChild("Cake Master")
+
+----------------------------------------------------
+-- APPLY BEAST OVERLAY
+----------------------------------------------------
+local function applyBeast(character)
+	if not beastPath then return end
+
+	local humanoid = character:WaitForChild("Humanoid")
+	local hrp = character:WaitForChild("HumanoidRootPart")
+
+	-- Remove player's accessories & clothing (overlay handles visuals)
+	for _, acc in ipairs(character:GetChildren()) do
+		if acc:IsA("Accessory") or acc:IsA("Shirt") or acc:IsA("Pants") then
+			acc:Destroy()
+		end
+	end
+
+	-- Hide original body parts (but keep HumanoidRootPart visible for welds)
+	for _, part in ipairs(character:GetChildren()) do
+		if part:IsA("BasePart") and part.Name ~= "HumanoidRootPart" then
+			part.Transparency = 1
+		end
+	end
+
+	-- Clone Beast
+	local beastClone = beastPath:Clone()
+	beastClone.Name = player.Name -- ✅ keep your username instead of "Beast"
+	beastClone.Parent = character
+
+	-- Keep Beast's Humanoid but disable its movement
+	local beastHum = beastClone:FindFirstChildOfClass("Humanoid")
+	if beastHum then
+		beastHum.WalkSpeed = 0
+		beastHum.JumpPower = 0
+		beastHum.AutoRotate = false
+		beastHum:ChangeState(Enum.HumanoidStateType.Physics)
+	end
+
+	-- Set PrimaryPart if missing
+	if not beastClone.PrimaryPart then
+		local root = beastClone:FindFirstChild("HumanoidRootPart") or beastClone:FindFirstChild("Torso")
+		if root then beastClone.PrimaryPart = root end
+	end
+
+	-- Weld Beast parts to player
+	for _, part in ipairs(beastClone:GetChildren()) do
+		if part:IsA("BasePart") and part.Name ~= "HumanoidRootPart" then
+			local corresponding = character:FindFirstChild(part.Name)
+			if corresponding then
+				part.CFrame = corresponding.CFrame
+				part.Anchored = false
+				part.CanCollide = false
+				part.Massless = true
+
+				local weld = Instance.new("WeldConstraint")
+				weld.Part0 = corresponding
+				weld.Part1 = part
+				weld.Parent = part
+			end
+		end
+	end
+
+	-- Align Beast root
+	if beastClone.PrimaryPart then
+		beastClone:SetPrimaryPartCFrame(hrp.CFrame)
+	end
+end
+
+----------------------------------------------------
+-- CLEAR
+----------------------------------------------------
+local function clearAll()
+	if player.Character then
+		local overlay = player.Character:FindFirstChild(player.Name)
+		if overlay then overlay:Destroy() end
+	end
+end
+
+----------------------------------------------------
+-- HOOKS
+----------------------------------------------------
+player.CharacterAdded:Connect(function(char)
+	task.wait(1)
+	applyBeast(char)
+end)
+
+player.CharacterRemoving:Connect(clearAll)
+
+-- Initial
+if player.Character then
+	task.wait(1)
+	applyBeast(player.Character)
+end
+
+   end,
+})
+local Button = Tab1:CreateButton({
+Name = "Camper"
+Callback = function() -- LocalScript: Beast Overlay (no abilities)
+local player = game.Players.LocalPlayer
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+
+----------------------------------------------------
+-- CONFIG
+----------------------------------------------------
+local beastPath = ReplicatedStorage.Outfits:FindFirstChild("Camper")
+
+----------------------------------------------------
+-- APPLY BEAST OVERLAY
+----------------------------------------------------
+local function applyBeast(character)
+	if not beastPath then return end
+
+	local humanoid = character:WaitForChild("Humanoid")
+	local hrp = character:WaitForChild("HumanoidRootPart")
+
+	-- Remove player's accessories & clothing (overlay handles visuals)
+	for _, acc in ipairs(character:GetChildren()) do
+		if acc:IsA("Accessory") or acc:IsA("Shirt") or acc:IsA("Pants") then
+			acc:Destroy()
+		end
+	end
+
+	-- Hide original body parts (but keep HumanoidRootPart visible for welds)
+	for _, part in ipairs(character:GetChildren()) do
+		if part:IsA("BasePart") and part.Name ~= "HumanoidRootPart" then
+			part.Transparency = 1
+		end
+	end
+
+	-- Clone Beast
+	local beastClone = beastPath:Clone()
+	beastClone.Name = player.Name -- ✅ keep your username instead of "Beast"
+	beastClone.Parent = character
+
+	-- Keep Beast's Humanoid but disable its movement
+	local beastHum = beastClone:FindFirstChildOfClass("Humanoid")
+	if beastHum then
+		beastHum.WalkSpeed = 0
+		beastHum.JumpPower = 0
+		beastHum.AutoRotate = false
+		beastHum:ChangeState(Enum.HumanoidStateType.Physics)
+	end
+
+	-- Set PrimaryPart if missing
+	if not beastClone.PrimaryPart then
+		local root = beastClone:FindFirstChild("HumanoidRootPart") or beastClone:FindFirstChild("Torso")
+		if root then beastClone.PrimaryPart = root end
+	end
+
+	-- Weld Beast parts to player
+	for _, part in ipairs(beastClone:GetChildren()) do
+		if part:IsA("BasePart") and part.Name ~= "HumanoidRootPart" then
+			local corresponding = character:FindFirstChild(part.Name)
+			if corresponding then
+				part.CFrame = corresponding.CFrame
+				part.Anchored = false
+				part.CanCollide = false
+				part.Massless = true
+
+				local weld = Instance.new("WeldConstraint")
+				weld.Part0 = corresponding
+				weld.Part1 = part
+				weld.Parent = part
+			end
+		end
+	end
+
+	-- Align Beast root
+	if beastClone.PrimaryPart then
+		beastClone:SetPrimaryPartCFrame(hrp.CFrame)
+	end
+end
+
+----------------------------------------------------
+-- CLEAR
+----------------------------------------------------
+local function clearAll()
+	if player.Character then
+		local overlay = player.Character:FindFirstChild(player.Name)
+		if overlay then overlay:Destroy() end
+	end
+end
+
+----------------------------------------------------
+-- HOOKS
+----------------------------------------------------
+player.CharacterAdded:Connect(function(char)
+	task.wait(1)
+	applyBeast(char)
+end)
+
+player.CharacterRemoving:Connect(clearAll)
+
+-- Initial
+if player.Character then
+	task.wait(1)
+	applyBeast(player.Character)
+end
+
+   end,
+})
+local Button = Tab1:CreateButton({
+Name = "Dracula"
+Callback = function() -- LocalScript: Beast Overlay (no abilities)
+local player = game.Players.LocalPlayer
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+
+----------------------------------------------------
+-- CONFIG
+----------------------------------------------------
+local beastPath = ReplicatedStorage.Outfits:FindFirstChild("Dracula")
+
+----------------------------------------------------
+-- APPLY BEAST OVERLAY
+----------------------------------------------------
+local function applyBeast(character)
+	if not beastPath then return end
+
+	local humanoid = character:WaitForChild("Humanoid")
+	local hrp = character:WaitForChild("HumanoidRootPart")
+
+	-- Remove player's accessories & clothing (overlay handles visuals)
+	for _, acc in ipairs(character:GetChildren()) do
+		if acc:IsA("Accessory") or acc:IsA("Shirt") or acc:IsA("Pants") then
+			acc:Destroy()
+		end
+	end
+
+	-- Hide original body parts (but keep HumanoidRootPart visible for welds)
+	for _, part in ipairs(character:GetChildren()) do
+		if part:IsA("BasePart") and part.Name ~= "HumanoidRootPart" then
+			part.Transparency = 1
+		end
+	end
+
+	-- Clone Beast
+	local beastClone = beastPath:Clone()
+	beastClone.Name = player.Name -- ✅ keep your username instead of "Beast"
+	beastClone.Parent = character
+
+	-- Keep Beast's Humanoid but disable its movement
+	local beastHum = beastClone:FindFirstChildOfClass("Humanoid")
+	if beastHum then
+		beastHum.WalkSpeed = 0
+		beastHum.JumpPower = 0
+		beastHum.AutoRotate = false
+		beastHum:ChangeState(Enum.HumanoidStateType.Physics)
+	end
+
+	-- Set PrimaryPart if missing
+	if not beastClone.PrimaryPart then
+		local root = beastClone:FindFirstChild("HumanoidRootPart") or beastClone:FindFirstChild("Torso")
+		if root then beastClone.PrimaryPart = root end
+	end
+
+	-- Weld Beast parts to player
+	for _, part in ipairs(beastClone:GetChildren()) do
+		if part:IsA("BasePart") and part.Name ~= "HumanoidRootPart" then
+			local corresponding = character:FindFirstChild(part.Name)
+			if corresponding then
+				part.CFrame = corresponding.CFrame
+				part.Anchored = false
+				part.CanCollide = false
+				part.Massless = true
+
+				local weld = Instance.new("WeldConstraint")
+				weld.Part0 = corresponding
+				weld.Part1 = part
+				weld.Parent = part
+			end
+		end
+	end
+
+	-- Align Beast root
+	if beastClone.PrimaryPart then
+		beastClone:SetPrimaryPartCFrame(hrp.CFrame)
+	end
+end
+
+----------------------------------------------------
+-- CLEAR
+----------------------------------------------------
+local function clearAll()
+	if player.Character then
+		local overlay = player.Character:FindFirstChild(player.Name)
+		if overlay then overlay:Destroy() end
+	end
+end
+
+----------------------------------------------------
+-- HOOKS
+----------------------------------------------------
+player.CharacterAdded:Connect(function(char)
+	task.wait(1)
+	applyBeast(char)
+end)
+
+player.CharacterRemoving:Connect(clearAll)
+
+-- Initial
+if player.Character then
+	task.wait(1)
+	applyBeast(player.Character)
+end
+
+   end,
+})
+local Button = Tab1:CreateButton({
+Name = "Frozen"
+Callback = function() -- LocalScript: Beast Overlay (no abilities)
+local player = game.Players.LocalPlayer
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+
+----------------------------------------------------
+-- CONFIG
+----------------------------------------------------
+local beastPath = ReplicatedStorage.Outfits:FindFirstChild("Frozen")
+
+----------------------------------------------------
+-- APPLY BEAST OVERLAY
+----------------------------------------------------
+local function applyBeast(character)
+	if not beastPath then return end
+
+	local humanoid = character:WaitForChild("Humanoid")
+	local hrp = character:WaitForChild("HumanoidRootPart")
+
+	-- Remove player's accessories & clothing (overlay handles visuals)
+	for _, acc in ipairs(character:GetChildren()) do
+		if acc:IsA("Accessory") or acc:IsA("Shirt") or acc:IsA("Pants") then
+			acc:Destroy()
+		end
+	end
+
+	-- Hide original body parts (but keep HumanoidRootPart visible for welds)
+	for _, part in ipairs(character:GetChildren()) do
+		if part:IsA("BasePart") and part.Name ~= "HumanoidRootPart" then
+			part.Transparency = 1
+		end
+	end
+
+	-- Clone Beast
+	local beastClone = beastPath:Clone()
+	beastClone.Name = player.Name -- ✅ keep your username instead of "Beast"
+	beastClone.Parent = character
+
+	-- Keep Beast's Humanoid but disable its movement
+	local beastHum = beastClone:FindFirstChildOfClass("Humanoid")
+	if beastHum then
+		beastHum.WalkSpeed = 0
+		beastHum.JumpPower = 0
+		beastHum.AutoRotate = false
+		beastHum:ChangeState(Enum.HumanoidStateType.Physics)
+	end
+
+	-- Set PrimaryPart if missing
+	if not beastClone.PrimaryPart then
+		local root = beastClone:FindFirstChild("HumanoidRootPart") or beastClone:FindFirstChild("Torso")
+		if root then beastClone.PrimaryPart = root end
+	end
+
+	-- Weld Beast parts to player
+	for _, part in ipairs(beastClone:GetChildren()) do
+		if part:IsA("BasePart") and part.Name ~= "HumanoidRootPart" then
+			local corresponding = character:FindFirstChild(part.Name)
+			if corresponding then
+				part.CFrame = corresponding.CFrame
+				part.Anchored = false
+				part.CanCollide = false
+				part.Massless = true
+
+				local weld = Instance.new("WeldConstraint")
+				weld.Part0 = corresponding
+				weld.Part1 = part
+				weld.Parent = part
+			end
+		end
+	end
+
+	-- Align Beast root
+	if beastClone.PrimaryPart then
+		beastClone:SetPrimaryPartCFrame(hrp.CFrame)
+	end
+end
+
+----------------------------------------------------
+-- CLEAR
+----------------------------------------------------
+local function clearAll()
+	if player.Character then
+		local overlay = player.Character:FindFirstChild(player.Name)
+		if overlay then overlay:Destroy() end
+	end
+end
+
+----------------------------------------------------
+-- HOOKS
+----------------------------------------------------
+player.CharacterAdded:Connect(function(char)
+	task.wait(1)
+	applyBeast(char)
+end)
+
+player.CharacterRemoving:Connect(clearAll)
+
+-- Initial
+if player.Character then
+	task.wait(1)
+	applyBeast(player.Character)
+end
+
+   end,
+})
+local Button = Tab1:CreateButton({
+Name = "Ghost"
+Callback = function() -- LocalScript: Beast Overlay (no abilities)
+local player = game.Players.LocalPlayer
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+
+----------------------------------------------------
+-- CONFIG
+----------------------------------------------------
+local beastPath = ReplicatedStorage.Outfits:FindFirstChild("Ghost")
+
+----------------------------------------------------
+-- APPLY BEAST OVERLAY
+----------------------------------------------------
+local function applyBeast(character)
+	if not beastPath then return end
+
+	local humanoid = character:WaitForChild("Humanoid")
+	local hrp = character:WaitForChild("HumanoidRootPart")
+
+	-- Remove player's accessories & clothing (overlay handles visuals)
+	for _, acc in ipairs(character:GetChildren()) do
+		if acc:IsA("Accessory") or acc:IsA("Shirt") or acc:IsA("Pants") then
+			acc:Destroy()
+		end
+	end
+
+	-- Hide original body parts (but keep HumanoidRootPart visible for welds)
+	for _, part in ipairs(character:GetChildren()) do
+		if part:IsA("BasePart") and part.Name ~= "HumanoidRootPart" then
+			part.Transparency = 1
+		end
+	end
+
+	-- Clone Beast
+	local beastClone = beastPath:Clone()
+	beastClone.Name = player.Name -- ✅ keep your username instead of "Beast"
+	beastClone.Parent = character
+
+	-- Keep Beast's Humanoid but disable its movement
+	local beastHum = beastClone:FindFirstChildOfClass("Humanoid")
+	if beastHum then
+		beastHum.WalkSpeed = 0
+		beastHum.JumpPower = 0
+		beastHum.AutoRotate = false
+		beastHum:ChangeState(Enum.HumanoidStateType.Physics)
+	end
+
+	-- Set PrimaryPart if missing
+	if not beastClone.PrimaryPart then
+		local root = beastClone:FindFirstChild("HumanoidRootPart") or beastClone:FindFirstChild("Torso")
+		if root then beastClone.PrimaryPart = root end
+	end
+
+	-- Weld Beast parts to player
+	for _, part in ipairs(beastClone:GetChildren()) do
+		if part:IsA("BasePart") and part.Name ~= "HumanoidRootPart" then
+			local corresponding = character:FindFirstChild(part.Name)
+			if corresponding then
+				part.CFrame = corresponding.CFrame
+				part.Anchored = false
+				part.CanCollide = false
+				part.Massless = true
+
+				local weld = Instance.new("WeldConstraint")
+				weld.Part0 = corresponding
+				weld.Part1 = part
+				weld.Parent = part
+			end
+		end
+	end
+
+	-- Align Beast root
+	if beastClone.PrimaryPart then
+		beastClone:SetPrimaryPartCFrame(hrp.CFrame)
+	end
+end
+
+----------------------------------------------------
+-- CLEAR
+----------------------------------------------------
+local function clearAll()
+	if player.Character then
+		local overlay = player.Character:FindFirstChild(player.Name)
+		if overlay then overlay:Destroy() end
+	end
+end
+
+----------------------------------------------------
+-- HOOKS
+----------------------------------------------------
+player.CharacterAdded:Connect(function(char)
+	task.wait(1)
+	applyBeast(char)
+end)
+
+player.CharacterRemoving:Connect(clearAll)
+
+-- Initial
+if player.Character then
+	task.wait(1)
+	applyBeast(player.Character)
+end
+
+   end,
+})
+local Button = Tab1:CreateButton({
 Name = ""
 Callback = function()
 
    end,
 })
+
+
+
+
+
