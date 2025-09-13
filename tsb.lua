@@ -5,7 +5,7 @@ local function playEmote(emoteName)
  local args = {
 	{
 		Goal = "Emote",
-		Emote = emoteName
+		Emote = emoteName, 
 	}
 }
 game:GetService("Players").LocalPlayer.Character:WaitForChild("Communicate"):FireServer(unpack(args))
