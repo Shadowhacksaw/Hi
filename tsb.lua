@@ -58,6 +58,7 @@ local Tab1 = Window:CreateTab("Emotes", 130695581754590)
 
 -- Example emotes (you can expand this with the full list)
 local emoteNames = {
+"Crush", 
 "Dap Me Up",
 "Highfive",
 "Traditional Duel",
