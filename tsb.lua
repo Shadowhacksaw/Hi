@@ -15,7 +15,7 @@ local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
 local Window = Rayfield:CreateWindow({
 
-   Name = "Hacksaken l Anti cheat bypasser",
+   Name = "Tsb emotes hub l best place for not being broke",
 
    Icon = 0,
 
@@ -590,7 +590,7 @@ local emoteNames = {
 }
 
 for _, emote in ipairs(emoteNames) do
-    Tab2:CreateButton({
+    local Button = Tab1:CreateButton({
         Name = emote,
         Callback = function()
             playEmote(emote)
