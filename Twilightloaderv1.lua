@@ -40,4 +40,7 @@ local Window = Rayfield:CreateWindow({
 
 })
 
-local TabMain = 
+local Tab1 = Window:CreateTab("Main", 130695581754590)
+local Tab2 = Window:CreateTab("Esp", 130695581754590)
+
+local Button = 
