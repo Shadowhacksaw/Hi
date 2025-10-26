@@ -43,4 +43,31 @@ local Window = Rayfield:CreateWindow({
 local Tab1 = Window:CreateTab("Main", 130695581754590)
 local Tab2 = Window:CreateTab("Esp", 130695581754590)
 
-local Button = 
+
+local staminaFlag = false
+local AddStamina
+pcall(function()
+    AddStamina = ReplicatedStorage:WaitForChild("Remotes"):WaitForChild("Gameplay"):WaitForChild("AddStamina")
+end)
+
+task.spawn(function()
+    while true do
+        if staminaFlag and AddStamina then
+            pcall(function() firesignal(AddStamina.OnClientEvent, 45) end)
+        end
+        task.wait(0.2)
+    end
+end)
+
+local function teleportToElevator()
+    local elevator = Workspace:FindFirstChild("Elevator")
+    if not elevator then return false end
+    local spawn = elevator:FindFirstChild("ElevatorSpawn") or elevator:FindFirstChild("Elevator1") or elevator:FindFirstChild("Elevator2") or findRepresentativePart(elevator)
+    if not spawn then return false end
+    return teleportToPart(spawn, 2)
+end
+
+
+Tab1:CreateToggle({Name = "Infinite Stamina", CurrentValue = false, Callback = function(v) staminaFlag = v end})
+
+Tab1:CreateButton({Name = "Teleport to Elevator", Callback = teleportToElevator})
