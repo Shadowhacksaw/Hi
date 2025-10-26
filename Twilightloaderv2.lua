@@ -479,7 +479,7 @@ end
 
 -- === Rayfield Toggle ===
 local Toggle = Tab1:CreateToggle({
-    Name = "Auto Farm",
+    Name = "Auto Farm (Experimental)",
     CurrentValue = false,
     Flag = "AutoFarmToggle",
     Callback = function(Value)
