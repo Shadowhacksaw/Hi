@@ -245,6 +245,16 @@ task.spawn(function()
     end
 end)
 
+local function teleportToPart(part, yOffset)
+    yOffset = yOffset or 5
+    if not part then return false end
+    local char = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()
+    local hrp = char:FindFirstChild("HumanoidRootPart") or char:WaitForChild("HumanoidRootPart", 2)
+    if not hrp then return false end
+    pcall(function() hrp.CFrame = part.CFrame + Vector3.new(0, yOffset, 0) end)
+    return true
+end
+
 local function teleportToElevator()
     local elevator = Workspace:FindFirstChild("Elevator")
     if not elevator then return false end
