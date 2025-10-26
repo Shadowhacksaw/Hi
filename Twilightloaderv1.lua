@@ -49,7 +49,9 @@ local Window = Rayfield:CreateWindow({
 local Tab1 = Window:CreateTab("Main", 130695581754590)
 local Tab2 = Window:CreateTab("Esp", 130695581754590)
 
--- Finds all "Machines" folders in the workspace and under Floor
+
+
+-- Helper: Find all "Machines" folders/models
 local function findMachinesFolders()
     local folders = {}
     if Workspace:FindFirstChild("Machines") then
@@ -79,29 +81,71 @@ local function findMachinesFolders()
     return unique
 end
 
--- Returns the best representative BasePart for a model
+-- Helper: Find a good part to highlight in a model
 local function findRepresentativePart(model)
     if not model then return nil end
     if model:IsA("BasePart") then return model end
     local names = {"Front","front","Head","head","HumanoidRootPart","PrimaryPart"}
-    for _,n in ipairs(n)
+    for _,n in ipairs(names) do
+        local f = model:FindFirstChild(n)
         if f and f:IsA("BasePart") then return f end
     end
     if model.PrimaryPart and model.PrimaryPart:IsA("BasePart") then return model.PrimaryPart end
     return model:FindFirstChildWhichIsA("BasePart", true)
 end
 
--- Returns true if the name is "fuse" or similar
+-- Helper: Exclude fuses
 local function isFuseLike(name)
     if not name then return false end
     local s = tostring(name):lower()
     return s:find("fuse") or s:find("fusebox") or s:find("fuse_box")
 end
 
+-- Gather all machine models (representative parts)
+local function gatherMachineParts()
+    local parts = {}
 
--- // ESP
-local espMachinesOn, espSpiritsOn = false, false
-local espMap = {} -- key = target model, value = Highlight instance
+    -- 1. Look in Machines folders
+    local folders = findMachinesFolders()
+    for _, machinesFolder in ipairs(folders) do
+        for _, machine in ipairs(machinesFolder:GetChildren()) do
+            if machine:IsA("Model") and not isFuseLike(machine.Name) then
+                local rep = findRepresentativePart(machine) or machine
+                if rep then table.insert(parts, rep) end
+            end
+        end
+    end
+
+    -- 2. Fallback: models named like "*machine*" anywhere
+    if #parts == 0 then
+        for _, obj in ipairs(Workspace:GetDescendants()) do
+            if obj:IsA("Model") and not isFuseLike(obj.Name) then
+                if tostring(obj.Name):lower():find("machine") then
+                    local rep = findRepresentativePart(obj) or obj
+                    table.insert(parts, rep)
+                end
+            end
+        end
+    end
+
+    -- 3. Fallback: models under Floor that look like machines
+    if #parts == 0 and Workspace:FindFirstChild("Floor") then
+        for _, obj in ipairs(Workspace.Floor:GetDescendants()) do
+            if obj:IsA("Model") and not isFuseLike(obj.Name) then
+                local rep = findRepresentativePart(obj)
+                if rep and (tostring(obj.Name):lower():find("machine") or rep.Name:lower():find("machine") ) then
+                    table.insert(parts, rep)
+                end
+            end
+        end
+    end
+
+    return parts
+end
+
+-- ESP logic
+local espMachinesOn = false
+local espMap = {} -- model -> Highlight
 
 local function createHighlightForModel(model, color)
     if not model or not model.Parent or espMap[model] then return end
@@ -110,7 +154,7 @@ local function createHighlightForModel(model, color)
     hl.Adornee = model
     hl.FillColor, hl.OutlineColor = color, color
     hl.FillTransparency = 0.55
-    hl.Parent = workspace -- placing highlight in workspace is fine
+    hl.Parent = workspace
     espMap[model] = hl
 end
 
@@ -121,24 +165,19 @@ local function clearAllHighlights()
     espMap = {}
 end
 
--- helper to remove highlights for models that no longer exist
 local function cleanupDeadHighlights()
     for model, hl in pairs(espMap) do
         if not model or not model.Parent then
-            pcall(function()
-                if hl then hl:Destroy() end
-            end)
+            pcall(function() if hl then hl:Destroy() end end)
             espMap[model] = nil
         end
     end
 end
 
+-- Main ESP loop
 task.spawn(function()
     while true do
-        -- cleanup any dead highlights
         cleanupDeadHighlights()
-
-        -- Machines ESP
         if espMachinesOn then
             local parts = gatherMachineParts()
             for _, rep in ipairs(parts) do
@@ -147,39 +186,9 @@ task.spawn(function()
                     createHighlightForModel(model, Color3.fromRGB(0,200,0))
                 end
             end
+        else
+            clearAllHighlights()
         end
-
-        -- Spirits ESP
-        if espSpiritsOn then
-            -- search for any "Spirits" folder anywhere under Floor or workspace
-            local foundSpiritFolders = {}
-            if Workspace:FindFirstChild("Floor") then
-                for _, obj in ipairs(Workspace.Floor:GetDescendants()) do
-                    if (obj:IsA("Folder") or obj:IsA("Model")) and tostring(obj.Name):lower() == "spirits" then
-                        table.insert(foundSpiritFolders, obj)
-                    end
-                end
-            end
-            for _, obj in ipairs(Workspace:GetDescendants()) do
-                if (obj:IsA("Folder") or obj:IsA("Model")) and tostring(obj.Name):lower() == "spirits" then
-                    table.insert(foundSpiritFolders, obj)
-                end
-            end
-            -- iterate unique folders
-            local seen = {}
-            for _, folder in ipairs(foundSpiritFolders) do
-                if folder and not seen[folder] then
-                    seen[folder] = true
-                    for _, spirit in ipairs(folder:GetChildren()) do
-                        if spirit:IsA("Model") and not espMap[spirit] then
-                            createHighlightForModel(spirit, Color3.fromRGB(200,0,200))
-                        end
-                    end
-                end
-            end
-        end
-
-        if not espMachinesOn and not espSpiritsOn then clearAllHighlights() end
         task.wait(1)
     end
 end)
