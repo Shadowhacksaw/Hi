@@ -71,3 +71,8 @@ end
 Tab1:CreateToggle({Name = "Infinite Stamina", CurrentValue = false, Callback = function(v) staminaFlag = v end})
 
 Tab1:CreateButton({Name = "Teleport to Elevator", Callback = teleportToElevator})
+Tab1:CreateButton({Name = "Teleport: Random Machine", Callback = teleportToRandomMachine})
+
+
+Tab2:CreateToggle({Name = "ESP Machines", CurrentValue = false, Callback = function(v) espMachinesOn = v; if not v then clearAllHighlights() end end})
+Tab2:CreateToggle({Name = "ESP Spirits", CurrentValue = false, Callback = function(v) espSpiritsOn = v; if not v then clearAllHighlights() end end})
