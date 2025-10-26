@@ -49,6 +49,55 @@ local Window = Rayfield:CreateWindow({
 local Tab1 = Window:CreateTab("Main", 130695581754590)
 local Tab2 = Window:CreateTab("Esp", 130695581754590)
 
+-- Finds all "Machines" folders in the workspace and under Floor
+local function findMachinesFolders()
+    local folders = {}
+    if Workspace:FindFirstChild("Machines") then
+        table.insert(folders, Workspace.Machines)
+    end
+    if Workspace:FindFirstChild("Floor") then
+        for _, obj in ipairs(Workspace.Floor:GetDescendants()) do
+            if (obj:IsA("Folder") or obj:IsA("Model")) and tostring(obj.Name):lower() == "machines" then
+                table.insert(folders, obj)
+            end
+        end
+    end
+    for _, obj in ipairs(Workspace:GetDescendants()) do
+        if (obj:IsA("Folder") or obj:IsA("Model")) and tostring(obj.Name):lower() == "machines" then
+            table.insert(folders, obj)
+        end
+    end
+    -- dedupe
+    local seen = {}
+    local unique = {}
+    for _, f in ipairs(folders) do
+        if f and not seen[f] then
+            seen[f] = true
+            table.insert(unique, f)
+        end
+    end
+    return unique
+end
+
+-- Returns the best representative BasePart for a model
+local function findRepresentativePart(model)
+    if not model then return nil end
+    if model:IsA("BasePart") then return model end
+    local names = {"Front","front","Head","head","HumanoidRootPart","PrimaryPart"}
+    for _,n in ipairs(n)
+        if f and f:IsA("BasePart") then return f end
+    end
+    if model.PrimaryPart and model.PrimaryPart:IsA("BasePart") then return model.PrimaryPart end
+    return model:FindFirstChildWhichIsA("BasePart", true)
+end
+
+-- Returns true if the name is "fuse" or similar
+local function isFuseLike(name)
+    if not name then return false end
+    local s = tostring(name):lower()
+    return s:find("fuse") or s:find("fusebox") or s:find("fuse_box")
+end
+
 
 -- // ESP
 local espMachinesOn, espSpiritsOn = false, false
