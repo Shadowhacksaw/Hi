@@ -289,177 +289,195 @@ end
 local Toggle = Tab1:CreateToggle({Name = "Infinite Stamina", CurrentValue = false, Callback = function(v) staminaFlag = v end})
 
 local Button = Tab1:CreateButton({Name = "Teleport to Elevator", Callback = teleportToElevator})
+--// AUTO FARM (NO GODMODE) — Rayfield Toggle
 local autoFarmEnabled = false
+local autoFarmThread
 
-local Toggle = Tab1:CreateToggle({
-    Name = "Auto Repair (Godmode)",
-    CurrentValue = false,
-    Flag = "AutoRepairGodmode",
-    Callback = function(Value)
-        autoFarmEnabled = Value
-        if autoFarmEnabled then
-            -- === RUN YOUR GODMODE SCRIPT HERE ===
-            task.spawn(function()
-                
+local function startAutoFarm()
+    autoFarmEnabled = true
 
--- === AUTO SKILL CHECK BYPASS ===
-do
-    local function tryAttachSkillCheck(remote)
-        if not remote then return end
-        if remote:IsA("RemoteFunction") then
-            remote.OnClientInvoke = function(...) return 2 end
-        elseif remote:IsA("RemoteEvent") then
-            remote.OnClientEvent:Connect(function(...) end)
+    -- === AUTO SKILL CHECK BYPASS ===
+    do
+        local function tryAttachSkillCheck(remote)
+            if not remote then return end
+            if remote:IsA("RemoteFunction") then
+                remote.OnClientInvoke = function(...) return 2 end
+            elseif remote:IsA("RemoteEvent") then
+                remote.OnClientEvent:Connect(function(...) end)
+            end
         end
-    end
-    for _, v in ipairs(ReplicatedStorage:GetDescendants()) do
-        if (v:IsA("RemoteFunction") or v:IsA("RemoteEvent")) and tostring(v.Name):lower():find("skill") then
-            tryAttachSkillCheck(v)
+        for _, v in ipairs(ReplicatedStorage:GetDescendants()) do
+            if (v:IsA("RemoteFunction") or v:IsA("RemoteEvent")) and tostring(v.Name):lower():find("skill") then
+                tryAttachSkillCheck(v)
+            end
         end
+        ReplicatedStorage.DescendantAdded:Connect(function(desc)
+            if (desc:IsA("RemoteFunction") or desc:IsA("RemoteEvent")) and tostring(desc.Name):lower():find("skill") then
+                tryAttachSkillCheck(desc)
+            end
+        end)
     end
-    ReplicatedStorage.DescendantAdded:Connect(function(desc)
-        if (desc:IsA("RemoteFunction") or desc:IsA("RemoteEvent")) and tostring(desc.Name):lower():find("skill") then
-            tryAttachSkillCheck(desc)
+
+    -- === HELPERS ===
+    local function findRepresentativePart(model)
+        if not model then return nil end
+        if model:IsA("BasePart") then return model end
+        local names = {"Front","front","Head","head","HumanoidRootPart","PrimaryPart"}
+        for _,n in ipairs(names) do
+            local f = model:FindFirstChild(n)
+            if f and f:IsA("BasePart") then return f end
         end
-    end)
-end
-
--- === HELPERS ===
-local function findRepresentativePart(model)
-    if not model then return nil end
-    if model:IsA("BasePart") then return model end
-    local names = {"Front","front","Head","head","HumanoidRootPart","PrimaryPart"}
-    for _,n in ipairs(names) do
-        local f = model:FindFirstChild(n)
-        if f and f:IsA("BasePart") then return f end
+        if model.PrimaryPart and model.PrimaryPart:IsA("BasePart") then return model.PrimaryPart end
+        return model:FindFirstChildWhichIsA("BasePart", true)
     end
-    if model.PrimaryPart and model.PrimaryPart:IsA("BasePart") then return model.PrimaryPart end
-    return model:FindFirstChildWhichIsA("BasePart", true)
-end
 
-local function gatherMachineParts()
-    local parts, folders = {}, {}
-    if Workspace:FindFirstChild("Machines") then table.insert(folders, Workspace.Machines) end
-    if Workspace:FindFirstChild("Floor") then
-        for _, obj in ipairs(Workspace.Floor:GetDescendants()) do
+    local function gatherMachineParts()
+        local parts, folders = {}, {}
+        if Workspace:FindFirstChild("Machines") then table.insert(folders, Workspace.Machines) end
+        if Workspace:FindFirstChild("Floor") then
+            for _, obj in ipairs(Workspace.Floor:GetDescendants()) do
+                if (obj:IsA("Folder") or obj:IsA("Model")) and tostring(obj.Name):lower() == "machines" then
+                    table.insert(folders, obj)
+                end
+            end
+        end
+        for _, obj in ipairs(Workspace:GetDescendants()) do
             if (obj:IsA("Folder") or obj:IsA("Model")) and tostring(obj.Name):lower() == "machines" then
                 table.insert(folders, obj)
             end
         end
+        for _, folder in ipairs(folders) do
+            for _, machine in ipairs(folder:GetChildren()) do
+                if machine:IsA("Model") then
+                    local rep = findRepresentativePart(machine)
+                    if rep then table.insert(parts, rep) end
+                end
+            end
+        end
+        return parts
     end
-    for _, obj in ipairs(Workspace:GetDescendants()) do
-        if (obj:IsA("Folder") or obj:IsA("Model")) and tostring(obj.Name):lower() == "machines" then
-            table.insert(folders, obj)
+
+    local function teleportToPart(part, offset)
+        local char = LocalPlayer.Character
+        local root = char and char:FindFirstChild("HumanoidRootPart")
+        if root and part then
+            root.CFrame = part.CFrame * CFrame.new(0, 2, offset or 2)
         end
     end
-    for _, folder in ipairs(folders) do
-        for _, machine in ipairs(folder:GetChildren()) do
-            if machine:IsA("Model") then
+
+    local function findElevatorSpawn()
+        local elevator = Workspace:FindFirstChild("Elevator")
+        if not elevator then return nil end
+        return elevator:FindFirstChild("ElevatorSpawn") or findRepresentativePart(elevator)
+    end
+
+    local function interactWithMachine(machine)
+        for _, p in ipairs(machine:GetDescendants()) do
+            if p:IsA("ProximityPrompt") then
+                fireproximityprompt(p)
+                return
+            elseif p:IsA("ClickDetector") then
+                fireclickdetector(p)
+                return
+            end
+        end
+    end
+
+    -- === SPIRIT DETECTION ===
+    local function gatherSpiritModels()
+        local spirits = {}
+        if Workspace:FindFirstChild("Floor") then
+            for _, obj in ipairs(Workspace.Floor:GetDescendants()) do
+                if tostring(obj.Name):lower() == "spirits" then
+                    for _, s in ipairs(obj:GetChildren()) do
+                        local rep = findRepresentativePart(s)
+                        if rep then table.insert(spirits, rep) end
+                    end
+                end
+            end
+        end
+        return spirits
+    end
+
+    local function isSpiritNear(maxDist)
+        local root = LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
+        if not root then return false end
+        for _, s in ipairs(gatherSpiritModels()) do
+            if s and s:IsA("BasePart") and (s.Position - root.Position).Magnitude <= maxDist then
+                return true
+            end
+        end
+        return false
+    end
+
+    local function waitUntilSafe(maxDist)
+        repeat task.wait(1) until not isSpiritNear(maxDist)
+    end
+
+    -- === MAIN FARM LOOP ===
+    autoFarmThread = task.spawn(function()
+        while autoFarmEnabled do
+            local machines = {}
+            for _, part in ipairs(gatherMachineParts()) do
+                if part and part.Parent:IsA("Model") then table.insert(machines, part.Parent) end
+            end
+
+            for i, machine in ipairs(machines) do
+                if not autoFarmEnabled then break end
+                print("Repairing machine", i)
                 local rep = findRepresentativePart(machine)
-                if rep then table.insert(parts, rep) end
-            end
-        end
-    end
-    return parts
-end
+                teleportToPart(rep)
+                task.wait(0.5)
+                interactWithMachine(machine)
 
-local function teleportToPart(part, offset)
-    local char = LocalPlayer.Character
-    local root = char and char:FindFirstChild("HumanoidRootPart")
-    if root and part then
-        root.CFrame = part.CFrame * CFrame.new(0, 2, offset or 2)
-    end
-end
-
-local function findElevatorSpawn()
-    local elevator = Workspace:FindFirstChild("Elevator")
-    if not elevator then return nil end
-    return elevator:FindFirstChild("ElevatorSpawn") or findRepresentativePart(elevator)
-end
-
-local function interactWithMachine(machine)
-    for _, p in ipairs(machine:GetDescendants()) do
-        if p:IsA("ProximityPrompt") then
-            fireproximityprompt(p)
-            return
-        elseif p:IsA("ClickDetector") then
-            fireclickdetector(p)
-            return
-        end
-    end
-end
-
--- === SPIRIT DETECTION ===
-local function gatherSpiritModels()
-    local spirits = {}
-    if Workspace:FindFirstChild("Floor") then
-        for _, obj in ipairs(Workspace.Floor:GetDescendants()) do
-            if tostring(obj.Name):lower() == "spirits" then
-                for _, s in ipairs(obj:GetChildren()) do
-                    local rep = findRepresentativePart(s)
-                    if rep then table.insert(spirits, rep) end
+                local startTime = tick()
+                while tick() - startTime < 117 do
+                    if not autoFarmEnabled then break end
+                    if isSpiritNear(25) then
+                        print("Spirit nearby, hiding underground.")
+                        local elevator = findElevatorSpawn()
+                        if elevator then
+                            teleportToPart(elevator)
+                            local root = LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
+                            if root then root.CFrame = root.CFrame * CFrame.new(0, -50, 0) end
+                            waitUntilSafe(25)
+                            teleportToPart(rep)
+                            interactWithMachine(machine)
+                        end
+                    end
+                    task.wait(1)
                 end
             end
+
+            print("All machines done!")
+            local elevator = findElevatorSpawn()
+            if elevator then teleportToPart(elevator, 2) end
         end
-    end
-    return spirits
+    end)
 end
 
-local function isSpiritNear(maxDist)
-    local root = LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
-    if not root then return false end
-    for _, s in ipairs(gatherSpiritModels()) do
-        if s and s:IsA("BasePart") and (s.Position - root.Position).Magnitude <= maxDist then
-            return true
-        end
+local function stopAutoFarm()
+    autoFarmEnabled = false
+    if autoFarmThread then
+        task.cancel(autoFarmThread)
+        autoFarmThread = nil
     end
-    return false
 end
 
-local function waitUntilSafe(maxDist)
-    repeat task.wait(1) until not isSpiritNear(maxDist)
-end
-
--- === MAIN FARM LOOP ===
-task.spawn(function()
-    if not autoFarmEnabled then return end
-    local machines = {}
-    for _, part in ipairs(gatherMachineParts()) do
-        if part and part.Parent:IsA("Model") then table.insert(machines, part.Parent) end
-    end
-
-    for i, machine in ipairs(machines) do
-        print("Repairing machine", i)
-        local rep = findRepresentativePart(machine)
-        teleportToPart(rep)
-        task.wait(0.5)
-        interactWithMachine(machine)
-
-        local startTime = tick()
-        while tick() - startTime < 117 do
-            if isSpiritNear(25) then
-                print("Spirit nearby, hiding underground.")
-                local elevator = findElevatorSpawn()
-                if elevator then
-                    teleportToPart(elevator)
-                    local root = LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
-                    if root then root.CFrame = root.CFrame * CFrame.new(0, -50, 0) end
-                    waitUntilSafe(25)
-                    teleportToPart(rep)
-                    interactWithMachine(machine)
-                end
-            end
-            task.wait(1)
+--// RAYFIELD TOGGLE
+local Toggle = Tab1:CreateToggle({
+    Name = "Auto Farm (Experimental)",
+    CurrentValue = false,
+    Flag = "AutoFarmNoGodmode",
+    Callback = function(Value)
+        if Value then
+            startAutoFarm()
+        else
+            stopAutoFarm()
         end
-    end
-
-    print("All machines done!")
-    local elevator = findElevatorSpawn()
-    if elevator then teleportToPart(elevator, 2) 
-            end)
-        end
-    end
+    end,
 })
+
 
 local Toggle = Tab2:CreateToggle({Name = "ESP Machines", CurrentValue = false, Callback = function(v) espMachinesOn = v; if not v then clearAllHighlights() end end})
 local Toggle = Tab2:CreateToggle({Name = "ESP Spirits", CurrentValue = false, Callback = function(v) espSpiritsOn = v; if not v then clearAllHighlights() end end})
