@@ -44,6 +44,91 @@ local Tab1 = Window:CreateTab("Main", 130695581754590)
 local Tab2 = Window:CreateTab("Esp", 130695581754590)
 
 
+-- // ESP
+local espMachinesOn, espSpiritsOn = false, false
+local espMap = {} -- key = target model, value = Highlight instance
+
+local function createHighlightForModel(model, color)
+    if not model or not model.Parent or espMap[model] then return end
+    local hl = Instance.new("Highlight")
+    hl.Name = "TZ_HL"
+    hl.Adornee = model
+    hl.FillColor, hl.OutlineColor = color, color
+    hl.FillTransparency = 0.55
+    hl.Parent = workspace -- placing highlight in workspace is fine
+    espMap[model] = hl
+end
+
+local function clearAllHighlights()
+    for model, hl in pairs(espMap) do
+        pcall(function() if hl then hl:Destroy() end end)
+    end
+    espMap = {}
+end
+
+-- helper to remove highlights for models that no longer exist
+local function cleanupDeadHighlights()
+    for model, hl in pairs(espMap) do
+        if not model or not model.Parent then
+            pcall(function()
+                if hl then hl:Destroy() end
+            end)
+            espMap[model] = nil
+        end
+    end
+end
+
+task.spawn(function()
+    while true do
+        -- cleanup any dead highlights
+        cleanupDeadHighlights()
+
+        -- Machines ESP
+        if espMachinesOn then
+            local parts = gatherMachineParts()
+            for _, rep in ipairs(parts) do
+                local model = rep and rep:IsA("BasePart") and rep.Parent or rep
+                if model and model:IsA("Model") and not espMap[model] then
+                    createHighlightForModel(model, Color3.fromRGB(0,200,0))
+                end
+            end
+        end
+
+        -- Spirits ESP
+        if espSpiritsOn then
+            -- search for any "Spirits" folder anywhere under Floor or workspace
+            local foundSpiritFolders = {}
+            if Workspace:FindFirstChild("Floor") then
+                for _, obj in ipairs(Workspace.Floor:GetDescendants()) do
+                    if (obj:IsA("Folder") or obj:IsA("Model")) and tostring(obj.Name):lower() == "spirits" then
+                        table.insert(foundSpiritFolders, obj)
+                    end
+                end
+            end
+            for _, obj in ipairs(Workspace:GetDescendants()) do
+                if (obj:IsA("Folder") or obj:IsA("Model")) and tostring(obj.Name):lower() == "spirits" then
+                    table.insert(foundSpiritFolders, obj)
+                end
+            end
+            -- iterate unique folders
+            local seen = {}
+            for _, folder in ipairs(foundSpiritFolders) do
+                if folder and not seen[folder] then
+                    seen[folder] = true
+                    for _, spirit in ipairs(folder:GetChildren()) do
+                        if spirit:IsA("Model") and not espMap[spirit] then
+                            createHighlightForModel(spirit, Color3.fromRGB(200,0,200))
+                        end
+                    end
+                end
+            end
+        end
+
+        if not espMachinesOn and not espSpiritsOn then clearAllHighlights() end
+        task.wait(1)
+    end
+end)
+
 local staminaFlag = false
 local AddStamina
 pcall(function()
@@ -71,8 +156,13 @@ end
 Tab1:CreateToggle({Name = "Infinite Stamina", CurrentValue = false, Callback = function(v) staminaFlag = v end})
 
 Tab1:CreateButton({Name = "Teleport to Elevator", Callback = teleportToElevator})
-Tab1:CreateButton({Name = "Teleport: Random Machine", Callback = teleportToRandomMachine})
 
 
 Tab2:CreateToggle({Name = "ESP Machines", CurrentValue = false, Callback = function(v) espMachinesOn = v; if not v then clearAllHighlights() end end})
 Tab2:CreateToggle({Name = "ESP Spirits", CurrentValue = false, Callback = function(v) espSpiritsOn = v; if not v then clearAllHighlights() end end})
+
+game.StarterGui:SetCore("SendNotification", {
+    Title = "Twilight",
+    Text = "Auto Skillcheck is Working!",
+    Duration = 8
+})
