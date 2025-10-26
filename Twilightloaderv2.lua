@@ -214,6 +214,6 @@ local Toggle3 = Tab2:CreateToggle({
 
 game.StarterGui:SetCore("SendNotification", {
     Title = "Twilight",
-    Text = "Auto Skillcheck + Godmode Active!",
+    Text = "Auto Skillcheck is working",
     Duration = 8
 })
