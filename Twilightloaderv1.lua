@@ -50,7 +50,6 @@ local Tab1 = Window:CreateTab("Main", 130695581754590)
 local Tab2 = Window:CreateTab("Esp", 130695581754590)
 
 
-
 -- Helper: Find all "Machines" folders/models
 local function findMachinesFolders()
     local folders = {}
@@ -69,7 +68,6 @@ local function findMachinesFolders()
             table.insert(folders, obj)
         end
     end
-    -- dedupe
     local seen = {}
     local unique = {}
     for _, f in ipairs(folders) do
@@ -104,8 +102,6 @@ end
 -- Gather all machine models (representative parts)
 local function gatherMachineParts()
     local parts = {}
-
-    -- 1. Look in Machines folders
     local folders = findMachinesFolders()
     for _, machinesFolder in ipairs(folders) do
         for _, machine in ipairs(machinesFolder:GetChildren()) do
@@ -115,8 +111,6 @@ local function gatherMachineParts()
             end
         end
     end
-
-    -- 2. Fallback: models named like "*machine*" anywhere
     if #parts == 0 then
         for _, obj in ipairs(Workspace:GetDescendants()) do
             if obj:IsA("Model") and not isFuseLike(obj.Name) then
@@ -127,8 +121,6 @@ local function gatherMachineParts()
             end
         end
     end
-
-    -- 3. Fallback: models under Floor that look like machines
     if #parts == 0 and Workspace:FindFirstChild("Floor") then
         for _, obj in ipairs(Workspace.Floor:GetDescendants()) do
             if obj:IsA("Model") and not isFuseLike(obj.Name) then
@@ -139,13 +131,44 @@ local function gatherMachineParts()
             end
         end
     end
-
     return parts
+end
+
+-- Gather all spirit models under "Spirits" folders
+local function gatherSpiritModels()
+    local spirits = {}
+    local foundSpiritFolders = {}
+    if Workspace:FindFirstChild("Floor") then
+        for _, obj in ipairs(Workspace.Floor:GetDescendants()) do
+            if (obj:IsA("Folder") or obj:IsA("Model")) and tostring(obj.Name):lower() == "spirits" then
+                table.insert(foundSpiritFolders, obj)
+            end
+        end
+    end
+    for _, obj in ipairs(Workspace:GetDescendants()) do
+        if (obj:IsA("Folder") or obj:IsA("Model")) and tostring(obj.Name):lower() == "spirits" then
+            table.insert(foundSpiritFolders, obj)
+        end
+    end
+    local seen = {}
+    for _, folder in ipairs(foundSpiritFolders) do
+        if folder and not seen[folder] then
+            seen[folder] = true
+            for _, spirit in ipairs(folder:GetChildren()) do
+                if spirit:IsA("Model") then
+                    local rep = findRepresentativePart(spirit) or spirit
+                    if rep then table.insert(spirits, rep) end
+                end
+            end
+        end
+    end
+    return spirits
 end
 
 -- ESP logic
 local espMachinesOn = false
-local espMap = {} -- model -> Highlight
+local espSpiritsOn = false
+local espMap = {}
 
 local function createHighlightForModel(model, color)
     if not model or not model.Parent or espMap[model] then return end
@@ -178,6 +201,7 @@ end
 task.spawn(function()
     while true do
         cleanupDeadHighlights()
+        -- Machines ESP
         if espMachinesOn then
             local parts = gatherMachineParts()
             for _, rep in ipairs(parts) do
@@ -186,12 +210,25 @@ task.spawn(function()
                     createHighlightForModel(model, Color3.fromRGB(0,200,0))
                 end
             end
-        else
+        end
+        -- Spirits ESP
+        if espSpiritsOn then
+            local spirits = gatherSpiritModels()
+            for _, rep in ipairs(spirits) do
+                local model = rep and rep:IsA("BasePart") and rep.Parent or rep
+                if model and model:IsA("Model") and not espMap[model] then
+                    createHighlightForModel(model, Color3.fromRGB(200,0,200))
+                end
+            end
+        end
+        -- If both off, clear highlights
+        if not espMachinesOn and not espSpiritsOn then
             clearAllHighlights()
         end
         task.wait(1)
     end
 end)
+
 
 local staminaFlag = false
 local AddStamina
