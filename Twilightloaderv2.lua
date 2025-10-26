@@ -436,7 +436,7 @@ local function stopAutoFarm()
 end
 
 --// RAYFIELD TOGGLE
-local AutoFarmToggle = Tab:CreateToggle({
+local Toggle = Tab1:CreateToggle({
     Name = "Auto Farm (Experimental)",
     CurrentValue = false,
     Flag = "AutoFarmGodmode",
