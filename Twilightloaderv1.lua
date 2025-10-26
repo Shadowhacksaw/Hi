@@ -153,6 +153,28 @@ local function teleportToElevator()
 end
 
 
+-- // AutoSkill
+do
+    local function tryAttachSkillCheck(remote)
+        if not remote then return end
+        if remote:IsA("RemoteFunction") then
+            remote.OnClientInvoke = function(...) return 2 end
+        elseif remote:IsA("RemoteEvent") then
+            remote.OnClientEvent:Connect(function(...) end)
+        end
+    end
+    for _, v in ipairs(ReplicatedStorage:GetDescendants()) do
+        if (v:IsA("RemoteFunction") or v:IsA("RemoteEvent")) and tostring(v.Name):lower():find("skill") then
+            tryAttachSkillCheck(v)
+        end
+    end
+    ReplicatedStorage.DescendantAdded:Connect(function(desc)
+        if (desc:IsA("RemoteFunction") or desc:IsA("RemoteEvent")) and tostring(desc.Name):lower():find("skill") then
+            tryAttachSkillCheck(desc)
+        end
+    end)
+end
+
 Tab1:CreateToggle({Name = "Infinite Stamina", CurrentValue = false, Callback = function(v) staminaFlag = v end})
 
 Tab1:CreateButton({Name = "Teleport to Elevator", Callback = teleportToElevator})
