@@ -251,9 +251,9 @@ task.spawn(function()
 end)
 
 -- ===== RAYFIELD TOGGLES =====
-local Toggle = Tab1:CreateToggle({Name="Infinite Stamina", CurrentValue=false, Callback=function(v) infiniteStamina=v end end})
-local Toggle = Tab1:CreateToggle({Name="Auto Farm (Experimental)", CurrentValue=false, Callback=function(v) autoFarmEnabled=v  end end})
-local Button = Tab1:CreateButton({Name = "Teleport to Elevator", Callback = findElevatorSpawn()
+local Toggle = Tab1:CreateToggle({Name="Infinite Stamina", CurrentValue=false, Callback=function(v) infiniteStamina=v end})
+local Toggle = Tab1:CreateToggle({Name="Auto Farm (Experimental)", CurrentValue=false, Callback=function(v) autoFarmEnabled=v  end})
+local Button = Tab1:CreateButton({Name = "Teleport to Elevator", Callback = teleportToPart(findElevatorSpawn(),2)
 end})
 
 local Toggle = Tab2:CreateToggle({Name="ESP Machines", CurrentValue=false, Callback=function(v) espMachinesOn=v; if not v then clearAllHighlights() end end})
