@@ -7,7 +7,7 @@ local LocalPlayer = Players.LocalPlayer
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
 local Window = Rayfield:CreateWindow({
-    Name = "Twilight Area | AFK Helper",
+    Name = "Twilight Area | i got nothing to say",
     Icon = 0,
     LoadingTitle = "No more problems",
     LoadingSubtitle = "by Unknown dude",
@@ -252,4 +252,4 @@ end)
 local Toggle = Tab2:CreateToggle({Name="ESP Machines", CurrentValue=false, Callback=function(v) espMachinesOn=v; if not v then clearAllHighlights() end end})
 local Toggle = Tab2:CreateToggle({Name="ESP Spirits", CurrentValue=false, Callback=function(v) espSpiritsOn=v; if not v then clearAllHighlights() end end})
 
-game.StarterGui:SetCore("SendNotification",{Title="Twilight", Text="Auto Skillcheck + AFK Farm Ready!", Duration=8})
+game.StarterGui:SetCore("SendNotification",{Title="Twilight", Text="Auto Skillcheck is working!", Duration=8})
