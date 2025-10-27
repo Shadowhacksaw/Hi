@@ -40,12 +40,13 @@ local function teleportToPart(part, yOffset)
 end
 
 local function interactWithModel(model)
-    for _, obj in ipairs(model:GetDescendants()) do
-        if obj:IsA("ProximityPrompt") then
-            fireproximityprompt(obj)
+    if not model or not model.Parent then return end
+    for _, p in ipairs(model:GetDescendants()) do
+        if p:IsA("ProximityPrompt") then
+            fireproximityprompt(p)
             return
-        elseif obj:IsA("ClickDetector") then
-            fireclickdetector(obj)
+        elseif p:IsA("ClickDetector") then
+            fireclickdetector(p)
             return
         end
     end
@@ -177,7 +178,7 @@ task.spawn(function()
                     if rep then
                         teleportToPart(rep,2)
                         interactWithModel(machine)
-                        task.wait(40)
+                        task.wait(30)
                     end
                     currentMachineIndex = currentMachineIndex + 1
                     if currentMachineIndex > #machines then
