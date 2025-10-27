@@ -6,7 +6,7 @@ local LocalPlayer = Players.LocalPlayer
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
 local Window = Rayfield:CreateWindow({
-    Name = "Twilight Area | Spirit-Aware AFK",
+    Name = "Twilight Area | i got nothing to say",
     Icon = 0,
     LoadingTitle = "No more problems",
     LoadingSubtitle = "by Unknown dude",
@@ -253,5 +253,5 @@ end)
 -- ===== RAYFIELD TOGGLES =====
 local Toggle = Tab1:CreateToggle({Name="Infinite Stamina", CurrentValue=false, Callback=function(v) infiniteStamina=v end})
 local Toggle = Tab1:CreateToggle({Name="Auto Farm (Spirit-Aware)", CurrentValue=false, Callback=function(v) autoFarmEnabled=v end})
-local Button = Tab1:CreateButton({Name = "Teleport to Elevator", Callback = teleportToElevator 
+local Button = Tab1:CreateButton({Name = "Teleport to Elevator", Callback = findElevatorSpawn
 end})
