@@ -286,60 +286,36 @@ do
     end)
 end
 
--- Toggle variable (link this to your Rayfield toggle)
+-- AutoFarm toggle variable
 local autoFarmEnabled = false
 
--- === GODMODE LOOP ===
-task.spawn(function()
-    while true do
-        if autoFarmEnabled then
-            pcall(function()
-                if Workspace:FindFirstChild("Floor") and Workspace.Floor:FindFirstChild("Spirits") then
-                    for _, folder in ipairs(Workspace.Floor.Spirits:GetChildren()) do
-                        for _, v in ipairs(folder:GetChildren()) do
-                            if v.Name == "HitPlayer" then
-                                v:Destroy()
-                            end
-                        end
-                    end
+-- Helper: find valid machines
+local function gatherMachines()
+    local machines = {}
+    if Workspace:FindFirstChild("Floor") then
+        for _, obj in ipairs(Workspace.Floor:GetDescendants()) do
+            if obj:IsA("Model") and obj:FindFirstChildWhichIsA("ProximityPrompt") then
+                -- Exclude fuse boxes by name
+                local nameLower = obj.Name:lower()
+                if not (nameLower:find("fuse") or nameLower:find("fusebox") or nameLower:find("fuse_box")) then
+                    table.insert(machines, obj)
                 end
-            end)
+            end
         end
-        task.wait(0.5)
     end
-end)
-
--- === SKILL CHECK BYPASS ===
-local function tryAttachSkillCheck(remote)
-    if not remote then return end
-    if remote:IsA("RemoteFunction") then
-        remote.OnClientInvoke = function(...) return 2 end
-    elseif remote:IsA("RemoteEvent") then
-        remote.OnClientEvent:Connect(function(...) end)
-    end
+    return machines
 end
 
-for _, v in ipairs(ReplicatedStorage:GetDescendants()) do
-    if (v:IsA("RemoteFunction") or v:IsA("RemoteEvent")) and tostring(v.Name):lower():find("skill") then
-        tryAttachSkillCheck(v)
-    end
-end
-
-ReplicatedStorage.DescendantAdded:Connect(function(desc)
-    if (desc:IsA("RemoteFunction") or desc:IsA("RemoteEvent")) and tostring(desc.Name):lower():find("skill") then
-        tryAttachSkillCheck(desc)
-    end
-end)
-
--- === HELPERS ===
+-- Helper: teleport
 local function teleportToPart(part, offset)
     local char = game.Players.LocalPlayer.Character
     local root = char and char:FindFirstChild("HumanoidRootPart")
     if root and part then
-        root.CFrame = part.CFrame + Vector3.new(0, (offset or 2), 0)
+        root.CFrame = part.CFrame + Vector3.new(0, offset or 2, 0)
     end
 end
 
+-- Interact with machine
 local function interactWithMachine(machine)
     for _, obj in ipairs(machine:GetDescendants()) do
         if obj:IsA("ProximityPrompt") then
@@ -349,68 +325,37 @@ local function interactWithMachine(machine)
     end
 end
 
+-- Find elevator spawn
 local function findElevatorSpawn()
     local elevator = Workspace:FindFirstChild("Elevator")
     if not elevator then return nil end
     return elevator:FindFirstChild("ElevatorSpawn") or elevator:FindFirstChildWhichIsA("BasePart", true)
 end
 
--- Gather all valid machines on the current floor
-local function gatherMachines()
-    local machines = {}
-    if Workspace:FindFirstChild("Floor") then
-        for _, obj in ipairs(Workspace.Floor:GetDescendants()) do
-            if obj:IsA("Model") then
-                local hasPrompt = false
-                local part = nil
-                for _, child in ipairs(obj:GetDescendants()) do
-                    if child:IsA("ProximityPrompt") then hasPrompt = true end
-                    if child:IsA("BasePart") then part = child end
-                end
-                -- Only machines above the floor (ignore fuse boxes)
-                if hasPrompt and part and part.Position.Y > Workspace.Floor.Position.Y + 2 then
-                    table.insert(machines, obj)
-                end
-            end
-        end
-    end
-    return machines
-end
-
--- === MAIN AFK AUTO FARM LOOP ===
+-- AFK AutoFarm loop
 task.spawn(function()
     while true do
         if autoFarmEnabled then
             local machines = gatherMachines()
-            local i = 1
-
-            while i <= #machines do
-                if autoFarmEnabled then
-                    local machine = machines[i]
-                    local repPart = machine:FindFirstChild("HumanoidRootPart") or machine.PrimaryPart or machine:FindFirstChildWhichIsA("BasePart", true)
-                    if repPart then
-                        teleportToPart(repPart, 2)
-                        interactWithMachine(machine)
-
-                        -- Wait properly for repair
-                        local repairTime = 117
-                        local elapsed = 0
-                        while elapsed < repairTime do
-                            if autoFarmEnabled then
-                                task.wait(0.5)
-                                elapsed = elapsed + 0.5
-                            else
-                                task.wait(0.5)
-                            end
-                        end
+            for i, machine in ipairs(machines) do
+                if not autoFarmEnabled then break end
+                local repPart = machine:FindFirstChild("HumanoidRootPart") or machine.PrimaryPart or machine:FindFirstChildWhichIsA("BasePart", true)
+                if repPart then
+                    teleportToPart(repPart, 2)
+                    interactWithMachine(machine)
+                    
+                    -- Wait for repair, but exit early if machine is gone
+                    local elapsed = 0
+                    local repairTime = 117
+                    while elapsed < repairTime and machine.Parent do
+                        if not autoFarmEnabled then break end
+                        task.wait(0.5)
+                        elapsed = elapsed + 0.5
                     end
-                    i = i + 1
-                else
-                    task.wait(0.5)
                 end
             end
 
-            -- Teleport to elevator only after finishing floor
+            -- After finishing floor, teleport to elevator
             while autoFarmEnabled do
                 local elevator = findElevatorSpawn()
                 if elevator then
@@ -421,7 +366,7 @@ task.spawn(function()
                 -- Check if new floor has machines
                 local newMachines = gatherMachines()
                 if #newMachines > 0 then
-                    break -- new floor found, continue AutoFarm
+                    break -- new floor detected, continue AutoFarm
                 end
             end
         else
