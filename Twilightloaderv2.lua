@@ -286,10 +286,10 @@ do
     end)
 end
 
--- Toggle variable (set this with your Rayfield toggle)
+-- Toggle variable (link this to your Rayfield toggle)
 local autoFarmEnabled = false
 
--- === GODMODE LOOP (unchanged) ===
+-- === GODMODE LOOP ===
 task.spawn(function()
     while true do
         if autoFarmEnabled then
@@ -309,7 +309,7 @@ task.spawn(function()
     end
 end)
 
--- === AUTO SKILL CHECK BYPASS ===
+-- === SKILL CHECK BYPASS ===
 local function tryAttachSkillCheck(remote)
     if not remote then return end
     if remote:IsA("RemoteFunction") then
@@ -332,117 +332,104 @@ ReplicatedStorage.DescendantAdded:Connect(function(desc)
 end)
 
 -- === HELPERS ===
-local function findRepresentativePart(model)
-    if not model then return nil end
-    if model:IsA("BasePart") then return model end
-    local names = {"Front","front","Head","head","HumanoidRootPart","PrimaryPart"}
-    for _,n in ipairs(names) do
-        local f = model:FindFirstChild(n)
-        if f and f:IsA("BasePart") then return f end
+local function isValidMachine(model)
+    if not model or not model:IsA("Model") then return false end
+    local hasPrompt = false
+    local hasPart = false
+    for _, obj in ipairs(model:GetDescendants()) do
+        if obj:IsA("ProximityPrompt") then hasPrompt = true end
+        if obj:IsA("BasePart") then hasPart = true end
     end
-    if model.PrimaryPart and model.PrimaryPart:IsA("BasePart") then return model.PrimaryPart end
-    return model:FindFirstChildWhichIsA("BasePart", true)
+    return hasPrompt and hasPart
 end
 
--- Optimized: cache machine models to avoid scanning repeatedly
-local cachedMachines = {}
-local function gatherMachineModels()
-    if #cachedMachines > 0 then return cachedMachines end -- return cached list
-    local folders = {}
-    if Workspace:FindFirstChild("Machines") then table.insert(folders, Workspace.Machines) end
+local function gatherMachines()
+    local machines = {}
     if Workspace:FindFirstChild("Floor") then
         for _, obj in ipairs(Workspace.Floor:GetDescendants()) do
-            if (obj:IsA("Folder") or obj:IsA("Model")) and tostring(obj.Name):lower() == "machines" then
-                table.insert(folders, obj)
+            if obj:IsA("Model") and obj.Name:lower():find("machine") then
+                if isValidMachine(obj) then
+                    table.insert(machines, obj)
+                end
             end
         end
     end
-    for _, obj in ipairs(Workspace:GetDescendants()) do
-        if (obj:IsA("Folder") or obj:IsA("Model")) and tostring(obj.Name):lower() == "machines" then
-            table.insert(folders, obj)
-        end
-    end
-
-    local machines = {}
-    for _, folder in ipairs(folders) do
-        for _, machine in ipairs(folder:GetChildren()) do
-            if machine:IsA("Model") then
-                table.insert(machines, machine)
-            end
-        end
-    end
-    cachedMachines = machines
     return machines
 end
 
 local function teleportToPart(part, offset)
-    local char = LocalPlayer.Character
+    local char = game.Players.LocalPlayer.Character
     local root = char and char:FindFirstChild("HumanoidRootPart")
     if root and part then
-        root.CFrame = part.CFrame * CFrame.new(0, 2, offset or 2)
+        root.CFrame = part.CFrame + Vector3.new(0, (offset or 2), 0)
+    end
+end
+
+local function interactWithMachine(machine)
+    for _, obj in ipairs(machine:GetDescendants()) do
+        if obj:IsA("ProximityPrompt") then
+            fireproximityprompt(obj)
+            return
+        end
     end
 end
 
 local function findElevatorSpawn()
     local elevator = Workspace:FindFirstChild("Elevator")
     if not elevator then return nil end
-    return elevator:FindFirstChild("ElevatorSpawn") or findRepresentativePart(elevator)
+    return elevator:FindFirstChild("ElevatorSpawn") or elevator:FindFirstChildWhichIsA("BasePart", true)
 end
 
-local function interactWithMachine(machine)
-    for _, p in ipairs(machine:GetDescendants()) do
-        if p:IsA("ProximityPrompt") then
-            fireproximityprompt(p)
-            return
-        elseif p:IsA("ClickDetector") then
-            fireclickdetector(p)
-            return
-        end
-    end
-end
-
--- === MAIN AUTO FARM LOOP ===
+-- === MAIN AFK AUTO FARM LOOP ===
 task.spawn(function()
     while true do
         if autoFarmEnabled then
-            local machines = gatherMachineModels()
+            local machines = gatherMachines()
             local i = 1
+
             while i <= #machines do
                 if autoFarmEnabled then
                     local machine = machines[i]
-                    print("Repairing machine", i)
-                    teleportToPart(findRepresentativePart(machine))
-                    task.wait(0.5)
-                    interactWithMachine(machine)
+                    local repPart = machine:FindFirstChild("HumanoidRootPart") or machine.PrimaryPart or machine:FindFirstChildWhichIsA("BasePart", true)
+                    if repPart then
+                        teleportToPart(repPart, 2)
+                        interactWithMachine(machine)
 
-                    -- Incremental wait for repair (117s)
-                    local repairTime = 117
-                    local elapsed = 0
-                    while elapsed < repairTime do
-                        if autoFarmEnabled then
-                            task.wait(0.5)
-                            elapsed = elapsed + 0.5
-                        else
-                            task.wait(0.5) -- pause if toggle off
+                        -- Incremental wait for repair (117s)
+                        local repairTime = 117
+                        local elapsed = 0
+                        while elapsed < repairTime do
+                            if autoFarmEnabled then
+                                task.wait(0.5)
+                                elapsed = elapsed + 0.5
+                            else
+                                task.wait(0.5)
+                            end
                         end
                     end
-
                     i = i + 1
                 else
-                    task.wait(0.5) -- wait until toggle is re-enabled
+                    task.wait(0.5)
                 end
             end
 
-            -- Teleport to elevator continuously after machines are done
+            -- Teleport to elevator continuously after finishing floor
             while autoFarmEnabled do
                 local elevator = findElevatorSpawn()
                 if elevator then
                     teleportToPart(elevator, 2)
                 end
                 task.wait(1)
+
+                -- Check if new floor exists by gathering machines again
+                local newMachines = gatherMachines()
+                if #newMachines > 0 then
+                    break -- new floor found, loop will continue
+                end
             end
+        else
+            task.wait(1)
         end
-        task.wait(1)
     end
 end)
 
