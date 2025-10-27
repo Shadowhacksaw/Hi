@@ -251,7 +251,12 @@ task.spawn(function()
 end)
 
 -- ===== RAYFIELD TOGGLES =====
-local Toggle = Tab1:CreateToggle({Name="Infinite Stamina", CurrentValue=false, Callback=function(v) infiniteStamina=v end})
-local Toggle = Tab1:CreateToggle({Name="Auto Farm (Spirit-Aware)", CurrentValue=false, Callback=function(v) autoFarmEnabled=v end})
-local Button = Tab1:CreateButton({Name = "Teleport to Elevator", Callback = findElevatorSpawn
+local Toggle = Tab1:CreateToggle({Name="Infinite Stamina", CurrentValue=false, Callback=function(v) infiniteStamina=v end end})
+local Toggle = Tab1:CreateToggle({Name="Auto Farm (Experimental)", CurrentValue=false, Callback=function(v) autoFarmEnabled=v  end end})
+local Button = Tab1:CreateButton({Name = "Teleport to Elevator", Callback = findElevatorSpawn()
 end})
+
+local Toggle = Tab2:CreateToggle({Name="ESP Machines", CurrentValue=false, Callback=function(v) espMachinesOn=v; if not v then clearAllHighlights() end end})
+local Toggle = Tab2:CreateToggle({Name="ESP Spirits", CurrentValue=false, Callback=function(v) espSpiritsOn=v; if not v then clearAllHighlights() end end})
+
+game.StarterGui:SetCore("SendNotification",{Title="Twilight", Text="Auto Skillcheck is working!", Duration=8})
