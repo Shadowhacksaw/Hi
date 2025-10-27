@@ -332,31 +332,6 @@ ReplicatedStorage.DescendantAdded:Connect(function(desc)
 end)
 
 -- === HELPERS ===
-local function isValidMachine(model)
-    if not model or not model:IsA("Model") then return false end
-    local hasPrompt = false
-    local hasPart = false
-    for _, obj in ipairs(model:GetDescendants()) do
-        if obj:IsA("ProximityPrompt") then hasPrompt = true end
-        if obj:IsA("BasePart") then hasPart = true end
-    end
-    return hasPrompt and hasPart
-end
-
-local function gatherMachines()
-    local machines = {}
-    if Workspace:FindFirstChild("Floor") then
-        for _, obj in ipairs(Workspace.Floor:GetDescendants()) do
-            if obj:IsA("Model") and obj.Name:lower():find("machine") then
-                if isValidMachine(obj) then
-                    table.insert(machines, obj)
-                end
-            end
-        end
-    end
-    return machines
-end
-
 local function teleportToPart(part, offset)
     local char = game.Players.LocalPlayer.Character
     local root = char and char:FindFirstChild("HumanoidRootPart")
@@ -380,6 +355,28 @@ local function findElevatorSpawn()
     return elevator:FindFirstChild("ElevatorSpawn") or elevator:FindFirstChildWhichIsA("BasePart", true)
 end
 
+-- Gather all valid machines on the current floor
+local function gatherMachines()
+    local machines = {}
+    if Workspace:FindFirstChild("Floor") then
+        for _, obj in ipairs(Workspace.Floor:GetDescendants()) do
+            if obj:IsA("Model") then
+                local hasPrompt = false
+                local part = nil
+                for _, child in ipairs(obj:GetDescendants()) do
+                    if child:IsA("ProximityPrompt") then hasPrompt = true end
+                    if child:IsA("BasePart") then part = child end
+                end
+                -- Only machines above the floor (ignore fuse boxes)
+                if hasPrompt and part and part.Position.Y > Workspace.Floor.Position.Y + 2 then
+                    table.insert(machines, obj)
+                end
+            end
+        end
+    end
+    return machines
+end
+
 -- === MAIN AFK AUTO FARM LOOP ===
 task.spawn(function()
     while true do
@@ -395,7 +392,7 @@ task.spawn(function()
                         teleportToPart(repPart, 2)
                         interactWithMachine(machine)
 
-                        -- Incremental wait for repair (117s)
+                        -- Wait properly for repair
                         local repairTime = 117
                         local elapsed = 0
                         while elapsed < repairTime do
@@ -413,7 +410,7 @@ task.spawn(function()
                 end
             end
 
-            -- Teleport to elevator continuously after finishing floor
+            -- Teleport to elevator only after finishing floor
             while autoFarmEnabled do
                 local elevator = findElevatorSpawn()
                 if elevator then
@@ -421,10 +418,10 @@ task.spawn(function()
                 end
                 task.wait(1)
 
-                -- Check if new floor exists by gathering machines again
+                -- Check if new floor has machines
                 local newMachines = gatherMachines()
                 if #newMachines > 0 then
-                    break -- new floor found, loop will continue
+                    break -- new floor found, continue AutoFarm
                 end
             end
         else
