@@ -186,7 +186,7 @@ task.spawn(function()
                 teleportToPart(rep)
                 task.wait(0.2)
                 interactWithModel(machine)
-                local repairTime = (i == #machines) and 40 or 117
+                local repairTime = (i == #machines) and 30 or 40
                 local elapsed = 0
                 while elapsed < repairTime and machine.Parent do
                     if not autoFarmEnabled then break end
