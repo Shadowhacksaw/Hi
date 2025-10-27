@@ -7,40 +7,33 @@ local LocalPlayer = Players.LocalPlayer
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
 local Window = Rayfield:CreateWindow({
-    Name = "Twilight Area | AFK Helper",
-    Icon = 0,
-    LoadingTitle = "No more problems",
-    LoadingSubtitle = "by Unknown dude",
-    Theme = "DarkBlue",
-    DisableRayfieldPrompts = false,
-    DisableBuildWarnings = false,
-    ConfigurationSaving = {Enabled = true, FolderName = nil, FileName = "Twilight"},
-    Discord = {Enabled = false, Invite = "noinvitelink", RememberJoins = true},
-    KeySystem = false,
-    KeySettings = {Title = "c00hackk hub | Key System", Subtitle = "key is backstorysoon", Note = "Key is backstorysoon", FileName = "Key", SaveKey = true, GrabKeyFromSite = false, Key = {"backstorysoon"}}
+   Name = "Twilight Area l i got nothing to say ",
+   Icon = 0,
+   LoadingTitle = "No more problems",
+   LoadingSubtitle = "by Unknown dude",
+   Theme = "DarkBlue",
+   DisableRayfieldPrompts = false,
+   DisableBuildWarnings = false,
+   ConfigurationSaving = {Enabled = true, FolderName = nil, FileName = "Twilight"},
+   Discord = {Enabled = false, Invite = "noinvitelink", RememberJoins = true},
+   KeySystem = false,
+   KeySettings = {Title = "c00hackk hub l key system", Subtitle = "key is backstorysoon", Note = "Key is backstorysoon", FileName = "Key", SaveKey = true, GrabKeyFromSite = false, Key = {"backstorysoon"}}
 })
 
 local Tab1 = Window:CreateTab("Main", 130695581754590)
-local Tab2 = Window:CreateTab("ESP", 130695581754590)
+local Tab2 = Window:CreateTab("Esp", 130695581754590)
 
--- ===== Helpers =====
-local function teleportToPart(part, yOffset)
-    yOffset = yOffset or 2
-    if not part then return end
-    local char = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()
-    local hrp = char:FindFirstChild("HumanoidRootPart") or char:WaitForChild("HumanoidRootPart",2)
-    if hrp then
-        hrp.CFrame = part.CFrame + Vector3.new(0,yOffset,0)
+-- ================= HELPERS =================
+local function findRepresentativePart(model)
+    if not model then return nil end
+    if model:IsA("BasePart") then return model end
+    local names = {"Front","front","Head","head","HumanoidRootPart","PrimaryPart"}
+    for _, n in ipairs(names) do
+        local f = model:FindFirstChild(n)
+        if f and f:IsA("BasePart") then return f end
     end
-end
-
-local function interactWithModel(model)
-    for _, obj in ipairs(model:GetDescendants()) do
-        if obj:IsA("ProximityPrompt") then
-            fireproximityprompt(obj)
-            return
-        end
-    end
+    if model.PrimaryPart and model.PrimaryPart:IsA("BasePart") then return model.PrimaryPart end
+    return model:FindFirstChildWhichIsA("BasePart", true)
 end
 
 local function isFuseLike(name)
@@ -49,13 +42,30 @@ local function isFuseLike(name)
     return s:find("fuse") or s:find("fusebox") or s:find("fuse_box")
 end
 
+local function teleportToPart(part, offset)
+    local char = LocalPlayer.Character
+    local hrp = char and char:FindFirstChild("HumanoidRootPart")
+    if hrp and part then
+        pcall(function() hrp.CFrame = part.CFrame + Vector3.new(0, offset or 2, 0) end)
+    end
+end
+
+local function interactWithPrompt(obj)
+    if obj and obj:IsA("ProximityPrompt") then
+        fireproximityprompt(obj)
+        return true
+    end
+    return false
+end
+
+-- ================= GATHER OBJECTS =================
 local function gatherItems()
     local items = {}
     if Workspace:FindFirstChild("Floor") and Workspace.Floor:FindFirstChild("Items") then
         local currencies = Workspace.Floor.Items:FindFirstChild("Currencies")
         if currencies then
             for _, item in ipairs(currencies:GetChildren()) do
-                if item:IsA("Model") or item:IsA("BasePart") then
+                if item:FindFirstChildWhichIsA("ProximityPrompt") then
                     table.insert(items, item)
                 end
             end
@@ -68,7 +78,7 @@ local function gatherMachines()
     local machines = {}
     if Workspace:FindFirstChild("Floor") and Workspace.Floor:FindFirstChild("Machines") then
         for _, machine in ipairs(Workspace.Floor.Machines:GetChildren()) do
-            if machine:IsA("Model") and not isFuseLike(machine.Name) then
+            if not isFuseLike(machine.Name) and machine:FindFirstChildWhichIsA("ProximityPrompt") then
                 table.insert(machines, machine)
             end
         end
@@ -79,10 +89,34 @@ end
 local function findElevatorSpawn()
     local elevator = Workspace:FindFirstChild("Elevator")
     if not elevator then return nil end
-    return elevator:FindFirstChild("ElevatorSpawn") or elevator:FindFirstChildWhichIsA("BasePart",true)
+    return elevator:FindFirstChild("ElevatorSpawn") 
+        or elevator:FindFirstChild("Elevator1") 
+        or elevator:FindFirstChild("Elevator2") 
+        or findRepresentativePart(elevator)
 end
 
--- ===== AutoSkillCheck =====
+-- ================= GODMODE =================
+local autoFarmEnabled = false
+task.spawn(function()
+    while true do
+        if autoFarmEnabled then
+            pcall(function()
+                if Workspace:FindFirstChild("Floor") and Workspace.Floor:FindFirstChild("Spirits") then
+                    for _, folder in ipairs(Workspace.Floor.Spirits:GetChildren()) do
+                        for _, v in ipairs(folder:GetChildren()) do
+                            if v.Name == "HitPlayer" then
+                                v:Destroy()
+                            end
+                        end
+                    end
+                end
+            end)
+        end
+        task.wait(0.5)
+    end
+end)
+
+-- ================= AUTO SKILLCHECK =================
 do
     local function tryAttachSkillCheck(remote)
         if not remote then return end
@@ -104,41 +138,22 @@ do
     end)
 end
 
--- ===== Godmode / Infinite Stamina =====
+-- ================= INFINITE STAMINA =================
 local staminaFlag = false
 local AddStamina
 pcall(function()
     AddStamina = ReplicatedStorage:WaitForChild("Remotes"):WaitForChild("Gameplay"):WaitForChild("AddStamina")
 end)
-
 task.spawn(function()
     while true do
         if staminaFlag and AddStamina then
-            pcall(function() firesignal(AddStamina.OnClientEvent,45) end)
+            pcall(function() firesignal(AddStamina.OnClientEvent, 45) end)
         end
         task.wait(0.2)
     end
 end)
 
-task.spawn(function()
-    while true do
-        if autoFarmEnabled then
-            if Workspace:FindFirstChild("Floor") and Workspace.Floor:FindFirstChild("Spirits") then
-                for _, folder in ipairs(Workspace.Floor.Spirits:GetChildren()) do
-                    for _, v in ipairs(folder:GetChildren()) do
-                        if v.Name == "HitPlayer" then
-                            v:Destroy()
-                        end
-                    end
-                end
-            end
-        end
-        task.wait(0.5)
-    end
-end)
-
--- ===== AutoFarm =====
-local autoFarmEnabled = false
+-- ================= MAIN AUTO FARM LOOP =================
 task.spawn(function()
     while true do
         if autoFarmEnabled then
@@ -146,25 +161,27 @@ task.spawn(function()
             local items = gatherItems()
             for _, item in ipairs(items) do
                 if not autoFarmEnabled then break end
-                local repPart = item:FindFirstChildWhichIsA("BasePart") or item
-                if repPart then
-                    teleportToPart(repPart, 2)
-                    interactWithModel(item)
+                local part = findRepresentativePart(item)
+                if part then
+                    teleportToPart(part, 2)
+                    local prompt = item:FindFirstChildWhichIsA("ProximityPrompt", true)
+                    interactWithPrompt(prompt)
                     task.wait(0.5)
                 end
             end
 
-            -- 2️⃣ Repair machines
+            -- 2️⃣ Interact with machines
             local machines = gatherMachines()
             for _, machine in ipairs(machines) do
                 if not autoFarmEnabled then break end
-                local repPart = machine:FindFirstChildWhichIsA("BasePart", true)
-                if repPart then
-                    teleportToPart(repPart, 2)
-                    interactWithModel(machine)
-                    -- Wait 117 seconds for repair
-                    local repairTime = 117
+                local part = findRepresentativePart(machine)
+                if part then
+                    teleportToPart(part, 2)
+                    local prompt = machine:FindFirstChildWhichIsA("ProximityPrompt", true)
+                    interactWithPrompt(prompt)
+                    -- wait for repair
                     local elapsed = 0
+                    local repairTime = 117
                     while elapsed < repairTime and machine.Parent do
                         if not autoFarmEnabled then break end
                         task.wait(0.5)
@@ -173,15 +190,12 @@ task.spawn(function()
                 end
             end
 
-            -- 3️⃣ Teleport to elevator after floor
+            -- 3️⃣ Teleport to elevator and wait for next floor
             while autoFarmEnabled do
                 local elevator = findElevatorSpawn()
-                if elevator then
-                    teleportToPart(elevator, 2)
-                end
+                if elevator then teleportToPart(elevator, 2) end
                 task.wait(1)
-                local newMachines = gatherMachines()
-                if #newMachines > 0 then break end
+                if #gatherMachines() > 0 then break end
             end
         else
             task.wait(1)
@@ -189,16 +203,12 @@ task.spawn(function()
     end
 end)
 
--- ===== Rayfield Toggles =====
-local Toggle = Tab1:CreateToggle({Name="Infinite Stamina", CurrentValue=false, Callback=function(v) staminaFlag=v end})
-local Button = Tab1:CreateButton({Name="Teleport to Elevator", Callback=function() teleportToPart(findElevatorSpawn(),2) end})
-local Toggle = Tab1:CreateToggle({Name="Auto Farm (Experimental)", CurrentValue=false, Flag="AutoFarmToggle", Callback=function(v) autoFarmEnabled=v end})
-
--- ===== ESP =====
-local espMachinesOn, espSpiritsOn = false, false
+-- ================= ESP =================
+local espMachinesOn = false
+local espSpiritsOn = false
 local espMap = {}
 
-local function createHighlightForModel(model,color)
+local function createHighlightForModel(model, color)
     if not model or not model.Parent or espMap[model] then return end
     local hl = Instance.new("Highlight")
     hl.Name = "TZ_HL"
@@ -206,34 +216,40 @@ local function createHighlightForModel(model,color)
     hl.FillColor, hl.OutlineColor = color, color
     hl.FillTransparency = 0.55
     hl.Parent = workspace
-    espMap[model]=hl
+    espMap[model] = hl
 end
 
 local function clearAllHighlights()
     for model, hl in pairs(espMap) do
         pcall(function() if hl then hl:Destroy() end end)
     end
-    espMap={}
+    espMap = {}
+end
+
+local function cleanupDeadHighlights()
+    for model, hl in pairs(espMap) do
+        if not model or not model.Parent then
+            pcall(function() if hl then hl:Destroy() end end)
+            espMap[model] = nil
+        end
+    end
 end
 
 task.spawn(function()
     while true do
-        for model, hl in pairs(espMap) do
-            if not model or not model.Parent then
-                pcall(function() if hl then hl:Destroy() end end)
-                espMap[model]=nil
-            end
-        end
-
+        cleanupDeadHighlights()
         if espMachinesOn then
-            for _, machine in ipairs(gatherMachines()) do
-                createHighlightForModel(machine, Color3.fromRGB(0,200,0))
+            local machines = gatherMachines()
+            for _, m in ipairs(machines) do
+                createHighlightForModel(m, Color3.fromRGB(0,200,0))
             end
         end
-        if espSpiritsOn and Workspace:FindFirstChild("Floor") and Workspace.Floor:FindFirstChild("Spirits") then
-            for _, folder in ipairs(Workspace.Floor.Spirits:GetChildren()) do
-                for _, spirit in ipairs(folder:GetChildren()) do
-                    createHighlightForModel(spirit, Color3.fromRGB(200,0,200))
+        if espSpiritsOn then
+            if Workspace:FindFirstChild("Floor") and Workspace.Floor:FindFirstChild("Spirits") then
+                for _, folder in ipairs(Workspace.Floor.Spirits:GetChildren()) do
+                    for _, spirit in ipairs(folder:GetChildren()) do
+                        createHighlightForModel(spirit, Color3.fromRGB(200,0,200))
+                    end
                 end
             end
         end
@@ -241,7 +257,15 @@ task.spawn(function()
     end
 end)
 
-local Toggle = Tab2:CreateToggle({Name="ESP Machines", CurrentValue=false, Callback=function(v) espMachinesOn=v; if not v then clearAllHighlights() end end})
-local Toggle = Tab2:CreateToggle({Name="ESP Spirits", CurrentValue=false, Callback=function(v) espSpiritsOn=v; if not v then clearAllHighlights() end end})
+-- ================= TOGGLES =================
+Tab1:CreateToggle({Name = "Infinite Stamina", CurrentValue = false, Callback = function(v) staminaFlag = v end})
+Tab1:CreateButton({Name = "Teleport to Elevator", Callback = function() local e = findElevatorSpawn(); if e then teleportToPart(e,2) end end})
+Tab1:CreateToggle({Name = "Auto Farm (Experimental)", CurrentValue = false, Callback = function(v) autoFarmEnabled = v end})
+Tab2:CreateToggle({Name = "ESP Machines", CurrentValue = false, Callback = function(v) espMachinesOn = v; if not v then clearAllHighlights() end end})
+Tab2:CreateToggle({Name = "ESP Spirits", CurrentValue = false, Callback = function(v) espSpiritsOn = v; if not v then clearAllHighlights() end end})
 
-game.StarterGui:SetCore("SendNotification",{Title="Twilight", Text="Auto Skillcheck + AFK Farm Ready!", Duration=8})
+game.StarterGui:SetCore("SendNotification", {
+    Title = "Twilight",
+    Text = "Auto Skillcheck is Working!",
+    Duration = 8
+})
