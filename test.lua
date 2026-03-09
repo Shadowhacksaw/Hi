@@ -88,6 +88,8 @@ local TabExperimental = Window:CreateTab("Experimental stuff", 448362458) -- Tit
 
 local TabServer = Window:CreateTab("Server stuff", 448362458) -- Title, Image
 
+local TabScream = Window:CreateTab("ScreamStream Wip", 448362458) -- Title, Image
+
 local Divider = TabRip:CreateDivider()
 
 local Section = TabRip:CreateSection("Scripts by @Rip_game")
@@ -7406,3 +7408,71 @@ local Button = TabServer:CreateButton({
       end
   })
 
+local Section = TabScream:CreateSection("ScreamStream Implemented W.I.P")
+
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
+local backpack = player:WaitForChild("Backpack")
+
+local Folder = workspace:WaitForChild("GamepassItems")
+
+local Button = TabScream:CreateButton({
+    Name = "Buffs (W.I.P)",
+    Callback = function()
+        for _,obj in pairs(Folder:GetDescendants()) do
+            local clone = obj:Clone()
+            clone.Parent = backpack
+        end
+    end
+})
+
+local MonstersFolder = workspace:WaitForChild("Monsters")
+local ESP = {}
+local Enabled = false
+
+local function addESP(monster)
+    if monster:IsA("Model") then
+        local highlight = Instance.new("Highlight")
+        highlight.Adornee = monster
+        highlight.FillColor = Color3.fromRGB(255, 0, 0) -- RED
+        highlight.OutlineColor = Color3.fromRGB(255, 0, 0) -- RED outline
+        highlight.FillTransparency = 0.4
+        highlight.OutlineTransparency = 0
+        highlight.Parent = monster
+
+        ESP[monster] = highlight
+    end
+end
+
+local function removeESP()
+    for _,v in pairs(ESP) do
+        if v then
+            v:Destroy()
+        end
+    end
+    ESP = {}
+end
+
+local Toggle = TabScream:CreateToggle({
+    Name = "Entitys Esp",
+    CurrentValue = false,
+    Flag = "MonsterESP",
+    Callback = function(Value)
+        Enabled = Value
+        
+        if Enabled then
+            for _,monster in pairs(MonstersFolder:GetChildren()) do
+                addESP(monster)
+            end
+        else
+            removeESP()
+        end
+    end
+})
+
+MonstersFolder.ChildAdded:Connect(function(monster)
+    if Enabled then
+        task.wait(0.1)
+        addESP(monster)
+    end
+end)
